@@ -12,11 +12,10 @@
 
 ### Aspectos Principales :
 * Entidades
-    * **Usuario**: idUsuario...
-    * **Producto**: idProducto... Se relaciona con la tabla Usuario a través de un idUsuario (Usuario el cual vende el producto)
-    * **Transacciones**: idTransaccion... Se relaciona con la tabla ventas a traves de un idVenta.
-    * **cestaCompra**: idCesta... Se relaciona con la tabla Usuario a través del idUsuario y con la tabla Producto a través de idProducto.
-    * **Ventas**: idVenta (id no único)... se relaciona con la tabla producto a traves de idProducto, con la tabla Usuario a traves de idUsuarioCompra y un idUsuarioVenta (Esta tabla se usa para relacionar mas tablas).
+    * **Usuario**: IdUsuario, Nombre, Contraseña, Email, ImagenPerfil, Tipo, Telefono, NTarjeta.
+    * **Pedido**: IdPedido, IdVenta, Fecha, Estado... Se relaciona con la tabla DetallesPedido a traves de un idDetalle.
+    * **Producto**: IdProducto, Nombre, IdUsuario, Precio, Imagen, Descripcion, Categoria, Descuento... Se relaciona con la tabla Usuario a través de un idUsuario (Usuario el cual vende el producto)
+    * **DetallePedido**: IdDetalle(id no único), IdProducto, IdUsuarioCompra, IdUsuarioVenta, NValoracion, DescValoracion, PrecioProducto, UnidadesProducto... Se relaciona con la tabla producto a traves de idProducto, con la tabla Usuario a traves de idUsuarioCompra y un idUsuarioVenta.
 
 * Permisos
     * **Usuario Anónimo**: Puede visualizar el contenido de la web pero no puede comprar ni accedera su perfil ni a las herramientas del administrador.
