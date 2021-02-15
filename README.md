@@ -27,7 +27,7 @@
     * Se podrán subir imagenes de los productos y de la foto de perfíl de cada usuario.
    
 * Graficos
-    *Se permitirá visualizar el numero de ventas por mes de cada usuario y un gráfico que contemple el numero de ventas de cada categoría.
+    * Se permitirá visualizar el numero de ventas por mes de cada usuario y un gráfico que contemple el numero de ventas de cada categoría.
    
 * Tecnologías Complementarias
     * **Envio de correos a los usuarios**: (Cuando se realice una compra o cuando se olvide una contraseña).
