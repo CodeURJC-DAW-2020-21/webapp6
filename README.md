@@ -12,10 +12,11 @@
 
 ### Aspectos Principales :
 * Entidades
-    * **Producto**: Each product has a id(pk), name, price, description, category, stock, brand.
-    * **Transacciones**: Id(pk), id product(fk), id user(fk), status (issue, shipped, payment accepted...).
-    * **Usuario**: Id(pk), email, password, country, postal code, city, address, credit card number, rol.
-    * **cestaCompra**: Id(pk), id transaction(fk), rating.
+    * **Usuario**: idUsuario...
+    * **Producto**: idProducto... Se relaciona con la tabla Usuario a través de un idUsuario (Usuario el cual vende el producto)
+    * **Transacciones**: idTransaccion... Se relaciona con la tabla ventas a traves de un idVenta.
+    * **cestaCompra**: idCesta... Se relaciona con la tabla Usuario a través del idUsuario y con la tabla Producto a través de idProducto.
+    * **Ventas**: idVenta (id no único)... se relaciona con la tabla producto a traves de idProducto, con la tabla Usuario a traves de idUsuarioCompra y un idUsuarioVenta (Esta tabla se usa para relacionar mas tablas).
 
 
 * Permisos
