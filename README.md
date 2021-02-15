@@ -1,1 +1,1 @@
-# 6ix Shop
+# 6iX Shop
