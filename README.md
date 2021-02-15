@@ -13,7 +13,7 @@
 ### Aspectos Principales :
 * Entidades
     * **Usuario**: IdUsuario, Nombre, Contraseña, Email, ImagenPerfil, Tipo, Telefono, NTarjeta.
-    * **Pedido**: IdPedido, IdVenta, Fecha, Estado... Se relaciona con la tabla DetallesPedido a traves de un idDetalle.
+    * **Pedido**: IdPedido, IdDetalle, Fecha, Estado... Se relaciona con la tabla DetallesPedido a traves de un idDetalle.
     * **Producto**: IdProducto, Nombre, IdUsuario, Precio, Imagen, Descripcion, Categoria, Descuento... Se relaciona con la tabla Usuario a través de un idUsuario (Usuario el cual vende el producto)
     * **DetallePedido**: IdDetalle(id no único), IdProducto, IdUsuarioCompra, IdUsuarioVenta, NValoracion, DescValoracion, PrecioProducto, UnidadesProducto... Se relaciona con la tabla producto a traves de idProducto, con la tabla Usuario a traves de idUsuarioCompra y un idUsuarioVenta.
 
