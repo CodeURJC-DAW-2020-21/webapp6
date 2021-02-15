@@ -12,10 +12,10 @@
 
 ### Aspectos Principales :
 * Entidades
-** Producto**: Each product has a id(pk), name, price, description, category, stock, brand.
-* ** Transacciones**: Id(pk), id product(fk), id user(fk), status (issue, shipped, payment accepted...).
-* ** Usuario**: Id(pk), email, password, country, postal code, city, address, credit card number, rol.
-* ** cestaCompra**: Id(pk), id transaction(fk), rating.
+    * **Producto**: Each product has a id(pk), name, price, description, category, stock, brand.
+    * **Transacciones**: Id(pk), id product(fk), id user(fk), status (issue, shipped, payment accepted...).
+    * **Usuario**: Id(pk), email, password, country, postal code, city, address, credit card number, rol.
+    * **cestaCompra**: Id(pk), id transaction(fk), rating.
 
 
 * Permisos
