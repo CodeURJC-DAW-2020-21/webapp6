@@ -43,43 +43,6 @@
         <!-- Header Start -->
        <div class="header-area">
             <div class="main-header ">
-                <div class="header-top top-bg d-none d-lg-block">
-                   <div class="container-fluid">
-                       <div class="col-xl-12">
-                            <div class="row d-flex justify-content-between align-items-center">
-                                <div class="header-info-left d-flex">
-                                    <div class="flag">
-                                        <img src="assets/img/icon/header_icon.png" alt="">
-                                    </div>
-                                    <div class="select-this">
-                                        <form action="#">
-                                            <div class="select-itms">
-                                                <select name="select" id="select1">
-                                                    <option value="">USA</option>
-                                                    <option value="">SPN</option>
-                                                    <option value="">CDA</option>
-                                                    <option value="">USD</option>
-                                                </select>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <ul class="contact-now">     
-                                        <li>+777 2345 7886</li>
-                                    </ul>
-                                </div>
-                                <div class="header-info-right">
-                                   <ul>                                          
-                                       <li><a href="login.html">My Account </a></li>
-                                       <li><a href="product_list.html">Wish List  </a></li>
-                                       <li><a href="cart.html">Shopping</a></li>
-                                       <li><a href="cart.html">Cart</a></li>
-                                       <li><a href="checkout.html">Checkout</a></li>
-                                   </ul>
-                                </div>
-                            </div>
-                       </div>
-                   </div>
-                </div>
                <div class="header-bottom  header-sticky">
                     <div class="container-fluid">
                         <div class="row align-items-center">
@@ -91,35 +54,20 @@
                             </div>
                             <div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
                                 <!-- Main-menu -->
-                                <div class="main-menu f-right d-none d-lg-block">
+                                <div class="main-menu f-left d-none d-lg-block">
                                     <nav>                                                
                                         <ul id="navigation">                                                                                                                                     
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="Catagori.html">Catagori</a></li>
-                                            <li class="hot"><a href="#">Latest</a>
+                                            <li><a href="index.html">Inicio</a></li>
+                                            <li><a href="Catagori.html">Categorías</a>
                                                 <ul class="submenu">
-                                                    <li><a href="product_list.html"> Product list</a></li>
-                                                    <li><a href="single-product.html"> Product Details</a></li>
+                                                    <li><a href="blog.html">Películas</a></li>
+                                                    <li><a href="single-blog.html">Series</a></li>
+                                                    <li><a href="x">Música</a></li>
+                                                    <li><a href="y">Fotografía</a></li>
+                                                    <li><a href="z">Comics</a></li>
+                                                    <li><a href="w">Personalizadas</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="blog.html">Blog</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Pages</a>
-                                                <ul class="submenu">
-                                                    <li><a href="login.html">Login</a></li>
-                                                    <li><a href="cart.html">Card</a></li>
-                                                    <li><a href="elements.html">Element</a></li>
-                                                    <li><a href="about.html">About</a></li>
-                                                    <li><a href="confirmation.html">Confirmation</a></li>
-                                                    <li><a href="cart.html">Shopping Cart</a></li>
-                                                    <li><a href="checkout.html">Product Checkout</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -134,11 +82,6 @@
                                             </div>
                                         </div>
                                      </li>
-                                    <li class=" d-none d-xl-block">
-                                        <div class="favorit-items">
-                                            <i class="far fa-heart"></i>
-                                        </div>
-                                    </li>
                                     <li>
                                         <div class="shopping-card">
                                             <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
@@ -164,12 +107,12 @@
         <!-- slider Area Start-->
         <div class="slider-area ">
             <!-- Mobile Menu -->
-            <div class="single-slider slider-height2 d-flex align-items-center" data-background="assets/img/hero/category.jpg">
+            <div class="single-slider slider-height2 d-flex align-items-center" data-background="assets/img/imagenesCategoria/banner.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
-                                <h2>Product Catagori</h2>
+                                <h2 style="color:aliceblue">Categories</h2>
                             </div>
                         </div>
                     </div>
@@ -196,15 +139,14 @@
                         </div>
                         <div class="select-this d-flex">
                             <div class="featured">
-                                <span>Short by: </span>
+                                <span>Sort by: </span>
                             </div>
                             <form action="#">
                                 <div class="select-itms">
                                     <select name="select" id="select1">
-                                        <option value="">Featured</option>
-                                        <option value="">Featured A</option>
-                                        <option value="">Featured B</option>
-                                        <option value="">Featured C</option>
+                                        <option value="">New</option>
+                                        <option value="">Price low to high</option>
+                                        <option value="">Price high to low</option>
                                     </select>
                                 </div>
                             </form>
@@ -218,7 +160,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product1.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product1.png" alt="">
                                         <div class="new-product">
                                             <span>New</span>
                                         </div>
@@ -231,7 +173,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Movies</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -244,7 +186,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product2.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product2.png" alt="">
                                     </div>
                                     <div class="product-caption">
                                         <div class="product-ratting">
@@ -254,7 +196,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">TV Series</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -267,7 +209,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product3.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product3.png" alt="">
                                         <div class="new-product">
                                             <span>New</span>
                                         </div>
@@ -280,7 +222,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Music</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -293,7 +235,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product4.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product4.png" alt="">
                                     </div>
                                     <div class="product-caption">
                                         <div class="product-ratting">
@@ -303,7 +245,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Photography</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -316,7 +258,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product5.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product5.png" alt="">
                                     </div>
                                     <div class="product-caption">
                                         <div class="product-ratting">
@@ -326,7 +268,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Comics</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -339,7 +281,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product6.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product6.png" alt="">
                                         <div class="new-product">
                                             <span>New</span>
                                         </div>
@@ -352,7 +294,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Videogames</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -370,7 +312,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product4.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product4.png" alt="">
                                     </div>
                                     <div class="product-caption">
                                         <div class="product-ratting">
@@ -380,7 +322,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Photography</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -393,7 +335,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product5.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product5.png" alt="">
                                     </div>
                                     <div class="product-caption">
                                         <div class="product-ratting">
@@ -403,7 +345,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Comics</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -416,7 +358,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product6.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product6.png" alt="">
                                         <div class="new-product">
                                             <span>New</span>
                                         </div>
@@ -429,7 +371,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Videogames</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -442,7 +384,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product2.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product2.png" alt="">
                                     </div>
                                     <div class="product-caption">
                                         <div class="product-ratting">
@@ -452,7 +394,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">TV Series</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -465,7 +407,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product3.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product3.png" alt="">
                                         <div class="new-product">
                                             <span>New</span>
                                         </div>
@@ -478,7 +420,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Music</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -491,7 +433,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product1.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product1.png" alt="">
                                         <div class="new-product">
                                             <span>New</span>
                                         </div>
@@ -504,7 +446,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Movies</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -522,7 +464,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product2.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product2.png" alt="">
                                     </div>
                                     <div class="product-caption">
                                         <div class="product-ratting">
@@ -532,7 +474,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">TV Series</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -545,7 +487,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product3.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product3.png" alt="">
                                         <div class="new-product">
                                             <span>New</span>
                                         </div>
@@ -558,7 +500,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Music</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -571,7 +513,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product1.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product1.png" alt="">
                                         <div class="new-product">
                                             <span>New</span>
                                         </div>
@@ -584,7 +526,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Movies</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -597,7 +539,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product4.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product4.png" alt="">
                                     </div>
                                     <div class="product-caption">
                                         <div class="product-ratting">
@@ -607,7 +549,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Photography</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -620,7 +562,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product6.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product6.png" alt="">
                                         <div class="new-product">
                                             <span>New</span>
                                         </div>
@@ -633,7 +575,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Videogames</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -646,7 +588,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product5.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product5.png" alt="">
                                     </div>
                                     <div class="product-caption">
                                         <div class="product-ratting">
@@ -656,7 +598,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Comics</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -674,7 +616,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product1.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product1.png" alt="">
                                         <div class="new-product">
                                             <span>New</span>
                                         </div>
@@ -687,7 +629,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Movies</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -700,7 +642,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product2.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product2.png" alt="">
                                     </div>
                                     <div class="product-caption">
                                         <div class="product-ratting">
@@ -710,7 +652,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">TV Series</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -723,7 +665,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product3.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product3.png" alt="">
                                         <div class="new-product">
                                             <span>New</span>
                                         </div>
@@ -736,7 +678,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Music</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -749,7 +691,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product4.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product4.png" alt="">
                                     </div>
                                     <div class="product-caption">
                                         <div class="product-ratting">
@@ -759,7 +701,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Photography</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -772,7 +714,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product5.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product5.png" alt="">
                                     </div>
                                     <div class="product-caption">
                                         <div class="product-ratting">
@@ -782,7 +724,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Comics</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -795,7 +737,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="assets/img/categori/product6.png" alt="">
+                                        <img src="assets/img/imagenesCategoria/product6.png" alt="">
                                         <div class="new-product">
                                             <span>New</span>
                                         </div>
@@ -808,7 +750,7 @@
                                             <i class="far fa-star low-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Green Dress with details</a></h4>
+                                        <h4><a href="#">Videogames</a></h4>
                                         <div class="price">
                                             <ul>
                                                 <li>$40.00</li>
@@ -826,34 +768,6 @@
         </section>
         <!-- Latest Products End -->
 
-        <!-- Latest Offers Start -->
-        <div class="latest-wrapper lf-padding">
-            <div class="latest-area latest-height d-flex align-items-center" data-background="assets/img/collection/latest-offer.png">
-                <div class="container">
-                    <div class="row d-flex align-items-center">
-                        <div class="col-xl-5 col-lg-5 col-md-6 offset-xl-1 offset-lg-1">
-                            <div class="latest-caption">
-                                <h2>Get Our<br>Latest Offers News</h2>
-                                <p>Subscribe news latter</p>
-                            </div>
-                        </div>
-                            <div class="col-xl-5 col-lg-5 col-md-6 ">
-                            <div class="latest-subscribe">
-                                <form action="#">
-                                    <input type="email" placeholder="Your email here">
-                                    <button>Shop Now</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- man Shape -->
-                <div class="man-shape">
-                    <img src="assets/img/collection/latest-man.png" alt="">
-                </div>
-            </div>
-        </div>
-        <!-- Latest Offers End -->
         <!-- Shop Method Start-->
         <div class="shop-method-area section-padding30">
             <div class="container">
@@ -883,32 +797,6 @@
             </div>
         </div>
         <!-- Shop Method End-->
-        <!-- Gallery Start-->
-        <div class="gallery-wrapper lf-padding">
-            <div class="gallery-area">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="gallery-items">
-                            <img src="assets/img/gallery/gallery1.jpg" alt="">
-                        </div> 
-                        <div class="gallery-items">
-                            <img src="assets/img/gallery/gallery2.jpg" alt="">
-                        </div>
-                        <div class="gallery-items">
-                            <img src="assets/img/gallery/gallery3.jpg" alt="">
-                        </div>
-                        <div class="gallery-items">
-                            <img src="assets/img/gallery/gallery4.jpg" alt="">
-                        </div>
-                        <div class="gallery-items">
-                            <img src="assets/img/gallery/gallery5.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Gallery End-->
-
     </main>
    <footer>
        <!-- Footer Start-->
@@ -920,7 +808,7 @@
                         <div class="single-footer-caption mb-30">
                              <!-- logo -->
                             <div class="footer-logo">
-                                <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                                <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
                             </div>
                             <div class="footer-tittle">
                                 <div class="footer-pera">
