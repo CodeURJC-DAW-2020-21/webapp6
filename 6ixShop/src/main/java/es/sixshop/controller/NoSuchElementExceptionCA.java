@@ -1,4 +1,4 @@
-package es.codeurjc.board.controller;
+package es.sixshop.controller;
 
 import java.util.NoSuchElementException;
 
