@@ -18,7 +18,7 @@ public class User {
 	private String mail;
 	private String type;
 	private int phonenumber;
-	private int NTarjeta;
+	private int cardNumber;
 	private String image;
 
 	//Constructor necesario para la carga desde BBDD
@@ -31,5 +31,6 @@ public class User {
 		this.mail = mail;
 		this.phonenumber = phonenumber;
 	}
-
+	
+	
 }

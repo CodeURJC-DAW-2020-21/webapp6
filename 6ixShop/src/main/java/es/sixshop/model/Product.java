@@ -20,10 +20,12 @@ public class Product {
 	//Constructor necesario para la carga desde BBDD
 	protected Product() {}
 	
-	public Product(String name, String description, int price) {
+	public Product(String name, String description, String category, int price, String image) {
 		super();
 		this.name = name;
 		this.description = description;
+		this.category = category;
 		this.price = price;
+		this.image = image;
 	}
 }
