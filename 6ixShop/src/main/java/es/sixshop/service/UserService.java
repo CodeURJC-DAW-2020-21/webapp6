@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import es.sixshop.model.User;
@@ -16,12 +17,13 @@ public class UserService {
 	@Autowired
 	private UserRepository userR;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@PostConstruct //Se ejecuta después de haber inyectado las dependencias
 	public void init() {
-		
-		save(new User("SergyLopez","123","sergiolopez@gmail.com",666777888));
-		save(new User("AlbaLeon","1234","albaleon@gmail.com",666777999));
-		save(new User("CarlosCuesta","12345","carloscuesta@gmail.com",666777000));
+		save(new User("AlbertoPacho",passwordEncoder.encode("admin"),"albertopacho@sixshop.es",666666666,"ADMIN"));
+		save(new User("CarlosCuesta",passwordEncoder.encode("123"),"carloscuesta@gmail.com",666777000,"USER"));
 	}
 	
 	public Optional<User> findById(long idUser){

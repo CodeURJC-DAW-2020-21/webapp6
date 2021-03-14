@@ -86,7 +86,19 @@
                                             <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                                         </div>
                                     </li>
-                                   <li class="d-none d-lg-block"> <a href="login.html" class="btn header-btn">Login</a></li>
+                                   <li class="d-none d-lg-block">
+                                   		{{#user}}
+                                   			{{#perfil}} 
+                                   				<a href="/" class="btn header-btn">Log out</a>
+                                   			{{/perfil}}
+                                   			{{^perfil}}
+                                   				<a href="/profile" class="btn header-btn">{{nickname}}</a>
+                                   			{{/perfil}}
+                                   		{{/user}}
+                                   		{{^user}} 
+                                   		<a href="/login" class="btn header-btn">Login</a>
+                                   		{{/user}}
+                                   	</li>
                                 </ul>
                             </div>
                             <!-- Mobile Menu -->
