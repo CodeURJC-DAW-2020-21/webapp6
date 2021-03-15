@@ -3,28 +3,43 @@ package es.sixshop.security;
 import java.security.SecureRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+	
+	/*@Value("${security.user}")
+	private String user;
+	
+	@Value("${security.encodedPassword}")
+	private String encodedPassword;*/
+
 
 	@Autowired
 	RepositoryUserDetailsService userDetailsService;
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder(10, new SecureRandom());
+		return new BCryptPasswordEncoder(12, new SecureRandom());
 	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+		
+		
+		/*PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
+		auth.inMemoryAuthentication()
+		.withUser(user).password("{bcrypt}"+encodedPassword).roles("ADMIN");*/
 	}
 
 	@Override
@@ -48,8 +63,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.formLogin().loginPage("/login"); //URL formulario Login
 		http.formLogin().usernameParameter("nickname"); //Nombre del campo formulario "nickname"
 		http.formLogin().passwordParameter("encodedPassword"); //Nombre campo formulario "password"
-		http.formLogin().defaultSuccessUrl("/profile"); //URL para autenticacion correcta
-		//http.formLogin().failureUrl("/loginerror"); //URL para error en autenticacion
+		http.formLogin().defaultSuccessUrl("/"); //URL para autenticacion correcta
+		http.formLogin().failureUrl("/login"); //URL para error en autenticacion
 
 		// Logout
 		http.logout().logoutUrl("/header"); //URL para hacer logout

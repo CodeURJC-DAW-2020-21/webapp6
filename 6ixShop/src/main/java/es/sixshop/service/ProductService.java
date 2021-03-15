@@ -1,6 +1,7 @@
 package es.sixshop.service;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 
@@ -26,6 +27,10 @@ public class ProductService {
 	
 	public Collection<Product> findAll(){
 		return productR.findAll();
+	}
+	
+	public Optional<Product> findById(long id){
+		return productR.findById(id);
 	}
 	
 	public void save(Product product) {

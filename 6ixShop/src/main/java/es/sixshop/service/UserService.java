@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import es.sixshop.model.User;
 import es.sixshop.repository.UserRepository;
+import es.sixshop.security.SecurityConfiguration;
 
 @Service
 public class UserService {
@@ -22,7 +23,7 @@ public class UserService {
 	
 	@PostConstruct //Se ejecuta después de haber inyectado las dependencias
 	public void init() {
-		save(new User("AlbertoPacho",passwordEncoder.encode("admin"),"albertopacho@sixshop.es",666666666,"ADMIN"));
+		save(new User("SixShop",passwordEncoder.encode("admin"),"admin@sixshop.es",666666666,"ADMIN"));
 		save(new User("CarlosCuesta",passwordEncoder.encode("123"),"carloscuesta@gmail.com",666777000,"USER"));
 	}
 	

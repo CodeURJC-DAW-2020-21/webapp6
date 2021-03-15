@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import es.sixshop.model.Product;
-import es.sixshop.model.User;
 import es.sixshop.repository.UserRepository;
 import es.sixshop.service.ProductService;
 
@@ -26,7 +26,7 @@ public class ProductController {
 	
 	
 	@GetMapping("/")
-	public String showProduct(Model model, HttpSession session, HttpServletRequest request){
+	public String showProduct(Model model, HttpSession session){
 		//String nickname = request.getUserPrincipal().getName();
 		//User user = userR.findByNickname(nickname).orElseThrow();
 		//model.addAttribute("user",user);
@@ -37,5 +37,15 @@ public class ProductController {
 		model.addAttribute("products",products);
 		
 		return "index";
+	}
+	
+	@GetMapping("/single-product/{idProduct}")
+	public String showSingleProduct(Model model, HttpSession session, @PathVariable long idProduct){
+		//Collection<Product> products = productService.findAll();
+		//session.getAttribute("idProduct");
+		//model.addAttribute("productR",products);
+		Product prod = productService.findById(idProduct).orElseThrow();
+		model.addAttribute("productR",prod);
+		return "single-product";
 	}
 }
