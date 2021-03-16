@@ -34,4 +34,11 @@ public class UserService {
 	public void save(User user) {
 		userR.save(user);
 	}
+	
+	public void replace(User updatedUser) {
+
+		userR.findById(updatedUser.getIdUser()).orElseThrow();
+
+		userR.save(updatedUser);		
+	}
 }

@@ -59,5 +59,11 @@ public class User {
 
 	public String getEncodedPassword() {
 		return encodedPassword;
-	}			
+	}
+
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
+
+			
 }

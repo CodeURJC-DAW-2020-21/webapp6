@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import es.sixshop.service.ImageService;
+
 @Entity
 public class Product {
 	@Id
@@ -15,17 +17,25 @@ public class Product {
 	private String description;
 	private String category;
 	private int price;
-	private String image;
+	//private String image;
+	
+	//private ImageService image;
+	
 	
 	//Constructor necesario para la carga desde BBDD
 	protected Product() {}
 	
-	public Product(String name, String description, String category, int price, String image) {
+	public Product(String name, String description, String category, int price) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.category = category;
 		this.price = price;
-		this.image = image;
+		
 	}
+	
+	public Long getIdProduct() {
+		return idProduct;
+	}
+
 }
