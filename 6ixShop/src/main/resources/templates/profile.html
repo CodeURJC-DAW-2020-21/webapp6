@@ -5,26 +5,26 @@
             <div class="col-xl-8 col-md-10 col-sm-14 mx-auto"> <!-- Tamaño contendedor -->
                 <!-- Profile widget -->
                 <div class="bg-white shadow rounded overflow-hidden">
+                	{{#user}}
                     <div class="px-4 pt-0 pb-4 bg-dark">
                         <div class="media align-items-end profile-header">
                             <div class="profile mr-3" style="margin-left:7%">
-                                <img src="assets/img/imagenes/perfil/f1.png" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                                <img src="/img/imagenes/profile/profile-"+{{idUser}}+".png" alt="..." width="130" class="rounded mb-2 img-thumbnail">
                             </div>
                             <div class="media-body mb-5 text-white" style="text-align: end">
                                 <h4 class="mt-0 mb-0" style="color:white; font-weight: 600">{{nickname}}</h4>
-                                <p class="small mb-4" > <i class="fa fa-map-marker mr-2" ></i>sergio.martin@gmail.com</p>
+                                <p class="small mb-4" > <i class="fa fa-map-marker mr-2" ></i>{{mail}}</p>
                             </div>
                         </div>
                     </div>
                     
-                    
                     <div class="bg-light p-4 d-flex justify-content-end text-center">                        
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item">
-                                <h5 class="font-weight-bold mb-0 d-block">4</h5><small class="text-muted"> <i class="fa fa-picture-o mr-1"></i>Product</small>
+                                <h5 class="font-weight-bold mb-0 d-block">"{{nProducts}}"</h5><small class="text-muted"> <i class="fa fa-picture-o mr-1"></i>Product</small>
                             </li>
                             <li class="list-inline-item">
-                                <h5 class="font-weight-bold mb-0 d-block">2.1</h5><small class="text-muted"> <i class="fa fa-user-circle-o mr-1"></i>Assessment</small>
+                                <h5 class="font-weight-bold mb-0 d-block">"{{assessment}}"</h5><small class="text-muted"> <i class="fa fa-user-circle-o mr-1"></i>Assessment</small>
                             </li>
                         </ul>
                     </div>
@@ -45,10 +45,12 @@
                             <!-- Your Products -->
                             <div class="tab-pane fade show active" id="nav-recent-products" role="tabpanel" aria-labelledby="nav-home-tab">
                                 <div class="row">
-                                    <div class="col-lg-6 mb-2 pr-lg-1"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556294928/nicole-honeywill-546848-unsplash_ymprvp.jpg" alt="" class="img-fluid rounded shadow-sm"></div>
-                                    <div class="col-lg-6 mb-2 pl-lg-1"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556294927/dose-juice-1184444-unsplash_bmbutn.jpg" alt="" class="img-fluid rounded shadow-sm"></div>
-                                    <div class="col-lg-6 pr-lg-1 mb-2"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556294926/cody-davis-253925-unsplash_hsetv7.jpg" alt="" class="img-fluid rounded shadow-sm"></div>
-                                    <div class="col-lg-6 pl-lg-1"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556294928/tim-foster-734470-unsplash_xqde00.jpg" alt="" class="img-fluid rounded shadow-sm"></div>
+                                	{{#products}}
+                                    <div class="col-lg-6 mb-2 pr-lg-1"><img src="/img/imagenes/product/product-"+{{idProduct}}+".jpg" alt={{name}} class="img-fluid rounded shadow-sm"></div>
+                                    {{/products}}
+                                    {{^products}}
+                            		<h4>No products yet.</h4>
+                            		{{/products}}
                                 </div>
                             </div>
                             <!-- Add Products -->
@@ -179,6 +181,10 @@
                             </div>
                         </div>
                     </div>
+                    {{/user}}
+                    {{^user}}
+                    <h2>User not found</h2>
+                    {{/user}}
                 </div>
                 <!-- End profile widget -->
             </div>

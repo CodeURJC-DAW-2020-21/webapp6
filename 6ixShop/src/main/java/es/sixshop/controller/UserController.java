@@ -26,18 +26,6 @@ public class UserController {
 	public String signin() {
 		return"sign_in";
 	}
-	
-	@GetMapping("/profile")
-	public String showProfile(Model model, HttpServletRequest request) {
-		String nickname = request.getUserPrincipal().getName();
-		User user = userR.findByNickname(nickname).orElseThrow();
-		
-		model.addAttribute("user",user);
-		model.addAttribute("nickname",user.getNickname());
-		model.addAttribute("perfil",true);
-		
-		return "profile";
-	}
     
     @PostMapping("/sign_in")
     public String newUser(Model model, User user) {

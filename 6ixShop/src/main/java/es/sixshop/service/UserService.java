@@ -23,8 +23,11 @@ public class UserService {
 	
 	@PostConstruct //Se ejecuta después de haber inyectado las dependencias
 	public void init() {
-		save(new User("SixShop",passwordEncoder.encode("admin"),"admin@sixshop.es",666666666,"ADMIN"));
-		save(new User("CarlosCuesta",passwordEncoder.encode("123"),"carloscuesta@gmail.com",666777000,"USER"));
+		save(new User("SixShop",passwordEncoder.encode("admin"),"admin@sixshop.es",666666661,"ADMIN"));
+		
+		save(new User("Sergio Martin",passwordEncoder.encode("123"),"sergiomartin@gmail.com",666666662,"USER"));
+		save(new User("Javier Espin",passwordEncoder.encode("123"),"javierespin@gmail.com",666666663,"USER"));
+		save(new User("Celia Sanjuan",passwordEncoder.encode("123"),"celiasanjuan@gmail.com",666666664,"USER"));
 	}
 	
 	public Optional<User> findById(long idUser){
@@ -36,9 +39,8 @@ public class UserService {
 	}
 	
 	public void replace(User updatedUser) {
-
 		userR.findById(updatedUser.getIdUser()).orElseThrow();
 
-		userR.save(updatedUser);		
+		userR.save(updatedUser);	
 	}
 }

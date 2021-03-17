@@ -18,10 +18,10 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class ImageService {
 
-	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "images");
+	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "src/main/resources/img/imagenes/product");
 
 	private Path createFilePath(long imageId, Path folder) {
-		return folder.resolve("image-" + imageId + ".jpg");
+		return folder.resolve("product-" + imageId + ".jpg");
 	}
 	
 	public void saveImage(String folderName, long imageId, MultipartFile image) throws IOException {

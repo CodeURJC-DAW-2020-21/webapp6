@@ -65,5 +65,43 @@ public class User {
 		this.idUser = idUser;
 	}
 
-			
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public int getPhonenumber() {
+		return phonenumber;
+	}
+
+	public void setPhonenumber(int phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+
+	public int getCardNumber() {
+		return cardNumber;
+	}
+
+	public void setCardNumber(int cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public void setEncodedPassword(String encodedPassword) {
+		this.encodedPassword = encodedPassword;
+	}		
 }
