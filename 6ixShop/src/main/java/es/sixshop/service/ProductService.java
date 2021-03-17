@@ -20,9 +20,12 @@ public class ProductService {
 	@PostConstruct //Se ejecuta después de haber inyectado las dependencias
 	public void init() {
 		
-		save(new Product("Shameless","Description of Shameless","Series",50,"Shameless.jpg"));
-		save(new Product("Pablo Simeone","Description of Pablo Simeone","Retrato",30,"PabloSimeone.jpg"));
-		save(new Product("True Detective","Description of True Detective","Series",40,"true-detective.jpg"));
+		save(new Product("Shameless","Description of Shameless","Movies",50,"Shameless.jpg"));
+		save(new Product("Pablo Simeone","Description of Pablo Simeone","TVSeries",30,"PabloSimeone.jpg"));
+		save(new Product("True Detective","Description of True Detective","TVSeries",40,"true-detective.jpg"));
+		save(new Product("Steve Jobs","Description of Steve Jobs","Music",30,"SteveJobs.jpg"));
+		save(new Product("True Detective 2","Description of True Detective","TVSeries",40,"true-detective.jpg"));
+		save(new Product("Gran Torino","Description of Gran torino","Movies",70,"gran-torino.jpg"));
 	}
 	
 	public Collection<Product> findAll(){

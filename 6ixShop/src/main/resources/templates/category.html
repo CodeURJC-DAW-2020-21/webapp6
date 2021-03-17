@@ -1,4 +1,5 @@
-{{>header}}
+    {{>header}}
+
     <main>
 
         <!-- slider Area Start-->
@@ -9,7 +10,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
-                                <h2 style="color:aliceblue">Categories</h2>
+                                <h2 style="color:aliceblue">{{categoryName}}</h2>
                             </div>
                         </div>
                     </div>
@@ -26,9 +27,7 @@
                             <!--Nav Button  -->
                             <nav>                                                                                                
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All</a>
-                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">New</a>
-                                    <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">On Sale</a>
+                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All products</a>
                                 </div>
                             </nav>
                             <!--End Nav Button  -->
@@ -49,16 +48,18 @@
                         </div>
                 </div>
                 <!-- Nav Card -->
-                <div class="tab-content" id="nav-tabContent">
-                    <!-- card one -->
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <div class="row">
+                        	{{#products}}
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
                                     <div class="product-img">
-                                        <img src="/img/imagenes/category/product1.png" alt="">
+                                        <a href = "/single-product/{{idProduct}}">
+                                            <img src="/img/imagenes/product/{{image}}" alt="Breaking Bad">
+                                        </a>
+                                        
                                         <div class="new-product">
-                                            <span>New</span>
+                                            <span>{{category}}</span>
                                         </div>
                                     </div>
                                     <div class="product-caption">
@@ -66,448 +67,25 @@
                                             <i class="far fa-star"></i>
                                             <i class="far fa-star"></i>
                                             <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
+                                            <i class="far fa-star"></i>
                                             <i class="far fa-star low-star"></i>
                                         </div>
-                                        <h4><a href="#">Movies</a></h4>
+                                        <h4><a href="#">{{name}}</a></h4>
                                         <div class="price">
                                             <ul>
-                                                <li>$40.00</li>
+                                                <li>${{price}}</li>
                                                 <li class="discount">$60.00</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product2.png" alt="">
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">TV Series</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product3.png" alt="">
-                                        <div class="new-product">
-                                            <span>New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">Music</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product4.png" alt="">
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">Photography</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product5.png" alt="">
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">Comics</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product6.png" alt="">
-                                        <div class="new-product">
-                                            <span>New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">Videogames</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {{/products}}
+                            {{^products}}
+                            <h4>No products yet.</h4>
+                            {{/products}}
                         </div>
                     </div>
-                    <!-- Card two -->
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                        <div class="row">
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product4.png" alt="">
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">Photography</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product5.png" alt="">
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">Comics</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product6.png" alt="">
-                                        <div class="new-product">
-                                            <span>New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">Videogames</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product2.png" alt="">
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">TV Series</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product3.png" alt="">
-                                        <div class="new-product">
-                                            <span>New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">Music</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product1.png" alt="">
-                                        <div class="new-product">
-                                            <span>New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">Movies</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card three -->
-                    <!-- card foure -->
-                    <div class="tab-pane fade" id="nav-last" role="tabpanel" aria-labelledby="nav-last-tab">
-                        <div class="row">
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product1.png" alt="">
-                                        <div class="new-product">
-                                            <span>New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">Movies</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product2.png" alt="">
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">TV Series</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product3.png" alt="">
-                                        <div class="new-product">
-                                            <span>New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">Music</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product4.png" alt="">
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">Photography</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product5.png" alt="">
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">Comics</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <img src="/img/imagenes/category/product6.png" alt="">
-                                        <div class="new-product">
-                                            <span>New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">Videogames</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>$40.00</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- End Nav Card -->
             </div>
         </section>
@@ -536,4 +114,5 @@
         </div>
         <!-- Shop Method End-->
     </main>
+
     {{>footer}}

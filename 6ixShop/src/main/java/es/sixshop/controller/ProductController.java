@@ -28,6 +28,20 @@ public class ProductController {
 	private Collection<Product> carrito = new ArrayList<Product>();
 	private int sum = 0;
 	
+	
+	private Collection<Product> filterById(Collection<Product> products, String categorie) {
+		
+		Collection<Product> productsFiltered = new ArrayList<Product>();;
+		
+		for(Product p: products ) {
+			if(p.getCategory() == categorie) {
+				productsFiltered.add(p);
+			}
+		}
+		
+		return productsFiltered;
+	}
+	
 	@GetMapping("/")
 	public String showProduct(Model model, HttpSession session){
 		//String nickname = request.getUserPrincipal().getName();
@@ -44,9 +58,7 @@ public class ProductController {
 	
 	@GetMapping("/single-product/{idProduct}")
 	public String showSingleProduct(Model model, HttpSession session, @PathVariable long idProduct){
-		//Collection<Product> products = productService.findAll();
-		//session.getAttribute("idProduct");
-		//model.addAttribute("productR",products);
+
 		Product prod = productService.findById(idProduct).orElseThrow();
 		model.addAttribute("productR",prod);
 		return "single-product";
@@ -54,27 +66,30 @@ public class ProductController {
 	
 	@GetMapping("/cart")
 	public String seeCart(Model model, HttpSession session){
-		//session.getAttribute("idProduct");
-		//model.addAttribute("productR",products);
-		//Product prod = productService.findById(idProduct).orElseThrow();
-		//carrito.add(prod);
-		//model.addAttribute("productR",carrito);
+		
+		model.addAttribute("products",carrito);
+		model.addAttribute("sum", sum);
 		return "cart";
 	}
 	
 	
 	@GetMapping("/cart/{idProduct}")
 	public String buyProduct(Model model, HttpSession session, @PathVariable long idProduct){
-		//session.getAttribute("idProduct");
-		//model.addAttribute("productR",products);
+		boolean insert = true;
 		Product prod = productService.findById(idProduct).orElseThrow();
 		
-		
-		for(Product p : carrito) {
-			if(p.getIdProduct() != prod.getIdProduct()){
-				carrito.add(prod);
-				sum = sum + prod.getPrice();
+		if(carrito.size() <= 0 ){
+			carrito.add(prod);
+			sum = sum + prod.getPrice();
+		}
+		for(Product p: carrito ) {
+			if(prod.getIdProduct() == p.getIdProduct()) {
+				insert = false;
 			}
+		}
+		if(insert == true) {
+			carrito.add(prod);
+			sum = sum + prod.getPrice();
 		}
 		
 		model.addAttribute("products",carrito);
@@ -87,6 +102,72 @@ public class ProductController {
 		//session.getAttribute("idProduct");
 		//model.addAttribute("productR",products);
 		Collection<Product> products = productService.findAll();
+		model.addAttribute("categoryName","Categories");
+		model.addAttribute("products",products);
+		return "category";
+	}
+	
+	@GetMapping("/category/Movies")
+	public String seeMovies(Model model, HttpSession session){
+		//session.getAttribute("idProduct");
+		//model.addAttribute("productR",products);
+		Collection<Product> products = productService.findAll();
+		products = filterById(products, "Movies");
+		model.addAttribute("categoryName","Movies");
+		model.addAttribute("products",products);
+		return "category";
+	}
+	
+	@GetMapping("/category/{TVSeries}")
+	public String seeTVShow(Model model, HttpSession session){
+		//session.getAttribute("idProduct");
+		//model.addAttribute("productR",products);
+		Collection<Product> products = productService.findAll();
+		products = filterById(products, "TVSeries");
+		model.addAttribute("categoryName","TVSeries");
+		model.addAttribute("products",products);
+		return "category";
+	}
+	
+	@GetMapping("/category/Music")
+	public String seeMusic(Model model, HttpSession session){
+		//session.getAttribute("idProduct");
+		//model.addAttribute("productR",products);
+		Collection<Product> products = productService.findAll();
+		products = filterById(products, "Music");
+		model.addAttribute("categoryName","Music");
+		model.addAttribute("products",products);
+		return "category";
+	}
+	
+	@GetMapping("/category/Photography")
+	public String seePhotography(Model model, HttpSession session){
+		//session.getAttribute("idProduct");
+		//model.addAttribute("productR",products);
+		Collection<Product> products = productService.findAll();
+		products = filterById(products, "Photography");
+		model.addAttribute("categoryName","Photography");
+		model.addAttribute("products",products);
+		return "category";
+	}
+	@GetMapping("/category/Comics")
+	public String seeComics(Model model, HttpSession session){
+		//session.getAttribute("idProduct");
+		//model.addAttribute("productR",products);
+		Collection<Product> products = productService.findAll();
+		products = filterById(products, "Comics");
+		model.addAttribute("categoryName","Comics");
+		model.addAttribute("products",products);
+		return "category";
+	}
+	
+	@GetMapping("/category/Custom")
+	public String seeCustom(Model model, HttpSession session){
+		//session.getAttribute("idProduct");
+		//model.addAttribute("productR",products);
+		Collection<Product> products = productService.findAll();
+		products = filterById(products, "Custom");
+		model.addAttribute("categoryName","Custom");
 		model.addAttribute("products",products);
 		return "category";
 	}
