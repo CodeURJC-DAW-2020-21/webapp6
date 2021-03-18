@@ -25,9 +25,9 @@ public class UserService {
 	public void init() {
 		save(new User("SixShop",passwordEncoder.encode("admin"),"admin@sixshop.es",666666661,"ADMIN"));
 		
-		save(new User("Sergio Martin",passwordEncoder.encode("123"),"sergiomartin@gmail.com",666666662,"USER"));
-		save(new User("Javier Espin",passwordEncoder.encode("123"),"javierespin@gmail.com",666666663,"USER"));
-		save(new User("Celia Sanjuan",passwordEncoder.encode("123"),"celiasanjuan@gmail.com",666666664,"USER"));
+		save(new User("Sergio Martin",passwordEncoder.encode("123"),"sergiomartin@gmail.com",666666666,"USER"));
+		save(new User("Javier Espin",passwordEncoder.encode("123"),"javierespin@gmail.com",666666667,"USER"));
+		save(new User("Celia Sanjuan",passwordEncoder.encode("123"),"celiasanjuan@gmail.com",666666668,"USER"));
 	}
 	
 	public Optional<User> findById(long idUser){

@@ -1,14 +1,9 @@
 package es.sixshop.controller;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Optional;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,8 +16,6 @@ import es.sixshop.repository.ProductRepository;
 import es.sixshop.repository.UserRepository;
 import es.sixshop.service.ImageService;
 import es.sixshop.service.UserService;
-
-
 
 public class ProfileController {
 
@@ -40,6 +33,7 @@ public class ProfileController {
 	
 	@Autowired
 	private ImageService imageService;
+	
 	
 	@PostMapping("/profile")
     public String newProduct(Model model, Product product, MultipartFile image) throws IOException{
@@ -63,8 +57,9 @@ public class ProfileController {
 		return newUser;
 	}
 	
-	@GetMapping("/profile")
-	public String showProfile(Model model, HttpServletRequest request) {		
+	/*@GetMapping("/profile")
+	public String showProfile(Model model, HttpServletRequest request) {	
+		
 		//Datos usuario
 		String nickname = request.getUserPrincipal().getName();
 		User user = userR.findByNickname(nickname).orElseThrow();
@@ -74,10 +69,11 @@ public class ProfileController {
 		model.addAttribute("mail",user.getMail());
 		model.addAttribute("perfil",true);
 		
+		/*
 		//Datos productos subidos
 		Optional<Product> products = productR.findByidUser(user.getIdUser());
 		model.addAttribute("products",products);
 		
 		return "profile";
-	}
+	}*/
 }

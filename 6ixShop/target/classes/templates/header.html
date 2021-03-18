@@ -88,19 +88,18 @@
                                     </li>
                                    <li class="d-none d-lg-block">
                                    		{{#user}}
-                                   			{{#perfil}}
-                                   				<form action="/header" method="post">
-                                   					<!--<a href="/" class="btn header-btn">Sign out</a>-->
-                                   					<input class="btn header-btn" type="submit" value="Log Out")>
-                                   				</form>
-                                   			{{/perfil}}
-                                   			{{^perfil}}
-                                   				<a href="/profile" class="btn header-btn">{{nickname}}</a>
-                                   			{{/perfil}}
-                                   		{{/user}}
-                                   		{{^user}} 
-                                   		<a href="/login" class="btn header-btn">Login</a>
-                                   		{{/user}}
+                                        	{{#profile}}
+                                            	<form action="/header" method="post">
+                                                	<input class="btn header-btn" style="background-color:red" type="submit" value="Log Out">
+                                                </form>
+                                            {{/profile}}
+                                            {{^profile}}
+                                            	<a href="/profile" class="btn header-btn">{{nickname}}</a>
+                                            {{/profile}}
+                                        {{/user}}
+                                        {{^user}} 
+                                        	<a href="/login" class="btn header-btn">Login</a>
+                                        {{/user}}
                                    	</li>
                                 </ul>
                             </div>
