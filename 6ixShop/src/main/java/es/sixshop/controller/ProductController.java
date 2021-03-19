@@ -63,18 +63,30 @@ public class ProductController {
     }
 	
 	@GetMapping("/single-product/{idProduct}")
-	public String showSingleProduct(Model model, HttpSession session, @PathVariable long idProduct){
-		//Collection<Product> products = productService.findAll();
-		//session.getAttribute("idProduct");
-		//model.addAttribute("productR",products);
+	public String showSingleProduct(Model model, HttpSession session, HttpServletRequest request, @PathVariable long idProduct){
+        //Comprueba si existe una sesión iniciada para cambiar el Header
+        if(((Principal)request.getUserPrincipal())!=null) {
+            String nickname = request.getUserPrincipal().getName();
+            User user = userR.findByNickname(nickname).orElseThrow();
+
+            model.addAttribute("user",user);
+            model.addAttribute("nickname",user.getNickname());
+        }
 		Product prod = productService.findById(idProduct).orElseThrow();
 		model.addAttribute("productR",prod);
 		return "single-product";
 	}
 	
 	@GetMapping("/cart")
-	public String seeCart(Model model, HttpSession session){
-		
+	public String seeCart(Model model, HttpSession session, HttpServletRequest request){
+        //Comprueba si existe una sesión iniciada para cambiar el Header
+        if(((Principal)request.getUserPrincipal())!=null) {
+            String nickname = request.getUserPrincipal().getName();
+            User user = userR.findByNickname(nickname).orElseThrow();
+
+            model.addAttribute("user",user);
+            model.addAttribute("nickname",user.getNickname());
+        }
 		model.addAttribute("products",carrito);
 		model.addAttribute("sum", sum);
 		return "cart";
@@ -82,10 +94,17 @@ public class ProductController {
 	
 	
 	@GetMapping("/cart/{idProduct}")
-	public String buyProduct(Model model, HttpSession session, @PathVariable long idProduct){
+	public String buyProduct(Model model, HttpSession session, HttpServletRequest request, @PathVariable long idProduct){
 		boolean insert = true;
 		Product prod = productService.findById(idProduct).orElseThrow();
-		
+        //Comprueba si existe una sesión iniciada para cambiar el Header
+        if(((Principal)request.getUserPrincipal())!=null) {
+            String nickname = request.getUserPrincipal().getName();
+            User user = userR.findByNickname(nickname).orElseThrow();
+
+            model.addAttribute("user",user);
+            model.addAttribute("nickname",user.getNickname());
+        }
 		if(carrito.size() <= 0 ){
 			carrito.add(prod);
 			sum = sum + prod.getPrice();
@@ -106,9 +125,15 @@ public class ProductController {
 	}
 	
 	@GetMapping("/category")
-	public String seeCategories(Model model, HttpSession session){
-		//session.getAttribute("idProduct");
-		//model.addAttribute("productR",products);
+	public String seeCategories(Model model, HttpSession session, HttpServletRequest request){
+        //Comprueba si existe una sesión iniciada para cambiar el Header
+        if(((Principal)request.getUserPrincipal())!=null) {
+            String nickname = request.getUserPrincipal().getName();
+            User user = userR.findByNickname(nickname).orElseThrow();
+
+            model.addAttribute("user",user);
+            model.addAttribute("nickname",user.getNickname());
+        }
 		Collection<Product> products = productService.findAll();
 		model.addAttribute("categoryName","Categories");
 		model.addAttribute("products",products);
@@ -116,9 +141,15 @@ public class ProductController {
 	}
 	
 	@GetMapping("/category/Movies")
-	public String seeMovies(Model model, HttpSession session){
-		//session.getAttribute("idProduct");
-		//model.addAttribute("productR",products);
+	public String seeMovies(Model model, HttpSession session, HttpServletRequest request){
+        //Comprueba si existe una sesión iniciada para cambiar el Header
+        if(((Principal)request.getUserPrincipal())!=null) {
+            String nickname = request.getUserPrincipal().getName();
+            User user = userR.findByNickname(nickname).orElseThrow();
+
+            model.addAttribute("user",user);
+            model.addAttribute("nickname",user.getNickname());
+        }
 		Collection<Product> products = productService.findAll();
 		products = filterByCategory(products, "Movies");
 		model.addAttribute("categoryName","Movies");
@@ -126,10 +157,16 @@ public class ProductController {
 		return "category";
 	}
 	
-	@GetMapping("/category/{TVSeries}")
-	public String seeTVShow(Model model, HttpSession session){
-		//session.getAttribute("idProduct");
-		//model.addAttribute("productR",products);
+	@GetMapping("/category/TVSeries")
+	public String seeTVShow(Model model, HttpSession session, HttpServletRequest request){
+        //Comprueba si existe una sesión iniciada para cambiar el Header
+        if(((Principal)request.getUserPrincipal())!=null) {
+            String nickname = request.getUserPrincipal().getName();
+            User user = userR.findByNickname(nickname).orElseThrow();
+
+            model.addAttribute("user",user);
+            model.addAttribute("nickname",user.getNickname());
+        }
 		Collection<Product> products = productService.findAll();
 		products = filterByCategory(products, "TVSeries");
 		model.addAttribute("categoryName","TVSeries");
@@ -138,9 +175,15 @@ public class ProductController {
 	}
 	
 	@GetMapping("/category/Music")
-	public String seeMusic(Model model, HttpSession session){
-		//session.getAttribute("idProduct");
-		//model.addAttribute("productR",products);
+	public String seeMusic(Model model, HttpSession session, HttpServletRequest request){
+        //Comprueba si existe una sesión iniciada para cambiar el Header
+        if(((Principal)request.getUserPrincipal())!=null) {
+            String nickname = request.getUserPrincipal().getName();
+            User user = userR.findByNickname(nickname).orElseThrow();
+
+            model.addAttribute("user",user);
+            model.addAttribute("nickname",user.getNickname());
+        }
 		Collection<Product> products = productService.findAll();
 		products = filterByCategory(products, "Music");
 		model.addAttribute("categoryName","Music");
@@ -149,19 +192,32 @@ public class ProductController {
 	}
 	
 	@GetMapping("/category/Photography")
-	public String seePhotography(Model model, HttpSession session){
-		//session.getAttribute("idProduct");
-		//model.addAttribute("productR",products);
+	public String seePhotography(Model model, HttpSession session, HttpServletRequest request){
+        //Comprueba si existe una sesión iniciada para cambiar el Header
+        if(((Principal)request.getUserPrincipal())!=null) {
+            String nickname = request.getUserPrincipal().getName();
+            User user = userR.findByNickname(nickname).orElseThrow();
+
+            model.addAttribute("user",user);
+            model.addAttribute("nickname",user.getNickname());
+        }
 		Collection<Product> products = productService.findAll();
 		products = filterByCategory(products, "Photography");
 		model.addAttribute("categoryName","Photography");
 		model.addAttribute("products",products);
 		return "category";
 	}
+	
 	@GetMapping("/category/Comics")
-	public String seeComics(Model model, HttpSession session){
-		//session.getAttribute("idProduct");
-		//model.addAttribute("productR",products);
+	public String seeComics(Model model, HttpSession session, HttpServletRequest request){
+        //Comprueba si existe una sesión iniciada para cambiar el Header
+        if(((Principal)request.getUserPrincipal())!=null) {
+            String nickname = request.getUserPrincipal().getName();
+            User user = userR.findByNickname(nickname).orElseThrow();
+
+            model.addAttribute("user",user);
+            model.addAttribute("nickname",user.getNickname());
+        }
 		Collection<Product> products = productService.findAll();
 		products = filterByCategory(products, "Comics");
 		model.addAttribute("categoryName","Comics");
@@ -170,13 +226,36 @@ public class ProductController {
 	}
 	
 	@GetMapping("/category/Custom")
-	public String seeCustom(Model model, HttpSession session){
-		//session.getAttribute("idProduct");
-		//model.addAttribute("productR",products);
+	public String seeCustom(Model model, HttpSession session, HttpServletRequest request){
+        //Comprueba si existe una sesión iniciada para cambiar el Header
+        if(((Principal)request.getUserPrincipal())!=null) {
+            String nickname = request.getUserPrincipal().getName();
+            User user = userR.findByNickname(nickname).orElseThrow();
+
+            model.addAttribute("user",user);
+            model.addAttribute("nickname",user.getNickname());
+        }
 		Collection<Product> products = productService.findAll();
 		products = filterByCategory(products, "Custom");
 		model.addAttribute("categoryName","Custom");
 		model.addAttribute("products",products);
 		return "category";
+	}
+	
+	@GetMapping("/checkout")
+	public String seeCheckout(Model model, HttpSession session, HttpServletRequest request){
+        //Comprueba si existe una sesión iniciada para cambiar el Header
+        if(((Principal)request.getUserPrincipal())!=null) {
+            String nickname = request.getUserPrincipal().getName();
+            User user = userR.findByNickname(nickname).orElseThrow();
+
+            model.addAttribute("user",user);
+            model.addAttribute("nickname",user.getNickname());
+        }
+		Collection<Product> products = productService.findAll();
+		//products = filterByCategory(products, "Custom");
+		//model.addAttribute("categoryName","Custom");
+		//model.addAttribute("products",products);
+		return "checkout";
 	}
 }
