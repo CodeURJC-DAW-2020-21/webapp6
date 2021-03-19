@@ -1,9 +1,14 @@
 package es.sixshop.controller;
 
 import java.io.IOException;
+import java.util.Collection;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,6 +22,7 @@ import es.sixshop.repository.UserRepository;
 import es.sixshop.service.ImageService;
 import es.sixshop.service.UserService;
 
+@Controller
 public class ProfileController {
 
 	private static final String IMAGE_FOLDER = "src/main/resources/img/imagenes/product";
@@ -34,17 +40,7 @@ public class ProfileController {
 	@Autowired
 	private ImageService imageService;
 	
-	
-	@PostMapping("/profile")
-    public String newProduct(Model model, Product product, MultipartFile image) throws IOException{
-    	productR.save(product);
-    	
-    	imageService.saveImage(IMAGE_FOLDER, product.getIdProduct(), image);
-    	
-    	return "redirect:/profile";	
-    }
-	
-	 
+	/*
 	@PutMapping("/profile")
 	public User replaceUser(@RequestBody User newUser, @PathVariable Long idUser, MultipartFile image) throws IOException {
 	 
@@ -55,9 +51,9 @@ public class ProfileController {
 		userS.replace(newUser);
 
 		return newUser;
-	}
+	}*/
 	
-	/*@GetMapping("/profile")
+	@GetMapping("/profile")
 	public String showProfile(Model model, HttpServletRequest request) {	
 		
 		//Datos usuario
@@ -67,13 +63,27 @@ public class ProfileController {
 		model.addAttribute("user",user);
 		model.addAttribute("nickname",user.getNickname());
 		model.addAttribute("mail",user.getMail());
-		model.addAttribute("perfil",true);
+		model.addAttribute("profile",true);
 		
-		/*
+		
 		//Datos productos subidos
-		Optional<Product> products = productR.findByidUser(user.getIdUser());
+		Collection<Product> products = productR.findByidUser(user.getIdUser());
 		model.addAttribute("products",products);
 		
 		return "profile";
-	}*/
+	}
+	
+	
+	@PostMapping("/profile")
+    public String newProduct(Model model, Product product, MultipartFile image, HttpServletRequest request) throws IOException{
+		String nickname = request.getUserPrincipal().getName();
+        User user = userR.findByNickname(nickname).orElseThrow();
+        
+		product.setIdUser(user.getIdUser());
+    	productR.save(product);
+    	
+    	imageService.saveImage(IMAGE_FOLDER, product.getIdProduct(), image);
+    	
+    	return "index";	
+    }
 }
