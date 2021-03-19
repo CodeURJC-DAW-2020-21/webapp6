@@ -57,7 +57,7 @@
                                     <nav>                                               
                                         <ul id="navigation">           
                                             <li><a href="/">Home</a></li>
-                                            <li><a href="/category">Categories</a>
+                                            <li><a href="/category">Category</a>
                                                 <ul class="submenu">
                                                     <li><a href="/category/Movies">Movies</a></li>
                                                     <li><a href="/category/TVSeries">TV Series</a></li>
@@ -83,24 +83,23 @@
                                      </li>
                                     <li>
                                         <div class="shopping-card">
-                                            <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
+                                            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                                         </div>
                                     </li>
                                    <li class="d-none d-lg-block">
                                    		{{#user}}
-                                   			{{#perfil}}
-                                   				<form action="/header" method="post">
-                                   					<!--<a href="/" class="btn header-btn">Sign out</a>-->
-                                   					<input class="btn header-btn" type="submit" value="Log Out")>
-                                   				</form>
-                                   			{{/perfil}}
-                                   			{{^perfil}}
-                                   				<a href="/profile" class="btn header-btn">{{nickname}}</a>
-                                   			{{/perfil}}
-                                   		{{/user}}
-                                   		{{^user}} 
-                                   		<a href="/login" class="btn header-btn">Login</a>
-                                   		{{/user}}
+                                        	{{#profile}}
+                                            	<form action="/header" method="post">
+                                                	<input class="btn header-btn" style="background-color:red" type="submit" value="Log Out">
+                                                </form>
+                                            {{/profile}}
+                                            {{^profile}}
+                                            	<a href="/profile" class="btn header-btn">{{nickname}}</a>
+                                            {{/profile}}
+                                        {{/user}}
+                                        {{^user}} 
+                                        	<a href="/login" class="btn header-btn">Login</a>
+                                        {{/user}}
                                    	</li>
                                 </ul>
                             </div>

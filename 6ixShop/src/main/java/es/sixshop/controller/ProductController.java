@@ -1,9 +1,10 @@
 package es.sixshop.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import es.sixshop.model.Product;
+import es.sixshop.model.User;
 import es.sixshop.repository.UserRepository;
 import es.sixshop.service.ProductService;
 
@@ -29,9 +31,9 @@ public class ProductController {
 	private int sum = 0;
 	
 	
-	private Collection<Product> filterById(Collection<Product> products, String categorie) {
+	private Collection<Product> filterByCategory(Collection<Product> products, String categorie) {
 		
-		Collection<Product> productsFiltered = new ArrayList<Product>();;
+		Collection<Product> productsFiltered = new ArrayList<Product>();
 		
 		for(Product p: products ) {
 			if(p.getCategory() == categorie) {
@@ -43,22 +45,28 @@ public class ProductController {
 	}
 	
 	@GetMapping("/")
-	public String showProduct(Model model, HttpSession session){
-		//String nickname = request.getUserPrincipal().getName();
-		//User user = userR.findByNickname(nickname).orElseThrow();
-		//model.addAttribute("user",user);
-		//model.addAttribute("nickname",user.getNickname());
-		
-		Collection<Product> products = productService.findAll();
-		
-		model.addAttribute("products",products);
-		
-		return "index";
-	}
+    public String showProduct(Model model, HttpSession session, HttpServletRequest request){
+        //Comprueba si existe una sesión iniciada para cambiar el Header
+        if(((Principal)request.getUserPrincipal())!=null) {
+            String nickname = request.getUserPrincipal().getName();
+            User user = userR.findByNickname(nickname).orElseThrow();
+
+            model.addAttribute("user",user);
+            model.addAttribute("nickname",user.getNickname());
+        }
+
+        //Carga todos los productos
+        Collection<Product> products = productService.findAll();
+        model.addAttribute("products",products);
+
+        return "index";
+    }
 	
 	@GetMapping("/single-product/{idProduct}")
 	public String showSingleProduct(Model model, HttpSession session, @PathVariable long idProduct){
-
+		//Collection<Product> products = productService.findAll();
+		//session.getAttribute("idProduct");
+		//model.addAttribute("productR",products);
 		Product prod = productService.findById(idProduct).orElseThrow();
 		model.addAttribute("productR",prod);
 		return "single-product";
@@ -112,7 +120,7 @@ public class ProductController {
 		//session.getAttribute("idProduct");
 		//model.addAttribute("productR",products);
 		Collection<Product> products = productService.findAll();
-		products = filterById(products, "Movies");
+		products = filterByCategory(products, "Movies");
 		model.addAttribute("categoryName","Movies");
 		model.addAttribute("products",products);
 		return "category";
@@ -123,7 +131,7 @@ public class ProductController {
 		//session.getAttribute("idProduct");
 		//model.addAttribute("productR",products);
 		Collection<Product> products = productService.findAll();
-		products = filterById(products, "TVSeries");
+		products = filterByCategory(products, "TVSeries");
 		model.addAttribute("categoryName","TVSeries");
 		model.addAttribute("products",products);
 		return "category";
@@ -134,7 +142,7 @@ public class ProductController {
 		//session.getAttribute("idProduct");
 		//model.addAttribute("productR",products);
 		Collection<Product> products = productService.findAll();
-		products = filterById(products, "Music");
+		products = filterByCategory(products, "Music");
 		model.addAttribute("categoryName","Music");
 		model.addAttribute("products",products);
 		return "category";
@@ -145,7 +153,7 @@ public class ProductController {
 		//session.getAttribute("idProduct");
 		//model.addAttribute("productR",products);
 		Collection<Product> products = productService.findAll();
-		products = filterById(products, "Photography");
+		products = filterByCategory(products, "Photography");
 		model.addAttribute("categoryName","Photography");
 		model.addAttribute("products",products);
 		return "category";
@@ -155,7 +163,7 @@ public class ProductController {
 		//session.getAttribute("idProduct");
 		//model.addAttribute("productR",products);
 		Collection<Product> products = productService.findAll();
-		products = filterById(products, "Comics");
+		products = filterByCategory(products, "Comics");
 		model.addAttribute("categoryName","Comics");
 		model.addAttribute("products",products);
 		return "category";
@@ -166,7 +174,7 @@ public class ProductController {
 		//session.getAttribute("idProduct");
 		//model.addAttribute("productR",products);
 		Collection<Product> products = productService.findAll();
-		products = filterById(products, "Custom");
+		products = filterByCategory(products, "Custom");
 		model.addAttribute("categoryName","Custom");
 		model.addAttribute("products",products);
 		return "category";
