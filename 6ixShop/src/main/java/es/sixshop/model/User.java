@@ -1,22 +1,28 @@
 package es.sixshop.model;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class User {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idUser;
 	
-	private boolean checked;
+	@ElementCollection(fetch = FetchType.EAGER)
+	private List<String> roles;
+	
+	@Column(unique = true)
 	private String nickname;
-	private String password;
+	private String encodedPassword;
 	private String mail;
-	private String type;
 	private int phonenumber;
 	private int cardNumber;
 	private String image;
@@ -24,13 +30,78 @@ public class User {
 	//Constructor necesario para la carga desde BBDD
 	protected User() {}
 	
-	public User(String nickname, String password, String mail, int phonenumber) {
+	public User(String nickname, String encodedPassword, String mail, int phonenumber, String... roles) {
 		super();
 		this.nickname = nickname;
-		this.password = password;
+		this.encodedPassword = encodedPassword;
 		this.mail = mail;
 		this.phonenumber = phonenumber;
+		if (roles==null) {
+			this.roles = List.of("USER");
+		} else this.roles = List.of(roles);
 	}
-	
-	
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+
+	public Long getIdUser() {
+		return idUser;
+	}
+
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public String getEncodedPassword() {
+		return encodedPassword;
+	}
+
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public int getPhonenumber() {
+		return phonenumber;
+	}
+
+	public void setPhonenumber(int phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+
+	public int getCardNumber() {
+		return cardNumber;
+	}
+
+	public void setCardNumber(int cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public void setEncodedPassword(String encodedPassword) {
+		this.encodedPassword = encodedPassword;
+	}		
 }
