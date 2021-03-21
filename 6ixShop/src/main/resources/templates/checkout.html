@@ -25,7 +25,7 @@
     <div class="container">
       <div class="returning_customer">
         <h3>Checkout Details</h3>
-        <p>
+        <!--<p>
           If you have shopped with us before, please enter your details in the
           boxes below. If you are a new customer, please proceed to the
           Billing & Shipping section.
@@ -49,7 +49,7 @@
             </div>
             <a class="lost_pass" href="#">Lost your password?</a>
           </div>
-        </form>
+        </form>-->
       </div>
       <div class="billing_details">
         <div class="row">
@@ -114,12 +114,17 @@
                     <span>Total</span>
                   </a>
                 </li>
+                {{#cartItems}}
                 <li>
-                  <a href="#">Fresh Blackberry
-                    <span class="middle">x 02</span>
-                    <span class="last">$720.00</span>
+                  <a href="#">{{productName}}
+                    <span class="last">${{price}}</span>
                   </a>
                 </li>
+                {{/cartItems}}
+                {{^cartItems}}
+                <h2>No products yet.</h4>
+                {{/cartItems}}
+                <!--
                 <li>
                   <a href="#">Fresh Tomatoes
                     <span class="middle">x 02</span>
@@ -131,22 +136,12 @@
                     <span class="middle">x 02</span>
                     <span class="last">$720.00</span>
                   </a>
-                </li>
+                </li>-->
               </ul>
               <ul class="list list_2">
                 <li>
-                  <a href="#">Subtotal
-                    <span>$2160.00</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Shipping
-                    <span>Flat rate: $50.00</span>
-                  </a>
-                </li>
-                <li>
                   <a href="#">Total
-                    <span>$2210.00</span>
+                    <span>${{sum}}</span>
                   </a>
                 </li>
               </ul>
@@ -155,7 +150,7 @@
                 <label for="f-option4">I’ve read and accept the </label>
                 <a href="#">terms & conditions*</a>
               </div>
-              <a class="btn_3" href="cardPayment.html">Proceed to pay</a>
+              <a class="btn_3" href="/cardPayment">Proceed to pay</a>
             </div>
           </div>
         </div>

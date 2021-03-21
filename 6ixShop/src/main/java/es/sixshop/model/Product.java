@@ -19,26 +19,29 @@ public class Product {
 	private String description;
 	private String category;
 	private int price;
+	private int rating;
 	
 	//Constructor necesario para la carga desde BBDD
 	protected Product() {}
 	
-	public Product(String productName, String description, String category, int price, long idUser) {
+	public Product(String productName, String description, String category, int price, long idUser, int rating) {
 		super();
 		this.productName = productName;
 		this.description = description;
 		this.category = category;
 		this.price = price;
 		this.idUser = idUser;
+		this.rating = rating;
 	}
 	
-	public Product(String productName, String description, String category, int price) {
+	public Product(String productName, String description, String category, int price, int rating) {
 		super();
 		this.productName = productName;
 		this.description = description;
 		this.category = category;
 		this.price = price;
 		this.idUser = (long) 99999999;
+		this.rating = rating;
 	}
 	
 	public Long getIdProduct() {
@@ -87,6 +90,14 @@ public class Product {
 
 	public void setIdProduct(Long idProduct) {
 		this.idProduct = idProduct;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 	
 	

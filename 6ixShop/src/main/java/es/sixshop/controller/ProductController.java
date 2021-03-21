@@ -105,7 +105,7 @@ public class ProductController {
             model.addAttribute("user",user);
             model.addAttribute("nickname",user.getNickname());
         }
-		if(carrito.size() <= 0 ){
+		if(carrito.isEmpty()){
 			carrito.add(prod);
 			sum = sum + prod.getPrice();
 		}
@@ -248,14 +248,22 @@ public class ProductController {
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
             User user = userR.findByNickname(nickname).orElseThrow();
-
             model.addAttribute("user",user);
             model.addAttribute("nickname",user.getNickname());
         }
-		Collection<Product> products = productService.findAll();
-		//products = filterByCategory(products, "Custom");
-		//model.addAttribute("categoryName","Custom");
+
+		model.addAttribute("cartItems",carrito);
+		model.addAttribute("sum", sum);
 		//model.addAttribute("products",products);
 		return "checkout";
+	}
+	
+	@GetMapping("/cardPayment")
+	public String seePayment(Model model, HttpSession session, HttpServletRequest request){
+		
+		//model.addAttribute("cartItems",carrito);
+		//model.addAttribute("sum", sum);
+		//model.addAttribute("products",products);
+		return "cardPayment";
 	}
 }
