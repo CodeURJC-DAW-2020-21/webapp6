@@ -140,6 +140,8 @@ public class ProductController {
 		return "category";
 	}
 	
+	
+	//Estos métodos hay que unificarlos en uno (de momento lo tenemos asi para que funcione)
 	@GetMapping("/category/Movies")
 	public String seeMovies(Model model, HttpSession session, HttpServletRequest request){
         //Comprueba si existe una sesión iniciada para cambiar el Header
