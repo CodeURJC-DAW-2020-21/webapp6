@@ -80,3 +80,60 @@
    * Credit Card: Datos para el pago con tarjeta de crédito.
    
    <img width="1440" alt="card" src="https://user-images.githubusercontent.com/55685000/109400187-8707b400-7947-11eb-8ae8-1ac4656d12bd.png">
+
+### FASE 2:
+
+* **Instrucciones de navegación:**
+
+Para acceder a la página web es necesario:
+   - Primero clonar nuestro repositorio desde GitHub en tu ordenador https://github.com/CodeURJC-DAW-2020-21/webapp6.
+   - Tener instalado un entorno de programación como Eclipse o Visual Studio Code.
+   - Instalar MySQL workbench:
+      Para instalarlo se necesita usar como usuario: root, y como contraseña: admin.
+      A continuación, se crea un schema llamado: “db_sixshop”.
+      
+Una vez que tenemos ambos, entramos al entorno instalado y necesitamos descargar:
+   - Maven For Java (versión 4.0.0)
+   - Java Extension Pack (versión 1.11)
+   - Spring Boot Extension Pack (versión 2.4.0)
+
+Se selecciona el proyecto con click derecho y se le da a *Run as Spring Boot App*.
+Por último, para abrir la página en el navegador, tendrás que poner la ruta: https://localhost:8443
+
+
+* **Diagrama con las entidades de la base de datos:**
+
+
+* **Diagrama de clases y templates:**
+
+
+
+
+
+* **Participación de los miembros:**
+
+
+| Nombre        | Tareas |  |  |  |  |
+| :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| Sergio Martin Muñoz | Tarea 1 | Tarea 2 | Tarea 3 | Tarea 4 | Tarea 5 |
+| Alberto Pacho Bernardos | Tarea 1 |  Tarea 2 | Tarea 3 | Tarea 4 | Tarea 5 |
+| Javier Espín Prieto | Tarea 1 | Tarea 2 | Tarea 3 | Tarea 4 | Tarea 5 |
+| Celia Sanjuan Sanchez | Tarea 1 | Tarea 2 | Tarea 3 | Tarea 4 | Tarea 5 |
+
+
+
+| Nombre        | Commits |  |  |  |  |
+| :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| Sergio Martin Muñoz | Commit 1 | Commit 2 | Commit 3 | Commit 4 | Commit 5 |
+| Alberto Pacho Bernardos | Commit 1 |  Commit 2 | Commit 3 | Commit 4 | Commit 5 |
+| Javier Espín Prieto | Commit 1 | Commit 2 | Commit 3 | Commit 4 | Commit 5 |
+| Celia Sanjuan Sanchez | Commit 1 | Commit 2 | Commit 3 | Commit 4 | Commit 5 |
+
+
+
+| Nombre        | Ficheros |  |  |  |  |
+| :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| Sergio Martin Muñoz | Fichero 1 | Fichero 2 | Fichero 3 | Fichero 4 | Fichero 5 |
+| Alberto Pacho Bernardos | Fichero 1 |  Fichero 2 | Fichero 3 | Fichero 4 | Fichero 5 |
+| Javier Espín Prieto | Fichero 1 | Fichero 2 | Fichero 3 | Fichero 4 | Fichero 5 |
+| Celia Sanjuan Sanchez | Fichero 1 | Fichero 2 | Fichero 3 | Fichero 4 | Fichero 5 |
