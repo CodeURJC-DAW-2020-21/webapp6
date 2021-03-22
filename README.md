@@ -1,26 +1,26 @@
 # 👽 6iX Shop
 
 ## Index
-- [PHASE 0](PHASE-0)
-   + [Development team](development-team)
-   + [Organization tools](Organization-tools)
-   + [Introduction](Introduction)
-   + [Principal aspects](Principal-aspects)
-   + [Users and their permissions](Users-and-their-permissions)
-   + [Images](Images)
-   + [Graphics](Graphics)
-   + [Complementary technologies](Complementary-technologies)
-   + [Algorithm or advanced queries](Algorithm-or-advanced-queries)
+- [PHASE 0](#phase-0)
+   + [Development team](#development-team)
+   + [Organization tools](#organization-tools)
+   + [Introduction](i#ntroduction)
+   + [Principal aspects](#principal-aspects)
+   + [Users and their permissions](users-and-their-permissions)
+   + [Images](images)
+   + [Graphics](graphics)
+   + [Complementary technologies](complementary-technologies)
+   + [Algorithm or advanced queries](algorithm-or-advanced-queries)
 
-- [PHASE 1](PHASE-1)
-   + [Navigation diagram](Navigation-diagram)
-   + [Screenshots](Screenshots)
+- [PHASE 1](#phase-1)
+   + [Navigation diagram](#navigation-diagram)
+   + [Screenshots](#screenshots)
 
-- [PHASE 2](PHASE-2)
-   + [Instructions](Instructions)
-   + [Database entities diagram](Database-entities-diagram)
-   + [Templates and classes diagram](Templates-and-classes-diagram)
-   + [Member participation](Member-participation)
+- [PHASE 2](#phase-2)
+   + [Instructions](#instructions)
+   + [Database entities diagram](#database-entities-diagram)
+   + [Templates and classes diagram](#templates-and-classes-diagram)
+   + [Member participation](#member-participation)
 
 ## PHASE 0
 ### Development team:
