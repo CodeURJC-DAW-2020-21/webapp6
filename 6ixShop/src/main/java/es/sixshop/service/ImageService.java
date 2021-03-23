@@ -16,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class ImageService {
 
-	//private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "images");
 	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "src\\main\\resources\\static\\img\\imagenes");
 
 	private Path createFilePath(long imageId, Path folder) {
