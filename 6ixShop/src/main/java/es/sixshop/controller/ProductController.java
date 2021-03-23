@@ -1,6 +1,7 @@
 package es.sixshop.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,10 +47,16 @@ public class ProductController {
     }
 	
 	@GetMapping("/single-product/{idProduct}")
-	public String showSingleProduct(Model model, HttpSession session, @PathVariable long idProduct){
-		//Collection<Product> products = productService.findAll();
-		//session.getAttribute("idProduct");
-		//model.addAttribute("productR",products);
+	public String showSingleProduct(Model model, HttpSession session, HttpServletRequest request, @PathVariable long idProduct){
+        //Comprueba si existe una sesión iniciada para cambiar el Header
+        if(((Principal)request.getUserPrincipal())!=null) {
+            String nickname = request.getUserPrincipal().getName();
+            User user = userR.findByNickname(nickname).orElseThrow();
+
+            model.addAttribute("user",user);
+            model.addAttribute("nickname",user.getNickname());
+        }
+        
 		Product prod = productService.findById(idProduct).orElseThrow();
 		model.addAttribute("productR",prod);
 		return "single-product";

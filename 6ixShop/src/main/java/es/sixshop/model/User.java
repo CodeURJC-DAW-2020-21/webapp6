@@ -1,5 +1,6 @@
 package es.sixshop.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -24,8 +25,9 @@ public class User {
 	private String encodedPassword;
 	private String mail;
 	private int phonenumber;
-	private int cardNumber;
 	private String image;
+	
+	private ArrayList<Product> alCart;
 
 	//Constructor necesario para la carga desde BBDD
 	protected User() {}
@@ -39,6 +41,7 @@ public class User {
 		if (roles==null) {
 			this.roles = List.of("USER");
 		} else this.roles = List.of(roles);
+		this.alCart = new ArrayList<Product>();
 	}
 
 	public void setRoles(List<String> roles) {
@@ -79,14 +82,6 @@ public class User {
 
 	public void setPhonenumber(int phonenumber) {
 		this.phonenumber = phonenumber;
-	}
-
-	public int getCardNumber() {
-		return cardNumber;
-	}
-
-	public void setCardNumber(int cardNumber) {
-		this.cardNumber = cardNumber;
 	}
 
 	public String getImage() {

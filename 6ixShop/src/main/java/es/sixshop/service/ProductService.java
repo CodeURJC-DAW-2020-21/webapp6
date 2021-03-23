@@ -1,5 +1,6 @@
 package es.sixshop.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -19,10 +20,10 @@ public class ProductService {
 	
 	@PostConstruct //Se ejecuta después de haber inyectado las dependencias
 	public void init() {
-		save(new Product("Shameless","Description of Shameless","Series",50,6));
-		save(new Product("Pablo Simeone","Description of Pablo Simeone","Retrato",30,6));
-		save(new Product("True Detective","Description of True Detective","Series",40,7));
-		save(new Product("Gran Torino","Description of Gran Torino","Peliculas",40,8));
+		save(new Product("Shameless","Description of Shameless","TVSeries",50,6));
+		save(new Product("Pablo Simeone","Description of Pablo Simeone","Custom",30,6));
+		save(new Product("True Detective","Description of True Detective","TVSeries",40,7));
+		save(new Product("Gran Torino","Description of Gran Torino","Movies",40,8));
 	}
 	
 	public Collection<Product> findAll(){
@@ -35,5 +36,9 @@ public class ProductService {
 	
 	public void save(Product product) {
 		productR.save(product);
+	}
+	
+	public Collection<Product> findBycategory(String category){
+		return productR.findBycategory(category);
 	}
 }

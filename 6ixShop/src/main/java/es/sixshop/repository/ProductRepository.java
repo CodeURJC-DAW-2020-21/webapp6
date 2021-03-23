@@ -9,4 +9,5 @@ import es.sixshop.model.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long>{
 	Collection<Product> findByidUser(long idUser);
+	Collection<Product> findBycategory(String category);
 }
