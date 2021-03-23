@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import es.sixshop.model.User;
 import es.sixshop.repository.OrderRepository;
 import es.sixshop.repository.UserRepository;
 
+@Controller
 public class OrderController {
 	@Autowired
 	private UserRepository userR;
@@ -42,7 +44,7 @@ public class OrderController {
 
     	
     	
-    	return "cardPayment";	
+    	return "profile";	
     }
 
 }

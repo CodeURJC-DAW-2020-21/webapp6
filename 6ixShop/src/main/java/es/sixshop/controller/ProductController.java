@@ -31,18 +31,7 @@ public class ProductController {
 	private int sum = 0;
 	
 	
-	private Collection<Product> filterByCategory(Collection<Product> products, String categorie) {
-		
-		Collection<Product> productsFiltered = new ArrayList<Product>();
-		
-		for(Product p: products ) {
-			if(p.getCategory() == categorie) {
-				productsFiltered.add(p);
-			}
-		}
-		
-		return productsFiltered;
-	}
+
 	
 	@GetMapping("/")
     public String showProduct(Model model, HttpSession session, HttpServletRequest request){
@@ -141,7 +130,7 @@ public class ProductController {
 	}
 	
 	
-	//Estos métodos hay que unificarlos en uno (de momento lo tenemos asi para que funcione)
+	//Estos métodos hay que unificarlos en uno (de momento lo tenemos asi para que )
 	@GetMapping("/category/Movies")
 	public String seeMovies(Model model, HttpSession session, HttpServletRequest request){
         //Comprueba si existe una sesión iniciada para cambiar el Header
@@ -153,7 +142,7 @@ public class ProductController {
             model.addAttribute("nickname",user.getNickname());
         }
 		Collection<Product> products = productService.findAll();
-		products = filterByCategory(products, "Movies");
+		products = productService.filterByCategory(products, "Movies");
 		model.addAttribute("categoryName","Movies");
 		model.addAttribute("products",products);
 		return "category";
@@ -170,7 +159,7 @@ public class ProductController {
             model.addAttribute("nickname",user.getNickname());
         }
 		Collection<Product> products = productService.findAll();
-		products = filterByCategory(products, "TVSeries");
+		products = productService.filterByCategory(products, "TVSeries");
 		model.addAttribute("categoryName","TVSeries");
 		model.addAttribute("products",products);
 		return "category";
@@ -187,7 +176,7 @@ public class ProductController {
             model.addAttribute("nickname",user.getNickname());
         }
 		Collection<Product> products = productService.findAll();
-		products = filterByCategory(products, "Music");
+		products = productService.filterByCategory(products, "Music");
 		model.addAttribute("categoryName","Music");
 		model.addAttribute("products",products);
 		return "category";
@@ -204,7 +193,7 @@ public class ProductController {
             model.addAttribute("nickname",user.getNickname());
         }
 		Collection<Product> products = productService.findAll();
-		products = filterByCategory(products, "Photography");
+		products = productService.filterByCategory(products, "Photography");
 		model.addAttribute("categoryName","Photography");
 		model.addAttribute("products",products);
 		return "category";
@@ -221,7 +210,7 @@ public class ProductController {
             model.addAttribute("nickname",user.getNickname());
         }
 		Collection<Product> products = productService.findAll();
-		products = filterByCategory(products, "Comics");
+		products = productService.filterByCategory(products, "Comics");
 		model.addAttribute("categoryName","Comics");
 		model.addAttribute("products",products);
 		return "category";
@@ -238,7 +227,7 @@ public class ProductController {
             model.addAttribute("nickname",user.getNickname());
         }
 		Collection<Product> products = productService.findAll();
-		products = filterByCategory(products, "Custom");
+		products = productService.filterByCategory(products, "Custom");
 		model.addAttribute("categoryName","Custom");
 		model.addAttribute("products",products);
 		return "category";
@@ -267,5 +256,19 @@ public class ProductController {
 		//model.addAttribute("sum", sum);
 		//model.addAttribute("products",products);
 		return "cardPayment";
+	}
+	
+	@GetMapping("/cardPayment/return")
+	public String seePayment2(Model model, HttpSession session, HttpServletRequest request){
+        if(((Principal)request.getUserPrincipal())!=null) {
+            String nickname = request.getUserPrincipal().getName();
+            User user = userR.findByNickname(nickname).orElseThrow();
+            model.addAttribute("user",user);
+            model.addAttribute("nickname",user.getNickname());
+        }
+		//model.addAttribute("cartItems",carrito);
+		//model.addAttribute("sum", sum);
+		//model.addAttribute("products",products);
+		return "profile";
 	}
 }
