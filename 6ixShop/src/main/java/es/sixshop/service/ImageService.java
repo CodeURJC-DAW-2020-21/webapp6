@@ -6,19 +6,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.springframework.stereotype.Service;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-
-
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ImageService {
 
-	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "src/main/resources/img/imagenes/product");
+	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "src\\main\\resources\\static\\img\\imagenes");
 
 	private Path createFilePath(long imageId, Path folder) {
 		return folder.resolve("product-" + imageId + ".jpg");
@@ -58,4 +56,5 @@ public class ImageService {
 		
 		Files.deleteIfExists(imageFile);				
 	}
+
 }

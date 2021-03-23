@@ -18,7 +18,6 @@ import es.sixshop.model.Product;
 import es.sixshop.model.User;
 import es.sixshop.repository.ProductRepository;
 import es.sixshop.repository.UserRepository;
-import es.sixshop.service.ImageService;
 
 @Controller
 public class UserController {
@@ -28,9 +27,6 @@ public class UserController {
 	
 	@Autowired
 	private ProductRepository productR;
-	
-	@Autowired
-	private ImageService imageService;
 	
 	@GetMapping("/login")
 	public String login() {

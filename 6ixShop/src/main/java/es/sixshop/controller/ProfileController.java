@@ -15,18 +15,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import es.sixshop.service.ImageService;
 import es.sixshop.model.Product;
 import es.sixshop.model.User;
 import es.sixshop.repository.ProductRepository;
 import es.sixshop.repository.UserRepository;
-import es.sixshop.service.ImageService;
 import es.sixshop.service.UserService;
 
 @Controller
 public class ProfileController {
-
-	private static final String IMAGE_FOLDER = "src/main/resources/img/imagenes/product";
-	private static final String PROFILE_FOLDER = "src/main/resources/img/imagenes/profile";
+	private static final String POSTS_FOLDER = "product";
 	
 	@Autowired
 	private UserRepository userR;
@@ -39,19 +37,6 @@ public class ProfileController {
 	
 	@Autowired
 	private ImageService imageService;
-	
-	/*
-	@PutMapping("/profile")
-	public User replaceUser(@RequestBody User newUser, @PathVariable Long idUser, MultipartFile image) throws IOException {
-	 
-		newUser.setIdUser(idUser);
-	 
-		imageService.saveImage(PROFILE_FOLDER, newUser.getIdUser(), image);  //¿?¿?¿?¿? mirar luego 
-	
-		userS.replace(newUser);
-
-		return newUser;
-	}*/
 	
 	@GetMapping("/profile")
 	public String showProfile(Model model, HttpServletRequest request) {	
@@ -75,15 +60,15 @@ public class ProfileController {
 	
 	
 	@PostMapping("/profile")
-    public String newProduct(Model model, Product product, MultipartFile image, HttpServletRequest request) throws IOException{
+    public String newProduct(HttpServletRequest request, Product product, MultipartFile image) throws IOException{
 		String nickname = request.getUserPrincipal().getName();
         User user = userR.findByNickname(nickname).orElseThrow();
         
 		product.setIdUser(user.getIdUser());
     	productR.save(product);
+    	imageService.saveImage(POSTS_FOLDER, product.getIdProduct(), image);
     	
-    	imageService.saveImage(IMAGE_FOLDER, product.getIdProduct(), image);
     	
-    	return "index";	
+    	return "redirect:/profile";	
     }
 }

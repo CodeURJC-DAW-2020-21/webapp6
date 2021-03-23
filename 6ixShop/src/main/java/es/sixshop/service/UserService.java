@@ -23,7 +23,7 @@ public class UserService {
 	
 	@PostConstruct //Se ejecuta después de haber inyectado las dependencias
 	public void init() {
-		save(new User("SixShop",passwordEncoder.encode("admin"),"admin@sixshop.es",666666661,"ADMIN"));
+		save(new User("SixShop","$2y$12$1GmosFZoh1ekJdUZ9ZOOQOkc18lrOzI9MbGJvZStt0dfBEPPXS5Na","admin@sixshop.es",666666661,"ADMIN"));
 		
 		save(new User("Sergio Martin",passwordEncoder.encode("123"),"sergiomartin@gmail.com",666666666,"USER"));
 		save(new User("Javier Espin",passwordEncoder.encode("123"),"javierespin@gmail.com",666666667,"USER"));
