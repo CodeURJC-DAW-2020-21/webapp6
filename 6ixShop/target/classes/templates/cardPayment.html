@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" >
+  
 <head>
   <meta charset="UTF-8">
   <title>CodePen - Credit Card Payment Form</title>
-  <link rel="stylesheet" href="assets/css/styleCard.css">
+  <link rel="stylesheet" href="/css/styleCard.css">
 
 </head>
 <body>
@@ -31,7 +32,7 @@
     <label for="card-number">
         Card Number
       </label>
-    <input type="text" id="card-number" placeholder="1234 5678 9101 1112" length="16">
+    <input type="text" id="card-number" placeholder="0000 0000 0000 0000" length="16">
     <div id="cardholder-container">
       <label for="card-holder">Card Holder
       </label>
@@ -61,16 +62,19 @@
   </div>
   <!--- end card back --->
   <input type="text" id="card-token" />
-  <button type="button" id="card-btn">Submit</button>
+  <a href = "/cardPayment/OK">
+    <button type="button" id="card-btn" >Submit</button>
+  </a>
+  
 
 </div>
 <!--- end form container --->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<!--<script type="text/javascript" src="https://js.stripe.com/v2/"></script>-->
 <script src="https://use.fontawesome.com/f1e0bf0cbc.js"></script>
 <!-- partial -->
-  <script  src="assets/js/scriptCard.js"></script>
+  <script  src="/js/scriptCard.js"></script>
 
 </body>
 </html>
