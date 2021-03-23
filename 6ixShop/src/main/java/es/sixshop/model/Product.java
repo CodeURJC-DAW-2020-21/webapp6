@@ -1,12 +1,9 @@
 package es.sixshop.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import es.sixshop.service.ImageService;
 
 @Entity
 public class Product {
@@ -38,7 +35,6 @@ public class Product {
 		this.description = description;
 		this.category = category;
 		this.price = price;
-		this.idUser = (long) 99999999;
 	}
 	
 	public Long getIdProduct() {
@@ -87,7 +83,6 @@ public class Product {
 
 	public void setIdProduct(Long idProduct) {
 		this.idProduct = idProduct;
-	}
-	
+	}	
 	
 }

@@ -17,9 +17,6 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productR;
 	
-	@Autowired
-	private ImageService imageService;
-	
 	@PostConstruct //Se ejecuta después de haber inyectado las dependencias
 	public void init() {
 		save(new Product("Shameless","Description of Shameless","Series",50,6));
