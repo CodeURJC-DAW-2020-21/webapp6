@@ -1,21 +1,33 @@
 package es.sixshop.model;
 
+import java.sql.Blob;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idProduct;
+	private Long idProduct = null;
 	
 	private Long idUser;
 	private String productName;
 	private String description;
 	private String category;
 	private int price;
+	
+	private boolean image;
+	
+	@Lob
+	@JsonIgnore
+	private Blob imageFile;
+	
 	
 	//Constructor necesario para la carga desde BBDD
 	protected Product() {}
@@ -83,6 +95,21 @@ public class Product {
 
 	public void setIdProduct(Long idProduct) {
 		this.idProduct = idProduct;
+	}
+
+	public boolean isImage() {
+		return image;
+	}
+
+	public void setImage(boolean image) {
+		this.image = image;
+	}
+
+	public Blob getImageFile() {
+		return imageFile;
+	}
+
+	public void setImageFile(Blob imageFile) {
+		this.imageFile = imageFile;
 	}	
-	
 }
