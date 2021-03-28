@@ -1,13 +1,19 @@
 package es.sixshop.controller;
 
 import java.security.Principal;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +28,7 @@ import es.sixshop.service.ProductService;
 public class ProductController {
 	
 	@Autowired
-	private ProductService productService;
+	private ProductService productS;
 	
 	@Autowired
 	private UserRepository userR;
@@ -40,7 +46,7 @@ public class ProductController {
         }
 
         //Carga todos los productos
-        Collection<Product> products = productService.findAll();
+        Collection<Product> products = productS.findAll();
         model.addAttribute("products",products);
 
         return "index";
@@ -57,8 +63,24 @@ public class ProductController {
             model.addAttribute("nickname",user.getNickname());
         }
         
-		Product prod = productService.findById(idProduct).orElseThrow();
-		model.addAttribute("productR",prod);
+		Product product = productS.findById(idProduct).orElseThrow();
+		model.addAttribute("product",product);
 		return "single-product";
+	}
+	
+	@GetMapping("/{idProduct}/image")
+	public ResponseEntity<Object> downloadImage(@PathVariable long idProduct) throws SQLException {
+
+		Optional<Product> product = productS.findById(idProduct);
+		if (product.isPresent() && product.get().getImageFile() != null) {
+
+			Resource file = new InputStreamResource(product.get().getImageFile().getBinaryStream());
+
+			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+					.contentLength(product.get().getImageFile().length()).body(file);
+
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 }
