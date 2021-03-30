@@ -1,29 +1,16 @@
 package es.sixshop.controller;
 
-import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
-
 import java.io.IOException;
-import java.net.URI;
-import java.sql.SQLException;
 import java.util.Collection;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import es.sixshop.service.ProductService;
@@ -31,17 +18,11 @@ import es.sixshop.model.Product;
 import es.sixshop.model.User;
 import es.sixshop.repository.ProductRepository;
 import es.sixshop.repository.UserRepository;
-import es.sixshop.service.UserService;
 
 @Controller
-public class ProfileController {
-	private static final String POSTS_FOLDER = "product";
-	
+public class ProfileController {	
 	@Autowired
 	private UserRepository userR;
-	
-	@Autowired
-	private UserService userS;
 	
 	@Autowired
 	private ProductRepository productR;
@@ -63,7 +44,8 @@ public class ProfileController {
 		
 		
 		//Datos productos subidos
-		Collection<Product> products = productR.findByidUser(user.getIdUser());
+		//Collection<Product> products = productR.findByidUser(user.getIdUser());
+		Collection<Product> products = productR.findByUser(user);
 		model.addAttribute("products",products);
 		
 		return "profile";
@@ -79,7 +61,8 @@ public class ProfileController {
 			product.setImage(true);
 		}
 
-		product.setIdUser(user.getIdUser());
+		//product.setIdUser(user.getIdUser());
+		product.setUser(user);
 		productS.save(product);
 		
 		model.addAttribute("product", product.getIdProduct());

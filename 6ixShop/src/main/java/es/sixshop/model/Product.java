@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,29 +17,30 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idProduct = null;
 	
-	private Long idUser;
+	@ManyToOne
+	private User user;
+	
 	private String productName;
 	private String description;
 	private String category;
 	private int price;
 	
-	private boolean image;
-	
 	@Lob
 	@JsonIgnore
 	private Blob imageFile;
+	private boolean image;
 	
 	
 	//Constructor necesario para la carga desde BBDD
 	protected Product() {}
 	
-	public Product(String productName, String description, String category, int price, long idUser) {
+	public Product(String productName, String description, String category, int price, User user) {
 		super();
 		this.productName = productName;
 		this.description = description;
 		this.category = category;
 		this.price = price;
-		this.idUser = idUser;
+		this.user = user;
 	}
 	
 	public Product(String productName, String description, String category, int price) {
@@ -48,17 +50,21 @@ public class Product {
 		this.category = category;
 		this.price = price;
 	}
-	
+
 	public Long getIdProduct() {
 		return idProduct;
 	}
 
-	public Long getIdUser() {
-		return idUser;
+	public void setIdProduct(Long idProduct) {
+		this.idProduct = idProduct;
 	}
 
-	public void setIdUser(Long idUser) {
-		this.idUser = idUser;
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getProductName() {
@@ -93,8 +99,12 @@ public class Product {
 		this.price = price;
 	}
 
-	public void setIdProduct(Long idProduct) {
-		this.idProduct = idProduct;
+	public Blob getImageFile() {
+		return imageFile;
+	}
+
+	public void setImageFile(Blob imageFile) {
+		this.imageFile = imageFile;
 	}
 
 	public boolean isImage() {
@@ -104,12 +114,4 @@ public class Product {
 	public void setImage(boolean image) {
 		this.image = image;
 	}
-
-	public Blob getImageFile() {
-		return imageFile;
-	}
-
-	public void setImageFile(Blob imageFile) {
-		this.imageFile = imageFile;
-	}	
 }
