@@ -41,8 +41,8 @@
 * Entities:
     * **User**: idUser, rol, nickName, password, email, phoneNumber, image.
     * **Product**: idProduct, idUser, productName, description, category, price, image, rating.
-    * **Order**: idOrder, idOrderDetail, date, status, idBuyerUser.
-    * **OrderDetails**: idOrderDetail(not unique), idProduct, rating, descRating, productPrice.
+    * **Request**: idRequest, date, status, idBuyerUser.
+    * **RequestDetail**: idRequestDetail, idRequest, idProduct, rating, descRating, productPrice.
 
 ### Users and their permissions👤:
    - **Anonymous user**: They will be able to visualize all the website content, however, they won’t be able to buy or sell neither to have access to the profile page or to the admin tools.
