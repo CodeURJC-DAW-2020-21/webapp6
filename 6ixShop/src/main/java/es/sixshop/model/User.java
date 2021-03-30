@@ -3,6 +3,7 @@ package es.sixshop.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -10,15 +11,26 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idUser;
+	private Long idUser = null;
 	
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
+	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="user")
+	private List<Product> lProducts;
+	
+	@OneToMany
+	private List<Product> lCart;
+	
+	@OneToMany(mappedBy="buyerUser")
+	private List<Request> lRequest;
 	
 	@Column(unique = true)
 	private String nickname;
@@ -26,8 +38,6 @@ public class User {
 	private String mail;
 	private int phonenumber;
 	private String image;
-	
-	private ArrayList<Product> alCart;
 
 	//Constructor necesario para la carga desde BBDD
 	protected User() {}
@@ -38,34 +48,70 @@ public class User {
 		this.encodedPassword = encodedPassword;
 		this.mail = mail;
 		this.phonenumber = phonenumber;
+		
 		if (roles==null) {
 			this.roles = List.of("USER");
 		} else this.roles = List.of(roles);
-		this.alCart = new ArrayList<Product>();
-	}
-
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
+		
+		this.lProducts = new ArrayList<Product>();
+		this.lCart = new ArrayList<Product>();
+		this.lRequest = new ArrayList<Request>();
 	}
 
 	public Long getIdUser() {
 		return idUser;
 	}
 
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
+
 	public List<String> getRoles() {
 		return roles;
+	}
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+
+	public List<Product> getlProducts() {
+		return lProducts;
+	}
+
+	public void setlProducts(List<Product> lProducts) {
+		this.lProducts = lProducts;
+	}
+
+	public List<Product> getlCart() {
+		return lCart;
+	}
+
+	public void setlCart(List<Product> lCart) {
+		this.lCart = lCart;
+	}
+
+	public List<Request> getlRequest() {
+		return lRequest;
+	}
+
+	public void setlRequest(List<Request> lRequest) {
+		this.lRequest = lRequest;
 	}
 
 	public String getNickname() {
 		return nickname;
 	}
 
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
 	public String getEncodedPassword() {
 		return encodedPassword;
 	}
 
-	public void setIdUser(Long idUser) {
-		this.idUser = idUser;
+	public void setEncodedPassword(String encodedPassword) {
+		this.encodedPassword = encodedPassword;
 	}
 
 	public String getMail() {
@@ -91,12 +137,10 @@ public class User {
 	public void setImage(String image) {
 		this.image = image;
 	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	
+	/////////////////////////////////////////////////////////////////////
+	
+	public void setRequest(Request request) {
+		lRequest.add(request);
 	}
-
-	public void setEncodedPassword(String encodedPassword) {
-		this.encodedPassword = encodedPassword;
-	}		
 }
