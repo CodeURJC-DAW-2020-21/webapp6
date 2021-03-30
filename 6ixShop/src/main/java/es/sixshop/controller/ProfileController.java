@@ -25,9 +25,6 @@ public class ProfileController {
 	private UserRepository userR;
 	
 	@Autowired
-	private ProductRepository productR;
-	
-	@Autowired
 	private ProductService productS;
 	
 	@GetMapping("/profile")
@@ -45,7 +42,7 @@ public class ProfileController {
 		
 		//Datos productos subidos
 		//Collection<Product> products = productR.findByidUser(user.getIdUser());
-		Collection<Product> products = productR.findByUser(user);
+		Collection<Product> products = productS.findByUser(user);
 		model.addAttribute("products",products);
 		
 		return "profile";

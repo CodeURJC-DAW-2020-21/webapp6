@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.sixshop.model.Product;
+import es.sixshop.model.User;
 import es.sixshop.repository.ProductRepository;
 
 @Service
@@ -33,5 +34,9 @@ public class ProductService {
 	
 	public Collection<Product> findBycategory(String category){
 		return productR.findBycategory(category);
+	}
+	
+	public Collection<Product> findByUser(User user){
+		return productR.findByUser(user);
 	}
 }

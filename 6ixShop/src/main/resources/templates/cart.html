@@ -33,31 +33,33 @@
               </tr>
             </thead>
             <tbody>
-              {{#products}}
-              <tr>
-                <td>
-                  <div class="media">
-                    <div class="d-flex">
-                      <img src="/img/imagenes/product/product-{{idProduct}}.jpg" alt="#">
-                    </div>
-                    <div class="media-body">
-                      <p>{{productName}}</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <h5>{{description}}</h5>
-                </td>
-                <td>
-                </td>
-                <td>
-                  <h5>${{price}}</h5>
-                </td>
-              </tr>
-              {{/products}}
-              {{^products}}
-              <h4>No products yet.</h4>
-              {{/products}}
+              {{#requestUser}}
+              	  {{#products}}
+		              <tr>
+		                <td>
+		                  <div class="media">
+		                    <div class="d-flex">
+		                      <img src="/{{idProduct}}/image" alt="{{productName}}">
+		                    </div>
+		                    <div class="media-body">
+		                      <p>{{productName}}</p>
+		                    </div>
+		                  </div>
+		                </td>
+		                <td>
+		                  <h5>{{description}}</h5>
+		                </td>
+		                <td>
+		                </td>
+		                <td>
+		                  <h5>${{price}}</h5>
+		                </td>
+		              </tr>
+	              {{/products}}
+	              {{^products}}
+	              	  <h4>No products yet.</h4>
+	              {{/products}}  
+              {{/requestUser}}
               <!--<tr>
                 <td>
                   <div class="media">
@@ -90,7 +92,7 @@
                   <h5>Subtotal</h5>
                 </td>
                 <td>
-                  <h5>${{sum}}</h5>
+                  <h5>${{totalPrice}}</h5>
                 </td>
               </tr>
             </tbody>
