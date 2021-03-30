@@ -53,4 +53,8 @@ public class RequestDetailService {
 		
 		return products;
 	}
+	
+	public Collection<RequestDetail> findByRequest(Request request){
+		return requestDetailR.findByRequest(request);
+	}
 }

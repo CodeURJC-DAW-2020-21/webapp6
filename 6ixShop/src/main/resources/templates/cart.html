@@ -60,31 +60,6 @@
 	              	  <h4>No products yet.</h4>
 	              {{/products}}  
               {{/requestUser}}
-              <!--<tr>
-                <td>
-                  <div class="media">
-                    <div class="d-flex">
-                      <img src="/img/imagenes/Cart/park2.jpg" alt="" />
-                    </div>
-                    <div class="media-body">
-                      <p>Jurassic Park Poster nº2</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <h5>$360.00</h5>
-                </td>
-                <td>
-                  <div class="product_count">
-                      <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                      <input class="input-number" type="text" value="1" min="0" max="10">
-                      <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                  </div>
-                </td>
-                <td>
-                  <h5>$720.00</h5>
-                </td>
-              </tr> --->
               <tr>
                 <td></td>
                 <td></td>
@@ -99,7 +74,7 @@
           </table>
           <div class="checkout_btn_inner float-right">
             <a class="btn_1" href="/">Continue Shopping</a>
-            <a class="btn_1 checkout_btn_1" href="/checkout">Proceed to checkout</a>
+            <a class="btn_1 checkout_btn_1" href="/checkout/{{idRequest}}">Proceed to checkout</a>
           </div>
         </div>
       </div>

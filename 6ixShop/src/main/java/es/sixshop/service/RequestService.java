@@ -1,6 +1,7 @@
 package es.sixshop.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,10 @@ public class RequestService {
 
 	@Autowired
 	private RequestRepository requestR;
+	
+	public Optional<Request> findById(long idRequest) {
+		return requestR.findById(idRequest);
+	}
 	
 	public boolean exist(long id) {
 		return requestR.existsById(id);
