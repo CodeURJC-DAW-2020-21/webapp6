@@ -33,16 +33,21 @@
         <div class="col-lg-8">
             <div class = "product-caption">
               <div class="product-ratting text-center">
-                <br>
-                <i style="color:rgb(1, 81, 255)"  class="far fa-star ">
-                    <h5><a style="color:rgb(49, 52, 54)" href="#">(0/5)</a></h5>
-                </i>
-                <!--<i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star low-star"></i>-->
-                
-            </div>
+                <div id ="demo{{product.idProduct}}" class="product-ratting">
+                  <script>
+                      var x="";
+                      var i = 0;
+                      while(i<5){
+                          if(i<"{{product.rating}}"){
+                              x = x + '<i style="color:rgb(255,208,0)" class="far fa-star"></i>\n';
+                          }else{
+                              x = x + '<i class="far fa-star low-star"></i>\n';
+                          }
+                          i = i +1;      
+                      }
+                      document.getElementById("demo{{product.idProduct}}").innerHTML = x
+                  </script>
+                  </div>
             </div>
 
           <div class="single_product_text text-center">
@@ -53,7 +58,12 @@
                     <p style="font-size:38px;">${{product.price}}</p>
                 </div>
               <div class="add_to_cart">
-                  <a href="/cart/{{idProduct}}" class="btn_3">Add to cart</a>
+              	  {{^edit}}
+              	  <a href="/cart/{{idProduct}}" class="btn_3">Add to cart</a>
+              	  {{/edit}}
+                  {{#edit}}
+                  <a href="/edit-product/{{idProduct}}" class="btn_3">Edit Product</a>
+                  {{/edit}}
               </div>
             </div>
           </div>

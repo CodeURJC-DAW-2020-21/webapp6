@@ -75,6 +75,21 @@ public class CartController {
 		return "cart";
 	}
 	
+	@GetMapping("/cart/{idProduct}")
+	public String addCartProduct(Model model, HttpSession session, HttpServletRequest request, @PathVariable long idProduct){
+		String nickname = request.getUserPrincipal().getName();
+        User user = userR.findByNickname(nickname).orElseThrow();
+        Product prod = productS.findById(idProduct).orElseThrow();
+        Request objRequest = requestS.findByBuyerUserAndStatus(user, "cart");
+        RequestDetail requestDetail = new RequestDetail(objRequest,prod,prod.getPrice());
+        objRequest.setRequestDetail(requestDetail);
+        
+        requestDetailS.save(requestDetail);
+        requestS.save(objRequest);
+		
+		return "redirect:/cart";
+	}
+	
 	@GetMapping("/checkout/{idRequest}")
 	public String showCheckout(Model model, HttpSession session, HttpServletRequest request, @PathVariable Long idRequest){
 		int totalPrice = 0;
@@ -123,7 +138,6 @@ public class CartController {
         //MODIFICAR EL RATING Y LA DESCRIPCION
         for (RequestDetail objRequestDetail : requestDetail) {
         	objRequestDetail.setRating(5);
-        	objRequestDetail.setDescRating("Description Rating");
         	requestDetailS.save(objRequestDetail);
         }
         requestS.save(requestUser);
@@ -134,94 +148,4 @@ public class CartController {
 	
 		return "redirect:/profile";
 	}
-	
-	/*
-	private Collection<Product> cart = new ArrayList<Product>();
-    private int sum = 0;
-	
-    @GetMapping("/cart")
-	public String seeCart(Model model, HttpSession session, HttpServletRequest request){
-        //Comprueba si existe una sesión iniciada para cambiar el Header
-        if(((Principal)request.getUserPrincipal())!=null) {
-            String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
-
-            model.addAttribute("user",user);
-            model.addAttribute("nickname",user.getNickname());
-        }
-		model.addAttribute("products",cart);
-		model.addAttribute("sum", sum);
-		return "cart";
-	}
-	
-	@GetMapping("/cart/{idProduct}")
-	public String buyProduct(Model model, HttpSession session, HttpServletRequest request, @PathVariable long idProduct){
-		boolean insert = true;
-		Product prod = productService.findById(idProduct).orElseThrow();
-        //Comprueba si existe una sesión iniciada para cambiar el Header
-        if(((Principal)request.getUserPrincipal())!=null) {
-            String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
-
-            model.addAttribute("user",user);
-            model.addAttribute("nickname",user.getNickname());
-        }
-		if(cart.isEmpty()){
-			cart.add(prod);
-			sum = sum + prod.getPrice();
-		}
-		for(Product p: cart ) {
-			if(prod.getIdProduct() == p.getIdProduct()) {
-				insert = false;
-			}
-		}
-		if(insert == true) {
-			cart.add(prod);
-			sum = sum + prod.getPrice();
-		}
-		
-		model.addAttribute("products",cart);
-		model.addAttribute("sum", sum);
-		return "cart";
-	}
-	
-	@GetMapping("/checkout")
-	public String seeCheckout(Model model, HttpSession session, HttpServletRequest request){
-        //Comprueba si existe una sesión iniciada para cambiar el Header
-        if(((Principal)request.getUserPrincipal())!=null) {
-            String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
-            model.addAttribute("user",user);
-            model.addAttribute("nickname",user.getNickname());
-        }
-
-		model.addAttribute("cartItems",cart);
-		model.addAttribute("sum", sum);
-		//model.addAttribute("products",products);
-		return "checkout";
-	}
-	
-	@GetMapping("/cardPayment")
-	public String seePayment(Model model, HttpSession session, HttpServletRequest request){
-		
-		//model.addAttribute("cartItems",carrito);
-		//model.addAttribute("sum", sum);
-		//model.addAttribute("products",products);
-		return "cardPayment";
-	}
-	
-	@GetMapping("/cardPayment/return")
-	public String seePayment2(Model model, HttpSession session, HttpServletRequest request){
-        if(((Principal)request.getUserPrincipal())!=null) {
-            String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
-            model.addAttribute("user",user);
-            model.addAttribute("nickname",user.getNickname());
-        }
-		//model.addAttribute("cartItems",carrito);
-		//model.addAttribute("sum", sum);
-		//model.addAttribute("products",products);
-		return "profile";
-	}
-	*/
 }
