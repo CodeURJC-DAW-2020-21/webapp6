@@ -28,6 +28,10 @@ public class ProductService {
 		productR.save(product);
 	}
 	
+	public void update(Product product) {
+		productR.save(product);
+	}
+	
 	public void delete(long id) {
 		productR.deleteById(id);
 	}

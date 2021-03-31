@@ -24,6 +24,7 @@ public class Product {
 	private String description;
 	private String category;
 	private int price;
+	private int rating;
 	
 	@Lob
 	@JsonIgnore
@@ -41,6 +42,7 @@ public class Product {
 		this.category = category;
 		this.price = price;
 		this.user = user;
+		this.rating = 0;
 	}
 	
 	public Product(String productName, String description, String category, int price) {
@@ -49,6 +51,7 @@ public class Product {
 		this.description = description;
 		this.category = category;
 		this.price = price;
+		this.rating = 0;
 	}
 
 	public Long getIdProduct() {
@@ -113,5 +116,13 @@ public class Product {
 
 	public void setImage(boolean image) {
 		this.image = image;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 }

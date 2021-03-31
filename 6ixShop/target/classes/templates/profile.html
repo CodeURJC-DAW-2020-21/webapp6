@@ -47,7 +47,7 @@
                                 <div class="row">
                                 	{{#products}}
                                     <!--<div class="col-lg-6 mb-2 pr-lg-1"><img src="/img/imagenes/product/product-{{idProduct}}.jpg" alt={{productName}} class="img-fluid rounded shadow-sm"></div>-->
-                                    <div class="col-lg-6 mb-2 pr-lg-1"><img src="/{{idProduct}}/image" alt={{productName}} class="img-fluid rounded shadow-sm"></div>
+                                    <div class="col-lg-6 mb-2 pr-lg-1"><a href="/single-product/{{idProduct}}"><img src="/{{idProduct}}/image" alt={{productName}} class="img-fluid rounded shadow-sm"></a></div>
                                     {{/products}}
                                     {{^products}}
                             		<h4>No products yet.</h4>

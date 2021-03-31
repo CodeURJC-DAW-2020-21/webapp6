@@ -22,7 +22,6 @@ public class RequestDetail {
 	
 	private int productPrice;
 	private int rating;
-	private String descRating;
 	
 	//Constructor necesario para la carga desde BBDD
 	protected RequestDetail() {}
@@ -72,13 +71,5 @@ public class RequestDetail {
 
 	public void setRating(int rating) {
 		this.rating = rating;
-	}
-
-	public String getDescRating() {
-		return descRating;
-	}
-
-	public void setDescRating(String descRating) {
-		this.descRating = descRating;
 	}
 }
