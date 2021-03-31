@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import es.sixshop.service.EmailService;
 import es.sixshop.service.ProductService;
 import es.sixshop.service.RequestService;
 import es.sixshop.model.Product;
@@ -34,9 +33,6 @@ public class ProfileController {
 	
 	@Autowired
 	private RequestService requestS;
-	
-	@Autowired
-	private EmailService emailS;
 	
 	@GetMapping("/profile")
 	public String showProfile(Model model, HttpServletRequest request) {
@@ -85,8 +81,6 @@ public class ProfileController {
 		productS.save(product);
 		
 		model.addAttribute("product", product.getIdProduct());
-		
-		emailS.sendEmail("sixshop.sixshop@gmail.com", "¡Has subido un producto con éxito!", "Creaste el producto "+product.getProductName()+" por " +product.getPrice()+ " €");
 		
 		return "redirect:/profile";
     }
