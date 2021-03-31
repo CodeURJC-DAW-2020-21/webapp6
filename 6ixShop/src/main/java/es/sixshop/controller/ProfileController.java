@@ -1,6 +1,7 @@
 package es.sixshop.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import es.sixshop.service.ProductService;
+import es.sixshop.service.RequestService;
 import es.sixshop.model.Product;
+import es.sixshop.model.Request;
+import es.sixshop.model.RequestDetail;
 import es.sixshop.model.User;
 import es.sixshop.repository.ProductRepository;
 import es.sixshop.repository.UserRepository;
@@ -27,8 +31,12 @@ public class ProfileController {
 	@Autowired
 	private ProductService productS;
 	
+	@Autowired
+	private RequestService requestS;
+	
 	@GetMapping("/profile")
-	public String showProfile(Model model, HttpServletRequest request) {	
+	public String showProfile(Model model, HttpServletRequest request) {
+		int totalPrice = 0;
 		
 		//Datos usuario
 		String nickname = request.getUserPrincipal().getName();
@@ -41,9 +49,19 @@ public class ProfileController {
 		
 		
 		//Datos productos subidos
-		//Collection<Product> products = productR.findByidUser(user.getIdUser());
 		Collection<Product> products = productS.findByUser(user);
 		model.addAttribute("products",products);
+		
+		//Datos pedidos comprados
+		Collection<Request> requests = requestS.findByBuyerUserAndStatusPaid(user);
+		for (Request objRequest : requests) { //Se obtiene la suma total de cada pedido
+			totalPrice = 0;
+			for (RequestDetail objRequestDetail : objRequest.getlRequestDetail()) {
+				totalPrice+=objRequestDetail.getProductPrice();
+			}
+			objRequest.setTotalPrice(totalPrice);
+		}
+		model.addAttribute("requests",requests);
 		
 		return "profile";
 	}

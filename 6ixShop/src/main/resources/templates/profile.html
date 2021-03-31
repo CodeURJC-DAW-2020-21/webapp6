@@ -93,72 +93,43 @@
                                     <table class="table table-striped table-bordered">
                                         <thead class="table-dark">
                                             <tr>
-                                                <td>Fecha</td>
-                                                <td>Estado</td>
-                                                <td>Producto</td>
-                                                <td>Descuento</td>
-                                                <td>Unidades del Producto</td>
-                                                <td>Precio por Unidad</td>
-                                                <td>Precio Total del Pedido</td>
+                                            	<td>ORDER</td>
+                                                <td>Date</td>
+                                                <td>Status</td>
+                                                <td>Product</td>
+                                                <td>Category</td>
+                                                <td>Price</td>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>21/02/2021</td>
-                                                <td>Completado</td>
-                                                <td>Breaking Bad</td>
-                                                <td>0%</td>
-                                                <td>2</td>
-                                                <td>30€</td>
-                                                <td>60€</td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>18/02/2021</td>
-                                                <td>Completado</td>
-                                                <td>Prision Break</td>
-                                                <td>0%</td>
-                                                <td>1</td>
-                                                <td>20€</td>
-                                                <td>100€</td>
-                                            </tr>
-                                            <tr>
-                                                <td>18/02/2021</td>
-                                                <td>Completado</td>
-                                                <td>Gran Torino</td>
-                                                <td>0%</td>
-                                                <td>2</td>
-                                                <td>40€</td>
-                                                <td>100€</td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>15/02/2021</td>
-                                                <td>Completado</td>
-                                                <td>Shameless</td>
-                                                <td>0%</td>
-                                                <td>1</td>
-                                                <td>30€</td>
-                                                <td>30€</td>
-                                            </tr>
+                                        {{#requests}}
+	                                        	{{#lRequestDetail}}
+	                                            <tr>
+	                                            	<td>{{idRequest}}</td>
+	                                                <td>{{date}}</td>
+	                                                <td style="color:red">PAID</td>
+	                                                <td>{{product.productName}}</td>
+	                                                <td>{{product.category}}</td>
+	                                                <td>{{productPrice}}</td>
+	                                            </tr>
+	                                            {{/lRequestDetail}}
+	                                            <tr>
+	                                                <td></td>
+	                                                <td></td>
+	                                                <td></td>
+	                                                <td></td>
+	                                                <td style="font-weight:bold">TOTAL PRICE</td>
+	                                                <td style="color:red">{{totalPrice}}</td>
+                                            	</tr>
+	                                            <tr>
+	                                                <td colspan="6"></td>
+                                            	</tr>
+                                        {{/requests}}
                                         </tbody>
                                     </table>
+                                    {{^requests}}
+                                    <p>Have not bought yet</p>
+                                    {{/requests}}
                                 </div>
                             </div>
                             <!-- Statistics -->

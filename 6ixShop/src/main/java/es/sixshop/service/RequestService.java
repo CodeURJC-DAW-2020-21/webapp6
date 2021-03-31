@@ -1,5 +1,6 @@
 package es.sixshop.service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +37,15 @@ public class RequestService {
 		requestR.deleteById(id);
 	}
 	
+	//Devuelve el pedido del carrito (Solo debe existir uno por usuario)
 	public Request findByBuyerUserAndStatus(User user, String status) {
-		return requestR.findByBuyerUserAndStatus(user, status);
+		Collection<Request> requests = requestR.findByBuyerUserAndStatus(user, status);
+		return requests.iterator().next();
+	}
+	
+	//Devuelve todos los pedidos completados (Comprados)
+	public Collection<Request> findByBuyerUserAndStatusPaid(User user) {
+		Collection<Request> requests = requestR.findByBuyerUserAndStatus(user, "PAID");
+		return requests;
 	}
 }

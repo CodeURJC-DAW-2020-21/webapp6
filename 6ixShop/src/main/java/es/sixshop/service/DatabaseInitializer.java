@@ -54,7 +54,7 @@ public class DatabaseInitializer {
 		userR.save(user3);
 		userR.save(user4);
 		
-		/* Initializer Request and RequestDetail */
+		/* Initializer Request(Cart) and RequestDetail */
 		Request request0 = new Request(user0);
 		user0.setRequest(request0);		
 		
@@ -79,13 +79,13 @@ public class DatabaseInitializer {
 		/* Initializer Products */
 		Product pr1 = new Product("Shameless","Description of Shameless","TVSeries",50,user1); //Alberto Pacho
 		setProductImage(pr1,"/static/img/imagenes/product/shameless.jpg");
-		Product pr2 = new Product("Pablo Simeone","Description of Pablo Simeone","Custom",30,user1); //Alberto Pacho
+		Product pr2 = new Product("Pablo Simeone","Description of Pablo Simeone","Custom",30,user4); //Sergio Martin
 		setProductImage(pr2,"/static/img/imagenes/product/simeone.jpg");
 		Product pr3 = new Product("True Detective","Description of True Detective","TVSeries",40,user2); //Javier Espin
 		setProductImage(pr3,"/static/img/imagenes/product/trueDetective.jpg");
 		Product pr4 = new Product("Gran Torino","Description of Gran Torino","Movies",40,user3); //Celia Sanjuan
 		setProductImage(pr4,"/static/img/imagenes/product/granTorino.jpg");
-		Product pr5 = new Product("Steve Jobs","Description of Steve Jobs","Custom",40,user3); //Sergio Martin
+		Product pr5 = new Product("Steve Jobs","Description of Steve Jobs","Custom",20,user4); //Sergio Martin
 		setProductImage(pr5,"/static/img/imagenes/product/steveJobs.jpg");
 		
 		productR.save(pr1);
@@ -100,7 +100,35 @@ public class DatabaseInitializer {
 		requestDetail1.setRequest(request1);
 		
 		requestDetailR.save(requestDetail1);
-		requestR.save(request0);
+		requestR.save(request1);
+		
+		/* Initializer Request PAID (1) */
+		Request request5 = new Request(user1,"PAID");
+		user1.setRequest(request5);
+		requestR.save(request5);
+		
+		RequestDetail requestDetail2 = new RequestDetail(request5,pr4,pr4.getPrice());
+		request5.setRequestDetail(requestDetail2);
+		requestDetail2.setRequest(request5);
+		RequestDetail requestDetail3 = new RequestDetail(request5,pr5,pr5.getPrice());
+		request5.setRequestDetail(requestDetail3);
+		requestDetail3.setRequest(request5);
+		
+		requestDetailR.save(requestDetail2);
+		requestDetailR.save(requestDetail3);
+		requestR.save(request5);
+		
+		/* Initializer Request PAID (2) */
+		Request request6 = new Request(user1,"PAID");
+		user1.setRequest(request6);
+		requestR.save(request6);
+		
+		RequestDetail requestDetail4 = new RequestDetail(request6,pr2,pr2.getPrice());
+		request6.setRequestDetail(requestDetail4);
+		requestDetail4.setRequest(request6);
+		
+		requestDetailR.save(requestDetail4);
+		requestR.save(request6);
 	}
 	
 	private void setProductImage(Product product, String classpathResource) throws IOException {
