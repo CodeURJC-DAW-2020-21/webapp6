@@ -70,13 +70,20 @@
                                         </div>
                                     </div>
                                     <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
+                                        <div id ="demo{{idProduct}}" class="product-ratting"></div>
+                                        <script>
+                                            var x="";
+                                            var i = 0;
+                                            while(i<5){
+                                                if(i<"{{rating}}"){
+                                                    x = x + '<i class="far fa-star"></i>\n';
+                                                }else{
+                                                    x = x + '<i class="far fa-star low-star"></i>\n';
+                                                }
+                                                i = i +1;      
+                                            }
+                                            document.getElementById("demo{{idProduct}}").innerHTML = x
+                                        </script>
                                         <h4><a href="#">{{productName}}</a></h4>
                                         <div class="price">
                                             <ul>
