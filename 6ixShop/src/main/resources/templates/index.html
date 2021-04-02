@@ -56,85 +56,72 @@
                 <div class="tab-content" id="nav-tabContent">
                     <!-- card one -->
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <div class="row">
+                        <div class="row" id="moreProducts">
                         	{{#products}}
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <a href = "/single-product/{{idProduct}}">
-                                        	<!--<img src="/img/imagenes/product/product-{{idProduct}}.jpg" alt={{productName}}>-->
-                                        	<img src="/{{idProduct}}/image" alt={{productName}}>
-                                        </a>
-                                        <div class="new-product">
-                                            <span>{{category}}</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-caption">
-                                        <div id ="demo{{idProduct}}" class="product-ratting"></div>
-                                        <script>
-                                            var x="";
-                                            var i = 0;
-                                            while(i<5){
-                                                if(i<"{{rating}}"){
-                                                    x = x + '<i class="far fa-star"></i>\n';
-                                                }else{
-                                                    x = x + '<i class="far fa-star low-star"></i>\n';
-                                                }
-                                                i = i +1;      
-                                            }
-                                            document.getElementById("demo{{idProduct}}").innerHTML = x
-                                        </script>
-                                        <h4><a href="#">{{productName}}</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>${{price}}</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {{/products}}
-                            {{^products}}
-                            <h4>No products yet.</h4>
-                            {{/products}}
-                        </div>
+							<div class="col-xl-4 col-lg-4 col-md-6">
+								<div class="single-product mb-60">
+									<div class="product-img">
+										<a href = "/single-product/{{idProduct}}">
+											<!--<img src="/img/imagenes/product/product-{{idProduct}}.jpg" alt={{productName}}>-->
+											<img src="/{{idProduct}}/image" alt={{productName}}>
+										</a>
+										<div class="new-product">
+											<span>{{category}}</span>
+										</div>
+									</div>
+									<div class="product-caption">
+										<div id ="demo{{idProduct}}" class="product-ratting"></div>
+										<script>
+											var x="";
+											var i = 0;
+											while(i<5){
+												if(i<"{{rating}}"){
+													x = x + '<i class="far fa-star"></i>\n';
+												}else{
+													x = x + '<i class="far fa-star low-star"></i>\n';
+												}
+												i = i +1;      
+											}
+											document.getElementById("demo{{idProduct}}").innerHTML = x
+										</script>
+										<h4><a href="#">{{productName}}</a></h4>
+										<div class="price">
+											<ul>
+												<li>${{price}}</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							{{/products}}
+							{{^products}}
+							<h4>No products yet.</h4>
+							{{/products}}
+						</div>
+                        {{#nextPage}}
+                        <button type="button" id="bLoadMore" class="btn header-btn">Load More</button>
+                        {{/nextPage}}
+                        <script type="text/javascript">
+					    	var aux=0;
+					        $('#bLoadMore').click(function(){
+					        	var wait=1000;
+					            aux++;
+					            $.ajax({
+					            	url:"loadMore?page="+aux,
+					                   
+					                success:function(data){
+					                	setTimeout(function(){
+					                    	$('#moreProducts').append(data);
+					                    },wait);
+					                }
+					            });
+					       });
+					    </script>
                     </div>
                     <!-- Card two -->
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                         <div class="row">
-                            {{#products}}
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <a href = "/single-product/{{idProduct}}">
-                                        	<img src="/img/imagenes/product/product-{{idProduct}}.jpg" alt={{productName}}>
-                                        </a>
-                                        <div class="new-product">
-                                            <span>New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">{{productName}}</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>${{price}}</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {{/products}}
-                            {{^products}}
-                            <h4>No products yet.</h4>
-                            {{/products}}
+                            
                         </div>
                     </div>
                 </div>

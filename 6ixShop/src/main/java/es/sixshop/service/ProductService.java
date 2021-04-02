@@ -4,6 +4,9 @@ import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import es.sixshop.model.Product;
@@ -12,6 +15,7 @@ import es.sixshop.repository.ProductRepository;
 
 @Service
 public class ProductService {
+	private int SIZE_PAGE = 9;
 	
 	@Autowired
 	private ProductRepository productR;
@@ -43,4 +47,8 @@ public class ProductService {
 	public Collection<Product> findByUser(User user){
 		return productR.findByUser(user);
 	}
+	
+	public Page<Product> findAll(Pageable pageable) {
+		return productR.findAll(PageRequest.of(pageable.getPageNumber(),SIZE_PAGE));
+	} 
 }

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -37,7 +39,7 @@ public class ProductController {
 	
 	
 	@GetMapping("/")
-    public String showProduct(Model model, HttpSession session, HttpServletRequest request){
+    public String showProduct(Model model, HttpSession session, HttpServletRequest request, Pageable pageable){
         //Comprueba si existe una sesión iniciada para cambiar el Header
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
@@ -48,11 +50,22 @@ public class ProductController {
         }
 
         //Carga todos los productos
-        Collection<Product> products = productS.findAll();
-        model.addAttribute("products",products);
+        Page<Product> products = productS.findAll(pageable);
+		model.addAttribute("products", products);
+		model.addAttribute("nextPage",products.hasNext());
 
         return "index";
     }
+	
+	@GetMapping("/loadMore")
+	public String showPrueba(Model model, HttpSession session, Pageable pageable) {
+		Page<Product> products = productS.findAll(pageable);
+		
+		model.addAttribute("products", products);
+		model.addAttribute("nextPage",products.hasNext());
+
+		return "loadMore";
+	}
 	
 	@GetMapping("/single-product/{idProduct}")
 	public String showSingleProduct(Model model, HttpSession session, HttpServletRequest request, @PathVariable long idProduct){	

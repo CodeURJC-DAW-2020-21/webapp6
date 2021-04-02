@@ -89,12 +89,37 @@ public class DatabaseInitializer {
 		setProductImage(pr4,"/static/img/imagenes/product/granTorino.jpg");
 		Product pr5 = new Product("Steve Jobs","Description of Steve Jobs","Custom",20,user4); //Sergio Martin
 		setProductImage(pr5,"/static/img/imagenes/product/steveJobs.jpg");
+		Product pr6 = new Product("Mafalda","Description of Mafalda","Comics",35,user4); //Javier Espin
+		setProductImage(pr6,"/static/img/imagenes/product/mafalda.jpg");
 		
 		productR.save(pr1);
 		productR.save(pr2);
 		productR.save(pr3);
 		productR.save(pr4);
 		productR.save(pr5);
+		productR.save(pr6);
+		
+		for(int i=0; i<100;i+=6) {
+			Product pr7 = new Product("ProductN-"+i,"Description of ProductN-"+i,"TVSeries",50,user1); //Alberto Pacho
+			setProductImage(pr7,"/static/img/imagenes/product/shameless.jpg");
+			Product pr8 = new Product("ProductN-"+i+1,"Description of ProductN-"+i+1,"Custom",30,user4); //Sergio Martin
+			setProductImage(pr8,"/static/img/imagenes/product/simeone.jpg");
+			Product pr9 = new Product("ProductN-"+i+2,"Description of ProductN-"+i+2,"TVSeries",40,user2); //Javier Espin
+			setProductImage(pr9,"/static/img/imagenes/product/trueDetective.jpg");
+			Product pr10 = new Product("ProductN-"+i+3,"Description of ProductN-"+i+3,"Movies",40,user3); //Celia Sanjuan
+			setProductImage(pr10,"/static/img/imagenes/product/granTorino.jpg");
+			Product pr11 = new Product("ProductN-"+i+4,"Description of ProductN-"+i+4,"Custom",20,user4); //Sergio Martin
+			setProductImage(pr11,"/static/img/imagenes/product/steveJobs.jpg");
+			Product pr12 = new Product("ProductN-"+i+5,"Description of ProductN-"+i+5,"Comics",35,user4); //Javier Espin
+			setProductImage(pr12,"/static/img/imagenes/product/mafalda.jpg");
+			
+			productR.save(pr7);
+			productR.save(pr8);
+			productR.save(pr9);
+			productR.save(pr10);
+			productR.save(pr11);
+			productR.save(pr12);
+		}
 		
 		/* Initializer RequestDetails */
 		RequestDetail requestDetail1 = new RequestDetail(request1,pr3,pr3.getPrice());
