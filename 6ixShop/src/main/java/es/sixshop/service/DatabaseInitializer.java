@@ -38,6 +38,9 @@ public class DatabaseInitializer {
 	private RequestDetailRepository requestDetailR;
 	
 	@Autowired
+	private RequestDetailService requestDetailS;
+	
+	@Autowired
 	private ProductRepository productR;
 	
 	@Autowired
@@ -140,10 +143,12 @@ public class DatabaseInitializer {
 		
 		RequestDetail requestDetail2 = new RequestDetail(request5,pr4,pr4.getPrice());
 		requestDetail2.setRating(5);
+		requestDetailS.recalculateProductRating(pr4.getIdProduct(),5);
 		request5.setRequestDetail(requestDetail2);
 		requestDetail2.setRequest(request5);
 		RequestDetail requestDetail3 = new RequestDetail(request5,pr5,pr5.getPrice());
 		requestDetail3.setRating(4);
+		requestDetailS.recalculateProductRating(pr5.getIdProduct(),4);
 		request5.setRequestDetail(requestDetail3);
 		requestDetail3.setRequest(request5);
 		
@@ -158,8 +163,8 @@ public class DatabaseInitializer {
 		requestR.save(request6);
 		
 		RequestDetail requestDetail4 = new RequestDetail(request6,pr2,pr2.getPrice());
-		requestDetail4.setRating(3);
-		recalculateProductRating(pr2.getIdProduct(),3);
+		//requestDetail4.setRating(3);
+		//recalculateProductRating(pr2.getIdProduct(),3);
 		request6.setRequestDetail(requestDetail4);
 		requestDetail4.setRequest(request6);
 		
@@ -174,12 +179,12 @@ public class DatabaseInitializer {
 		
 		RequestDetail requestDetail5 = new RequestDetail(request7,pr5,pr5.getPrice());
 		requestDetail5.setRating(2);
-		recalculateProductRating(pr5.getIdProduct(),2);
+		requestDetailS.recalculateProductRating(pr5.getIdProduct(),2);
 		request7.setRequestDetail(requestDetail5);
 		requestDetail5.setRequest(request7);
 		RequestDetail requestDetail6 = new RequestDetail(request7,pr5,pr5.getPrice());
 		requestDetail6.setRating(2);
-		recalculateProductRating(pr5.getIdProduct(),2);
+		requestDetailS.recalculateProductRating(pr5.getIdProduct(),2);
 		request7.setRequestDetail(requestDetail6);
 		requestDetail6.setRequest(request7);
 		
@@ -192,16 +197,5 @@ public class DatabaseInitializer {
 		product.setImage(true);
 		Resource image = new ClassPathResource(classpathResource);
 		product.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
-	}
-	
-	private void recalculateProductRating(long idProduct,int rating) {
-		Product objProduct = productS.findByIdProduct(idProduct);
-		float average = objProduct.getRating();
-		if (average<0) {
-			objProduct.setRating(rating);
-		} else {
-			objProduct.setRating(Math.round((average+rating)/2));
-		}
-		productS.save(objProduct);
 	}
 }

@@ -31,6 +31,7 @@ public class RequestDetail {
 		this.request = request;
 		this.product = product;
 		this.productPrice = productPrice;
+		this.rating = -1;
 	}
 
 	public Long getIdRequestDetail() {
