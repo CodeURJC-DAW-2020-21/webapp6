@@ -40,6 +40,9 @@ public class DatabaseInitializer {
 	@Autowired
 	private ProductRepository productR;
 	
+	@Autowired
+	private ProductService productS;
+	
 	@PostConstruct //Se ejecuta después de haber inyectado las dependencias
 	public void init() throws IOException {
 		
@@ -99,18 +102,18 @@ public class DatabaseInitializer {
 		productR.save(pr5);
 		productR.save(pr6);
 		
-		for(int i=0; i<100;i+=6) {
+		for(int i=17; i<50;i+=6) {
 			Product pr7 = new Product("ProductN-"+i,"Description of ProductN-"+i,"TVSeries",50,user1); //Alberto Pacho
 			setProductImage(pr7,"/static/img/imagenes/product/shameless.jpg");
-			Product pr8 = new Product("ProductN-"+i+1,"Description of ProductN-"+i+1,"Custom",30,user4); //Sergio Martin
+			Product pr8 = new Product("ProductN-"+(i+1),"Description of ProductN-"+(i+1),"Custom",30,user4); //Sergio Martin
 			setProductImage(pr8,"/static/img/imagenes/product/simeone.jpg");
-			Product pr9 = new Product("ProductN-"+i+2,"Description of ProductN-"+i+2,"TVSeries",40,user2); //Javier Espin
+			Product pr9 = new Product("ProductN-"+(i+2),"Description of ProductN-"+(i+2),"TVSeries",40,user2); //Javier Espin
 			setProductImage(pr9,"/static/img/imagenes/product/trueDetective.jpg");
-			Product pr10 = new Product("ProductN-"+i+3,"Description of ProductN-"+i+3,"Movies",40,user3); //Celia Sanjuan
+			Product pr10 = new Product("ProductN-"+(i+3),"Description of ProductN-"+(i+3),"Movies",40,user3); //Celia Sanjuan
 			setProductImage(pr10,"/static/img/imagenes/product/granTorino.jpg");
-			Product pr11 = new Product("ProductN-"+i+4,"Description of ProductN-"+i+4,"Custom",20,user4); //Sergio Martin
+			Product pr11 = new Product("ProductN-"+(i+4),"Description of ProductN-"+(i+4),"Custom",20,user4); //Sergio Martin
 			setProductImage(pr11,"/static/img/imagenes/product/steveJobs.jpg");
-			Product pr12 = new Product("ProductN-"+i+5,"Description of ProductN-"+i+5,"Comics",35,user4); //Javier Espin
+			Product pr12 = new Product("ProductN-"+(i+5),"Description of ProductN-"+(i+5),"Comics",35,user4); //Javier Espin
 			setProductImage(pr12,"/static/img/imagenes/product/mafalda.jpg");
 			
 			productR.save(pr7);
@@ -136,9 +139,11 @@ public class DatabaseInitializer {
 		requestR.save(request5);
 		
 		RequestDetail requestDetail2 = new RequestDetail(request5,pr4,pr4.getPrice());
+		requestDetail2.setRating(5);
 		request5.setRequestDetail(requestDetail2);
 		requestDetail2.setRequest(request5);
 		RequestDetail requestDetail3 = new RequestDetail(request5,pr5,pr5.getPrice());
+		requestDetail3.setRating(4);
 		request5.setRequestDetail(requestDetail3);
 		requestDetail3.setRequest(request5);
 		
@@ -153,6 +158,8 @@ public class DatabaseInitializer {
 		requestR.save(request6);
 		
 		RequestDetail requestDetail4 = new RequestDetail(request6,pr2,pr2.getPrice());
+		requestDetail4.setRating(3);
+		recalculateProductRating(pr2.getIdProduct(),3);
 		request6.setRequestDetail(requestDetail4);
 		requestDetail4.setRequest(request6);
 		
@@ -166,9 +173,13 @@ public class DatabaseInitializer {
 		requestR.save(request7);
 		
 		RequestDetail requestDetail5 = new RequestDetail(request7,pr5,pr5.getPrice());
+		requestDetail5.setRating(2);
+		recalculateProductRating(pr5.getIdProduct(),2);
 		request7.setRequestDetail(requestDetail5);
 		requestDetail5.setRequest(request7);
 		RequestDetail requestDetail6 = new RequestDetail(request7,pr5,pr5.getPrice());
+		requestDetail6.setRating(2);
+		recalculateProductRating(pr5.getIdProduct(),2);
 		request7.setRequestDetail(requestDetail6);
 		requestDetail6.setRequest(request7);
 		
@@ -181,5 +192,16 @@ public class DatabaseInitializer {
 		product.setImage(true);
 		Resource image = new ClassPathResource(classpathResource);
 		product.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+	}
+	
+	private void recalculateProductRating(long idProduct,int rating) {
+		Product objProduct = productS.findByIdProduct(idProduct);
+		float average = objProduct.getRating();
+		if (average<0) {
+			objProduct.setRating(rating);
+		} else {
+			objProduct.setRating(Math.round((average+rating)/2));
+		}
+		productS.save(objProduct);
 	}
 }

@@ -51,4 +51,13 @@ public class ProductService {
 	public Page<Product> findAll(Pageable pageable) {
 		return productR.findAll(PageRequest.of(pageable.getPageNumber(),SIZE_PAGE));
 	} 
+	
+	public Page<Product> findByRating(Pageable pageable){
+		return productR.findByRating(PageRequest.of(pageable.getPageNumber(),SIZE_PAGE));
+		//return null;
+	}
+	
+	public Product findByIdProduct(Long idProduct){
+		return productR.findByIdProduct(idProduct);
+	}
 }

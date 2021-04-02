@@ -1,0 +1,37 @@
+{{#productsAll}}
+<a href = "/single-product/{{idProduct}}">
+	<div class="col-xl-4 col-lg-4 col-md-6">
+		<div class="single-product mb-60">
+			<div class="product-img">
+				<img src="/{{idProduct}}/image" alt={{productName}}>
+				
+				<div class="new-product">
+					<span>{{category}}</span>
+				</div>
+			</div>
+			<div class="product-caption">
+				<div id ="demo{{idProduct}}" class="product-ratting"></div>
+				<script>
+					var x="";
+					var i = 0;
+					while(i<5){
+						if(i<"{{rating}}"){
+							x = x + '<i class="far fa-star"></i>\n';
+						}else{
+							x = x + '<i class="far fa-star low-star"></i>\n';
+						}
+						i = i +1;      
+					}
+					document.getElementById("demo{{idProduct}}").innerHTML = x
+				</script>
+				<h4><a href="#">{{productName}}</a></h4>
+				<div class="price">
+					<ul>
+						<li>${{price}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</a>
+{{/productsAll}}

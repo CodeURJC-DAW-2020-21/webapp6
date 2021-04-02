@@ -49,22 +49,38 @@ public class ProductController {
             model.addAttribute("nickname",user.getNickname());
         }
 
-        //Carga todos los productos
-        Page<Product> products = productS.findAll(pageable);
-		model.addAttribute("products", products);
-		model.addAttribute("nextPage",products.hasNext());
+        //Carga la primera página de los productos completos
+        Page<Product> productsAll = productS.findAll(pageable);
+		model.addAttribute("productsAll", productsAll);
+		//Se resta la primera página que se muestra
+		model.addAttribute("totalPageAll",(productsAll.getTotalPages()-1));
+		
+		
+		//Carga la primera página de los productos por rating
+        Page<Product> productsRating = productS.findByRating(pageable);
+		model.addAttribute("productsRating", productsRating);
+		//Se resta la primera página que se muestra
+		model.addAttribute("totalPageRating",(productsRating.getTotalPages()-1));
 
         return "index";
     }
 	
-	@GetMapping("/loadMore")
-	public String showPrueba(Model model, HttpSession session, Pageable pageable) {
-		Page<Product> products = productS.findAll(pageable);
-		
-		model.addAttribute("products", products);
-		model.addAttribute("nextPage",products.hasNext());
+	@GetMapping("/loadMoreAll")
+	public String showLoadMoreAll(Model model, HttpSession session, Pageable pageable) {
+		Page<Product> productsAll = productS.findAll(pageable);			
+		//Carga la siguiente página de los productos completos
+		model.addAttribute("productsAll", productsAll);
 
-		return "loadMore";
+		return "loadMoreAll";
+	}
+	
+	@GetMapping("/loadMoreRating")
+	public String showLoadMoreRating(Model model, HttpSession session, Pageable pageable) {
+		Page<Product> productsRating = productS.findByRating(pageable);			
+		//Carga la siguiente página de los productos completos
+		model.addAttribute("productsRating", productsRating);
+
+		return "loadMoreRating";
 	}
 	
 	@GetMapping("/single-product/{idProduct}")
