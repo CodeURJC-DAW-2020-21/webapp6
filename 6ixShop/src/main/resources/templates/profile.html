@@ -46,7 +46,6 @@
                             <div class="tab-pane fade show active" id="nav-recent-products" role="tabpanel" aria-labelledby="nav-home-tab">
                                 <div class="row">
                                 	{{#products}}
-                                    <!--<div class="col-lg-6 mb-2 pr-lg-1"><img src="/img/imagenes/product/product-{{idProduct}}.jpg" alt={{productName}} class="img-fluid rounded shadow-sm"></div>-->
                                     <div class="col-lg-6 mb-2 pr-lg-1"><a href="/single-product/{{idProduct}}"><img src="/{{idProduct}}/image" alt={{productName}} class="img-fluid rounded shadow-sm"></a></div>
                                     {{/products}}
                                     {{^products}}
@@ -98,6 +97,7 @@
                                                 <td>Status</td>
                                                 <td>Product</td>
                                                 <td>Category</td>
+                                                <td>Rating</td>
                                                 <td>Price</td>
                                             </tr>
                                         </thead>
@@ -110,6 +110,21 @@
 	                                                <td style="color:red">PAID</td>
 	                                                <td>{{product.productName}}</td>
 	                                                <td>{{product.category}}</td>
+	                                                <td>
+                                                        <div class="product-ratting" id = "{{idRequestDetail}}{{product.idProduct}}">
+                                                            <script>
+                                                                if("{{rating}}" == -1){
+                                                                    $("#{{idRequestDetail}}{{product.idProduct}}").html('<i onclick ="window.location = \'/profile/rate/{{idRequestDetail}}/{{product.idProduct}}/1\' " class="far fa-star"></i> <i onclick ="window.location = \'/profile/rate/{{idRequestDetail}}/{{product.idProduct}}/2\' " class="far fa-star"></i> <i onclick ="window.location = \'/profile/rate/{{idRequestDetail}}/{{product.idProduct}}/3\' " class="far fa-star"></i> <i onclick ="window.location = \'/profile/rate/{{idRequestDetail}}/{{product.idProduct}}/4\' " class="far fa-star"></i> <i onclick ="window.location = \'/profile/rate/{{idRequestDetail}}/{{product.idProduct}}/5\' " class="far fa-star"></i>' );
+                                                                }else{
+                                                                    let stars = "";
+                                                                    for(let i = 1;i<= "{{rating}}";i++){
+                                                                        stars += '<i class="far fa-star" style="color:rgb(255,208,0)"></i>';
+                                                                    }
+                                                                    $("#{{idRequestDetail}}{{product.idProduct}}").html(stars);
+                                                                }
+                                                            </script>
+                                                        </div>
+                                                    </td>
 	                                                <td>{{productPrice}}</td>
 	                                            </tr>
 	                                            {{/lRequestDetail}}
@@ -118,11 +133,12 @@
 	                                                <td></td>
 	                                                <td></td>
 	                                                <td></td>
+	                                                <td></td>
 	                                                <td style="font-weight:bold">TOTAL PRICE</td>
 	                                                <td style="color:red">{{totalPrice}}</td>
                                             	</tr>
 	                                            <tr>
-	                                                <td colspan="6"></td>
+	                                                <td colspan="7"></td>
                                             	</tr>
                                         {{/requests}}
                                         </tbody>

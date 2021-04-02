@@ -11,11 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import es.sixshop.service.EmailService;
 import es.sixshop.service.ProductService;
+import es.sixshop.service.RequestDetailService;
 import es.sixshop.service.RequestService;
 import es.sixshop.model.Product;
 import es.sixshop.model.Request;
@@ -37,6 +39,9 @@ public class ProfileController {
 	
 	@Autowired
 	private EmailService emailS;
+	
+	@Autowired
+	private RequestDetailService requestDetailS;
 	
 	@GetMapping("/profile")
 	public String showProfile(Model model, HttpServletRequest request) {
@@ -90,4 +95,34 @@ public class ProfileController {
 		
 		return "redirect:/profile";
     }
+	
+	@GetMapping("/profile/rate/{idRequestDetail}/{idProduct}/{rating}")
+	public String rateProduct(Model model, HttpServletRequest request, @PathVariable long idRequestDetail, @PathVariable long idProduct, @PathVariable int rating) {
+		//Datos usuario
+		String nickname = request.getUserPrincipal().getName();
+		User user = userR.findByNickname(nickname).orElseThrow();
+		
+		model.addAttribute("user",user);
+		model.addAttribute("nickname",user.getNickname());
+		model.addAttribute("mail",user.getMail());
+		model.addAttribute("profile",true);
+		
+		Collection<Request> requests = requestS.findByBuyerUserAndStatusPaid(user);
+		RequestDetail requestDetail = requestDetailS.findById(idRequestDetail).orElseThrow();
+
+		for (Request objRequest : requests) {
+			if(objRequest.getIdRequest() == requestDetail.getRequest().getIdRequest()) {
+				for(RequestDetail objRequestDetail: objRequest.getlRequestDetail()) {
+					if(objRequestDetail.getProduct().getIdProduct() == idProduct) {
+						objRequestDetail.setRating(rating);
+						requestDetailS.recalculateProductRating(objRequestDetail.getProduct().getIdProduct(), rating);
+						requestDetailS.save(objRequestDetail);
+					}
+				}
+			}
+		}
+		
+		return "redirect:/profile";
+		
+	}
 }

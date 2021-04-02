@@ -19,6 +19,9 @@ public class RequestDetailService {
 	@Autowired
 	private RequestDetailRepository requestDetailR;
 	
+	@Autowired
+	private ProductService productS;
+	
 	public Optional<RequestDetail> findById(long id) {
 		return requestDetailR.findById(id);
 	}
@@ -56,5 +59,16 @@ public class RequestDetailService {
 	
 	public Collection<RequestDetail> findByRequest(Request request){
 		return requestDetailR.findByRequest(request);
+	}
+	
+	public void recalculateProductRating(long idProduct,int rating) {
+		Product objProduct = productS.findByIdProduct(idProduct);
+		float average = objProduct.getRating();
+		if (average<0) {
+			objProduct.setRating(rating);
+		} else {
+			objProduct.setRating(Math.round((average+rating)/2));
+		}
+		productS.save(objProduct);
 	}
 }
