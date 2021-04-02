@@ -40,6 +40,9 @@ public class DatabaseInitializer {
 	@Autowired
 	private ProductRepository productR;
 	
+	@Autowired
+	private ProductService productS;
+	
 	@PostConstruct //Se ejecuta después de haber inyectado las dependencias
 	public void init() throws IOException {
 		
@@ -89,12 +92,37 @@ public class DatabaseInitializer {
 		setProductImage(pr4,"/static/img/imagenes/product/granTorino.jpg");
 		Product pr5 = new Product("Steve Jobs","Description of Steve Jobs","Custom",20,user4); //Sergio Martin
 		setProductImage(pr5,"/static/img/imagenes/product/steveJobs.jpg");
+		Product pr6 = new Product("Mafalda","Description of Mafalda","Comics",35,user4); //Javier Espin
+		setProductImage(pr6,"/static/img/imagenes/product/mafalda.jpg");
 		
 		productR.save(pr1);
 		productR.save(pr2);
 		productR.save(pr3);
 		productR.save(pr4);
 		productR.save(pr5);
+		productR.save(pr6);
+		
+		for(int i=17; i<50;i+=6) {
+			Product pr7 = new Product("ProductN-"+i,"Description of ProductN-"+i,"TVSeries",50,user1); //Alberto Pacho
+			setProductImage(pr7,"/static/img/imagenes/product/shameless.jpg");
+			Product pr8 = new Product("ProductN-"+(i+1),"Description of ProductN-"+(i+1),"Custom",30,user4); //Sergio Martin
+			setProductImage(pr8,"/static/img/imagenes/product/simeone.jpg");
+			Product pr9 = new Product("ProductN-"+(i+2),"Description of ProductN-"+(i+2),"TVSeries",40,user2); //Javier Espin
+			setProductImage(pr9,"/static/img/imagenes/product/trueDetective.jpg");
+			Product pr10 = new Product("ProductN-"+(i+3),"Description of ProductN-"+(i+3),"Movies",40,user3); //Celia Sanjuan
+			setProductImage(pr10,"/static/img/imagenes/product/granTorino.jpg");
+			Product pr11 = new Product("ProductN-"+(i+4),"Description of ProductN-"+(i+4),"Custom",20,user4); //Sergio Martin
+			setProductImage(pr11,"/static/img/imagenes/product/steveJobs.jpg");
+			Product pr12 = new Product("ProductN-"+(i+5),"Description of ProductN-"+(i+5),"Comics",35,user4); //Javier Espin
+			setProductImage(pr12,"/static/img/imagenes/product/mafalda.jpg");
+			
+			productR.save(pr7);
+			productR.save(pr8);
+			productR.save(pr9);
+			productR.save(pr10);
+			productR.save(pr11);
+			productR.save(pr12);
+		}
 		
 		/* Initializer RequestDetails */
 		RequestDetail requestDetail1 = new RequestDetail(request1,pr3,pr3.getPrice());
@@ -111,9 +139,11 @@ public class DatabaseInitializer {
 		requestR.save(request5);
 		
 		RequestDetail requestDetail2 = new RequestDetail(request5,pr4,pr4.getPrice());
+		requestDetail2.setRating(5);
 		request5.setRequestDetail(requestDetail2);
 		requestDetail2.setRequest(request5);
 		RequestDetail requestDetail3 = new RequestDetail(request5,pr5,pr5.getPrice());
+		requestDetail3.setRating(4);
 		request5.setRequestDetail(requestDetail3);
 		requestDetail3.setRequest(request5);
 		
@@ -128,6 +158,8 @@ public class DatabaseInitializer {
 		requestR.save(request6);
 		
 		RequestDetail requestDetail4 = new RequestDetail(request6,pr2,pr2.getPrice());
+		requestDetail4.setRating(3);
+		recalculateProductRating(pr2.getIdProduct(),3);
 		request6.setRequestDetail(requestDetail4);
 		requestDetail4.setRequest(request6);
 		
@@ -141,9 +173,13 @@ public class DatabaseInitializer {
 		requestR.save(request7);
 		
 		RequestDetail requestDetail5 = new RequestDetail(request7,pr5,pr5.getPrice());
+		requestDetail5.setRating(2);
+		recalculateProductRating(pr5.getIdProduct(),2);
 		request7.setRequestDetail(requestDetail5);
 		requestDetail5.setRequest(request7);
 		RequestDetail requestDetail6 = new RequestDetail(request7,pr5,pr5.getPrice());
+		requestDetail6.setRating(2);
+		recalculateProductRating(pr5.getIdProduct(),2);
 		request7.setRequestDetail(requestDetail6);
 		requestDetail6.setRequest(request7);
 		
@@ -156,5 +192,16 @@ public class DatabaseInitializer {
 		product.setImage(true);
 		Resource image = new ClassPathResource(classpathResource);
 		product.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+	}
+	
+	private void recalculateProductRating(long idProduct,int rating) {
+		Product objProduct = productS.findByIdProduct(idProduct);
+		float average = objProduct.getRating();
+		if (average<0) {
+			objProduct.setRating(rating);
+		} else {
+			objProduct.setRating(Math.round((average+rating)/2));
+		}
+		productS.save(objProduct);
 	}
 }

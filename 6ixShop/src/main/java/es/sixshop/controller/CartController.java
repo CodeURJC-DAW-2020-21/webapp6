@@ -134,12 +134,12 @@ public class CartController {
         requestUser.setStatus("PAID");
         requestUser.setDate(LocalDate.now());
         
-        Collection<RequestDetail> requestDetail = requestDetailS.findByRequest(requestUser);
+        /*Collection<RequestDetail> requestDetail = requestDetailS.findByRequest(requestUser);
         //MODIFICAR EL RATING Y LA DESCRIPCION
         for (RequestDetail objRequestDetail : requestDetail) {
         	objRequestDetail.setRating(5);
         	requestDetailS.save(objRequestDetail);
-        }
+        }*/
         requestS.save(requestUser);
         
         /* Se crea otro PEDIDO como CARRITO vacío */

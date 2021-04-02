@@ -42,7 +42,7 @@ public class Product {
 		this.category = category;
 		this.price = price;
 		this.user = user;
-		this.rating = 0;
+		this.rating = -1;
 	}
 	
 	public Product(String productName, String description, String category, int price) {
@@ -51,7 +51,7 @@ public class Product {
 		this.description = description;
 		this.category = category;
 		this.price = price;
-		this.rating = 0;
+		this.rating = -1;
 	}
 
 	public Long getIdProduct() {
