@@ -98,6 +98,7 @@
 							<h4>No products yet.</h4>
 							{{/products}}
 						</div>
+						<div id="loading" class="nav-item nav-link active" style="color:blue"></div>
                         {{#nextPage}}
                         <button type="button" id="bLoadMore" class="btn header-btn">Load More</button>
                         {{/nextPage}}
@@ -108,9 +109,14 @@
 					            aux++;
 					            $.ajax({
 					            	url:"loadMore?page="+aux,
+					            	
+					            	beforeSend:function(){
+				                        $('#loading').text('Loading...');
+				                    },
 					                   
 					                success:function(data){
 					                	setTimeout(function(){
+					                		$('#loading').text(''),
 					                    	$('#moreProducts').append(data);
 					                    },wait);
 					                }
