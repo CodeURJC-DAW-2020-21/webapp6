@@ -56,7 +56,7 @@
    - It will be possible to visualize the number of sales per month for each user.
    
 ### Complementary technologies:
-   - **Login with Google**: The user will be able to log in with their google account.
+   - **Send email if password is forgotten**: The user will receive an email if password is forgotten.
     
 ### Algorithm or advanced queries:
    - Algorithm that allows to visualize the general rating of a product.
@@ -141,31 +141,32 @@ Finally, to open the website in your browser you will have to write this path: h
 
 | Name        | Tasks |  |  |  |  |
 | :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| Sergio Martin Muñoz | Tarea 1 | Tarea 2 | Tarea 3 | Tarea 4 | Tarea 5 |
-| Alberto Pacho Bernardos | | | | | |
-| Javier Espín Prieto | | | | | |
-| Celia Sanjuan Sanchez | | | | | |
+| Sergio Martín Muñoz | Rating | Cart functionality | Delete product | Product rating | Delete products from cart |
+| Alberto Pacho Bernardos | Load more | Rating algorithm | Send email | Check paid orders | Reorder changes |
+| Javier Espín Prieto | Graphic stadistics | Spring security | Login and Sign up | Users control | Error page |
+| Celia Sanjuán Sánchez | Edit product | Load products in cart | Create order | Diagrams | ReadMe |
 
 
 
 | Name        | Commits |  |  |  |  |
 | :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| Sergio Martin Muñoz | Commit 1 | Commit 2 | Commit 3 | Commit 4 | Commit 5 |
-| Alberto Pacho Bernardos | | | | | |
-| Javier Espín Prieto | | | | | |
-| Celia Sanjuan Sanchez | | | | | |
+| Sergio Martín Muñoz | e4dd8414bdc9375dc4ab289f8860333bde4aa90e | 888b145256990e558f6cfe8ccf202e0701550725 | 1fd499da40b9990b9238bd3814b9b3001e8d8dd3 | a7cdaa78e048b347534da81bc5eaee7822d3fda7 |  |
+| Alberto Pacho Bernardos | 7cd093eb5fb60d2ffeebafcb66599288b640a093 | 7cd093eb5fb60d2ffeebafcb66599288b640a093 | 3bc4159059a21160602e3bb3c98bb8e2317d0e81 | 4a1b49ca50aeec00bf1e20aa9a3a529e9d820e02 | d30d7424cf144c2c2c55907483986329b6d89ee7 |
+| Javier Espín Prieto | | 13f5ed40927199721b8e6bb27f75736e5f088583 | a8d4f18bbe0da63d0959e8e8a52d7836ae4b0501 | a8d4f18bbe0da63d0959e8e8a52d7836ae4b0501 | |
+| Celia Sanjuán Sánchez | 8d8a88b16789df7ed65b2c06090631e47ddc72b6 | 8d8a88b16789df7ed65b2c06090631e47ddc72b6 | 8d8a88b16789df7ed65b2c06090631e47ddc72b6 | | |
 
 
 
 | Name        | Files |  |  |  |  |
 | :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| Sergio Martin Muñoz | Fichero 1 | Fichero 2 | Fichero 3 | Fichero 4 | Fichero 5 |
+| Sergio Martín Muñoz | Fichero 1 | Fichero 2 | Fichero 3 | Fichero 4 | Fichero 5 |
 | Alberto Pacho Bernardos | | | | | |
 | Javier Espín Prieto | | | | | |
-| Celia Sanjuan Sanchez | | | | | |
+| Celia Sanjuán Sánchez | | | | | |
 
 
 
 ## PHASE 3
 
 ## PHASE 4
+
