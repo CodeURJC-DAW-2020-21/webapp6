@@ -55,7 +55,7 @@ public class CartController {
             User user = userR.findByNickname(nickname).orElseThrow();
             
             //Carga el carrito
-            Request requestUser = requestS.findByBuyerUserAndStatus(user,"cart");
+            Request requestUser = requestS.findByBuyerUserAndStatus(user,"Cart");
             Collection<Product> products = requestDetailS.findProductOfRequestDetail(requestUser);
             
             //Se calcula el total del precio de los productos
@@ -80,7 +80,7 @@ public class CartController {
 		String nickname = request.getUserPrincipal().getName();
         User user = userR.findByNickname(nickname).orElseThrow();
         Product prod = productS.findById(idProduct).orElseThrow();
-        Request objRequest = requestS.findByBuyerUserAndStatus(user, "cart");
+        Request objRequest = requestS.findByBuyerUserAndStatus(user, "Cart");
         RequestDetail requestDetail = new RequestDetail(objRequest,prod,prod.getPrice());
         objRequest.setRequestDetail(requestDetail);
         
