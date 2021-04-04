@@ -50,16 +50,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/login").permitAll();
 		http.authorizeRequests().antMatchers("/sign_in").permitAll();
 		http.authorizeRequests().antMatchers("/category").permitAll();
-		http.authorizeRequests().antMatchers("/productDetail").permitAll();
+		http.authorizeRequests().antMatchers("/single-product").permitAll();
+		http.authorizeRequests().antMatchers("/error").permitAll();
 
 		// Private pages (all other pages)
 		http.authorizeRequests().antMatchers("/profile").hasAnyRole("USER,ADMIN");
+		http.authorizeRequests().antMatchers("/edit-product").hasAnyRole("USER,ADMIN");
 		http.authorizeRequests().antMatchers("/cardPayment").hasAnyRole("USER,ADMIN");
 		http.authorizeRequests().antMatchers("/cart").hasAnyRole("USER,ADMIN");
 		http.authorizeRequests().antMatchers("/cart/*").hasAnyRole("USER,ADMIN");//  mirar el *
-		http.authorizeRequests().antMatchers("/checkout").hasAnyRole("USER,ADMIN");
-		http.authorizeRequests().antMatchers("/checkout/*").hasAnyRole("USER,ADMIN");
-		http.authorizeRequests().antMatchers("/admin").hasAnyRole("ADMIN");
 
 		// Login form
 		http.formLogin().loginPage("/login"); //URL formulario Login

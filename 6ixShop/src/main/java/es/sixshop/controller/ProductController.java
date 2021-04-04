@@ -31,6 +31,8 @@ import es.sixshop.service.ProductService;
 @Controller
 public class ProductController {
 	
+	private int ID_ADMIN = 1;
+	
 	@Autowired
 	private ProductService productS;
 	
@@ -96,7 +98,7 @@ public class ProductController {
             model.addAttribute("user",user);
             model.addAttribute("nickname",user.getNickname());
             
-            if(((user.getIdUser()) == product.getUser().getIdUser()) || 0 == product.getUser().getIdUser()) {
+            if((user.getIdUser() == product.getUser().getIdUser()) || (ID_ADMIN == user.getIdUser())) {
     			model.addAttribute("edit",true);
     		}
         }
@@ -106,38 +108,52 @@ public class ProductController {
 	
 	@GetMapping("/edit-product/{idProduct}")
 	public String showEditProduct(Model model, HttpSession session, HttpServletRequest request, @PathVariable long idProduct){
-        //Comprueba si existe una sesiÃ³n iniciada para cambiar el Header
+		//Comprueba si existe una sesión iniciada para cambiar el Header
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
             User user = userR.findByNickname(nickname).orElseThrow();
 
             model.addAttribute("user",user);
             model.addAttribute("nickname",user.getNickname());
+            
+            Product product = productS.findById(idProduct).orElseThrow();
+    		long idUsuarioProduct = product.getUser().getIdUser();
+    		
+    		if((idUsuarioProduct==user.getIdUser()) || (ID_ADMIN==user.getIdUser())) {
+    			model.addAttribute("product",product);
+    			return "edit-product";
+    		} else {
+    			return "redirect:/";
+    		}
         }
-        
-		Product product = productS.findById(idProduct).orElseThrow();
-		model.addAttribute("product",product);
-		return "edit-product";
+        return "redirect:/";
 	}
 	
 	@PostMapping("/edit-product/{idProduct}")
 	public String editProduct(HttpServletRequest request, Model model, Product product)
 			throws IOException {
-		String nickname = request.getUserPrincipal().getName();
-		User user = userR.findByNickname(nickname).orElseThrow();
-		Product original = productS.findById(product.getIdProduct()).orElseThrow();
 		
-		//Recuperamos todos los campos que no hemos editado.
-		product.setCategory(original.getCategory());
-		product.setImageFile(original.getImageFile());
-		product.setImage(original.isImage());
-		product.setRating(original.getRating());
-		product.setUser(user);
-		productS.update(product);
-
-		//model.addAttribute("product", product.getIdProduct());
-
-		return "redirect:/single-product/"+product.getIdProduct();
+		if(((Principal)request.getUserPrincipal())!=null) {
+            String nickname = request.getUserPrincipal().getName();
+            User user = userR.findByNickname(nickname).orElseThrow();
+            
+            Product original = productS.findById(product.getIdProduct()).orElseThrow();
+            long idUsuarioProduct = original.getUser().getIdUser();
+    		if((idUsuarioProduct==user.getIdUser()) || (ID_ADMIN==user.getIdUser())) {
+    			product.setCategory(original.getCategory());
+    			product.setImageFile(original.getImageFile());
+    			product.setImage(original.isImage());
+    			product.setRating(original.getRating());
+    			product.setUser(user);
+    			productS.update(product);
+    				
+    			return "redirect:/single-product/"+product.getIdProduct();
+    		} else {
+    			return "redirect:/";
+    		}
+		}
+		
+		return "index";
 	}
 	
 	@PostMapping("/delete-product/{idProduct}")
