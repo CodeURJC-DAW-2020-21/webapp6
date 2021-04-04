@@ -95,7 +95,7 @@ public class DatabaseInitializer {
 		setProductImage(pr4,"/static/img/imagenes/product/granTorino.jpg");
 		Product pr5 = new Product("Steve Jobs","Description of Steve Jobs","Custom",20,user4); //Sergio Martin
 		setProductImage(pr5,"/static/img/imagenes/product/steveJobs.jpg");
-		Product pr6 = new Product("Mafalda","Description of Mafalda","Comics",35,user4); //Javier Espin
+		Product pr6 = new Product("Mafalda","Description of Mafalda","Comics",35,user4); //Sergio Martin
 		setProductImage(pr6,"/static/img/imagenes/product/mafalda.jpg");
 		
 		productR.save(pr1);
@@ -116,7 +116,7 @@ public class DatabaseInitializer {
 			setProductImage(pr10,"/static/img/imagenes/product/granTorino.jpg");
 			Product pr11 = new Product("ProductN-"+(i+4),"Description of ProductN-"+(i+4),"Custom",20,user4); //Sergio Martin
 			setProductImage(pr11,"/static/img/imagenes/product/steveJobs.jpg");
-			Product pr12 = new Product("ProductN-"+(i+5),"Description of ProductN-"+(i+5),"Comics",35,user4); //Javier Espin
+			Product pr12 = new Product("ProductN-"+(i+5),"Description of ProductN-"+(i+5),"Comics",35,user4); //Sergio Martin
 			setProductImage(pr12,"/static/img/imagenes/product/mafalda.jpg");
 			
 			productR.save(pr7);

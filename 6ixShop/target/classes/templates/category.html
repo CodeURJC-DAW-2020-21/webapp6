@@ -35,42 +35,79 @@
                 </div>
                 <!-- Nav Card -->
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <div class="row">
-                        	{{#products}}
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                <div class="single-product mb-60">
-                                    <div class="product-img">
-                                        <a href = "/single-product/{{idProduct}}">
-                                            <img src="/{{idProduct}}/image" alt={{productName}}>
-                                        </a>
-                                        
-                                        <div class="new-product">
-                                            <span>{{category}}</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-caption">
-                                        <div class="product-ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star low-star"></i>
-                                        </div>
-                                        <h4><a href="#">{{productName}}</a></h4>
-                                        <div class="price">
-                                            <ul>
-                                                <li>${{price}}</li>
-                                                <li class="discount">$60.00</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {{/products}}
-                            {{^products}}
+                        <div class="row" id="moreProductsCategory">
+                        	{{#productsCategory}}
+                            <a href = "/single-product/{{idProduct}}">
+								<div class="col-xl-4 col-lg-4 col-md-6">
+									<div class="single-product mb-60">
+										<div class="product-img">
+											<img src="/{{idProduct}}/image" alt={{productName}}>
+											<div class="new-product">
+												<span>{{category}}</span>
+											</div>
+										</div>
+										<div class="product-caption">
+											<div id ="demoAll{{idProduct}}" class="product-ratting"></div>
+											<script>
+												var x="";
+												var i = 0;
+												while(i<5){
+													if(i<"{{rating}}"){
+														x = x + '<i class="far fa-star"></i>\n';
+													}else{
+														x = x + '<i class="far fa-star low-star"></i>\n';
+													}
+													i = i +1;      
+												}
+												document.getElementById("demoAll{{idProduct}}").innerHTML = x
+											</script>
+											<h4><a href="#">{{productName}}</a></h4>
+											<div class="price">
+												<ul>
+													<li>${{price}}</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</a>
+                            {{/productsCategory}}
+                            {{^productsCategory}}
                             <h4>No products yet.</h4>
-                            {{/products}}
+                            {{/productsCategory}}
                         </div>
+                        <div id="loadingCategory" class="nav-item nav-link active" style="color:blue"></div>
+                        <button type="button" id="bLoadMoreCategory" class="btn header-btn">Load More</button>
+                        <script type="text/javascript">
+					    	var pageAll=0;
+					    	var totalPageAll={{totalPageAll}}
+					    	
+					    	if(totalPageAll<1){
+					        	document.getElementById('bLoadMoreCategory').style.display='none';
+					        }
+					    	
+					        $('#bLoadMoreCategory').click(function(){
+					        	var waitTime=1000;
+					            pageAll++;
+					            $.ajax({
+					            	url:"loadMoreCategories/{{category}}?page="+pageAll,
+					            	
+					            	beforeSend:function(){
+				                        $('#loadingCategory').text('Loading...');
+				                    },
+					                   
+					                success:function(data){
+					                	setTimeout(function(){
+					                		$('#loadingCategory').text(''),
+					                    	$('#moreProductsCategory').append(data);
+					                    	if(pageAll>=totalPageAll){
+					                    		document.getElementById('bLoadMoreCategory').style.display='none';
+					                    	}
+					                    },waitTime);
+					                }
+					            });
+					       });
+					    </script>
                     </div>
                 <!-- End Nav Card -->
             </div>

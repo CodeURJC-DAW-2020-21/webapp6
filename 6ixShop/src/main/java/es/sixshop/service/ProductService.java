@@ -15,7 +15,7 @@ import es.sixshop.repository.ProductRepository;
 
 @Service
 public class ProductService {
-	private int SIZE_PAGE = 9;
+	private int SIZE_PAGE = 10;
 	
 	@Autowired
 	private ProductRepository productR;
@@ -40,8 +40,8 @@ public class ProductService {
 		productR.deleteById(id);
 	}
 	
-	public Collection<Product> findBycategory(String category){
-		return productR.findBycategory(category);
+	public Page<Product> findBycategory(String category, Pageable pageable){
+		return productR.findBycategory(category, PageRequest.of(pageable.getPageNumber(),SIZE_PAGE));
 	}
 	
 	public Collection<Product> findByUser(User user){

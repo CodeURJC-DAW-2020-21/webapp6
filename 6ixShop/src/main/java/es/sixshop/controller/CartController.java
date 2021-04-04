@@ -90,6 +90,7 @@ public class CartController {
 		return "redirect:/cart";
 	}
 	
+	/*
 	@GetMapping("/checkout/{idRequest}")
 	public String showCheckout(Model model, HttpSession session, HttpServletRequest request, @PathVariable Long idRequest){
 		int totalPrice = 0;
@@ -115,7 +116,7 @@ public class CartController {
         model.addAttribute("totalPrice",totalPrice);
         
 		return "checkout";
-	}
+	}*/
 	
 	@GetMapping("/cardPayment/{idRequest}")
 	public String showCardPayment(Model model, HttpSession session, HttpServletRequest request, @PathVariable Long idRequest){

@@ -13,7 +13,7 @@ import es.sixshop.model.User;
 
 public interface ProductRepository extends JpaRepository<Product, Long>{
 	Collection<Product> findByUser(User user);
-	Collection<Product> findBycategory(String category);
+	Page<Product> findBycategory(String category, Pageable pageable);
 	Page<Product> findAll(Pageable pageable);
 	Product findByIdProduct(Long idProduct);
 	
