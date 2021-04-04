@@ -101,9 +101,14 @@
                         <button type="button" id="bLoadMoreAll" class="btn header-btn">Load More</button>
                         <script type="text/javascript">
 					    	var pageAll=0;
+					    	var totalPageAll={{totalPageAll}}
+					    	
+					    	if(totalPageAll<1){
+					        	document.getElementById('bLoadMoreAll').style.display='none';
+					        }
+					    	
 					        $('#bLoadMoreAll').click(function(){
 					        	var waitTime=1000;
-					        	var totalPageAll={{totalPageAll}}
 					            pageAll++;
 					            $.ajax({
 					            	url:"loadMoreAll?page="+pageAll,
@@ -172,9 +177,14 @@
                         <button type="button" id="bLoadMoreRating" class="btn header-btn">Load More</button>
                         <script type="text/javascript">
 					    	var pageRating=0;
+					    	var totalPageRating={{totalPageRating}}
+					    	
+					    	if(totalPageRating<1){
+					        	document.getElementById('bLoadMoreRating').style.display='none';
+					        }
+					    	
 					        $('#bLoadMoreRating').click(function(){
 					        	var waitTime=1000;
-					        	var totalPageRating={{totalPageRating}}
 					            pageRating++;
 					            $.ajax({
 					            	url:"loadMoreRating?page="+pageRating,
