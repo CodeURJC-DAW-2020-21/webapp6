@@ -68,11 +68,11 @@ Updated in Phase 2.
 ### **Screenshots:**
    * **Home**: Homepage of the website which shows a navigation menu and products of the shopping site as you slide down.
    
-   <img width="1440" alt="index" src="https://user-images.githubusercontent.com/55685000/109400066-d5688300-7946-11eb-963d-c5d33cf928a8.png">
+   <img width="1258" alt="index" src="https://user-images.githubusercontent.com/55685000/113615683-70463280-9654-11eb-864c-45f4e6890e14.png">
 
    * **Categories**: It shows all the product categories we offer on the website.
    
-   <img width="1438" alt="catagori" src="https://user-images.githubusercontent.com/55685000/109400095-fcbf5000-7946-11eb-895e-7511ddc96be5.png">
+   <img width="1187" alt="category" src="https://user-images.githubusercontent.com/55685000/113615741-881db680-9654-11eb-8b58-8edc9f67d2bd.png">
 
    * **Profile**: Registered user profile with their name, picture, products, and a navigation bar to view their statistics, orders,...
    
@@ -83,12 +83,13 @@ Updated in Phase 2.
    <img width="1440" alt="singleproduct" src="https://user-images.githubusercontent.com/55685000/109400111-12cd1080-7947-11eb-8922-ca511fcb690e.png">
 
    * **Product editor**: The product with its pictures and description, and two buttons for editing and removing. 
+   
    <img width="1187" alt="productDetail" src="https://user-images.githubusercontent.com/55685000/113614816-49d3c780-9653-11eb-812b-81c458719740.png">  
    <img width="1440" alt="editProduct" src="https://user-images.githubusercontent.com/55685000/113614800-404a5f80-9653-11eb-84d8-98f18e89fc26.png">
 
    * **Cart**: Shopping cart with the chosen products and their payment details.
    
-   <img width="1440" alt="cart" src="https://user-images.githubusercontent.com/55685000/109400154-5889d900-7947-11eb-8248-e35f47ee1e70.png">
+   <img width="1187" alt="cart" src="https://user-images.githubusercontent.com/55685000/113615789-98ce2c80-9654-11eb-9127-8af943c035cf.png">
 
    * **Sign in**: Register form for new users.
    
