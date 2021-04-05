@@ -1,5 +1,7 @@
 package es.sixshop.service;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -59,5 +61,13 @@ public class ProductService {
 	
 	public Product findByIdProduct(Long idProduct){
 		return productR.findByIdProduct(idProduct);
+	}
+	
+	public Integer findByMonthSales(Date month1, Date month2, long idUser) {
+		return productR.findByMonthSales(month1, month2,idUser);
+	}
+	
+	public Integer findBySoldProducts(long idUser) {
+		return productR.findBySoldProducts(idUser);
 	}
 }

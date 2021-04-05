@@ -1,5 +1,6 @@
 package es.sixshop.model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class Request{
 	@ManyToOne
 	private User buyerUser;
 	
-	private LocalDate date;
+	private Date date;
 	private String status;
 	
 	@JsonIgnore
@@ -41,7 +42,7 @@ public class Request{
 		super();
 		this.buyerUser = buyerUser;
 		this.status = "Cart";
-		this.date = LocalDate.now();
+		this.date = Date.valueOf(LocalDate.now());
 		this.lRequestDetail = new ArrayList<RequestDetail>();
 	}
 	
@@ -49,7 +50,7 @@ public class Request{
 		super();
 		this.buyerUser = buyerUser;
 		this.status = status;
-		this.date = LocalDate.now();
+		this.date = Date.valueOf(LocalDate.now());
 		this.lRequestDetail = new ArrayList<RequestDetail>();
 	}
 
@@ -77,11 +78,11 @@ public class Request{
 		this.buyerUser = buyerUser;
 	}
 
-	public LocalDate getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDate date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

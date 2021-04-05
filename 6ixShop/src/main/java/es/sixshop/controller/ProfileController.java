@@ -1,8 +1,12 @@
 package es.sixshop.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -46,6 +50,8 @@ public class ProfileController {
 	@GetMapping("/profile")
 	public String showProfile(Model model, HttpServletRequest request) {
 		int totalPrice = 0;
+		Date month1,month2;
+		int soldProducts = 0;
 		
 		//Datos usuario
 		String nickname = request.getUserPrincipal().getName();
@@ -56,10 +62,34 @@ public class ProfileController {
 		model.addAttribute("mail",user.getMail());
 		model.addAttribute("profile",true);
 		
+		//Número de productos vendidos
+		soldProducts = productS.findBySoldProducts(user.getIdUser());
+		model.addAttribute("soldProducts",soldProducts);
 		
 		//Datos productos subidos
 		Collection<Product> products = productS.findByUser(user);
 		model.addAttribute("products",products);
+		
+		//Datos productos vendidos
+		List<Integer> lSales = new ArrayList<Integer>();
+		for(int x=1;x<=12;x++) {
+			LocalDate initial = LocalDate.of(2021, x, 1);
+			month1 = Date.valueOf(initial.withDayOfMonth(x));
+			month2 = Date.valueOf(initial.withDayOfMonth(initial.lengthOfMonth()));
+			lSales.add(productS.findByMonthSales(month1, month2, user.getIdUser()));
+		}
+		model.addAttribute("January",lSales.get(0));
+		model.addAttribute("February",lSales.get(1));
+		model.addAttribute("March",lSales.get(2));
+		model.addAttribute("April",lSales.get(3));
+		model.addAttribute("May",lSales.get(4));
+		model.addAttribute("June",lSales.get(5));
+		model.addAttribute("July",lSales.get(6));
+		model.addAttribute("August",lSales.get(7));
+		model.addAttribute("September",lSales.get(8));
+		model.addAttribute("October",lSales.get(9));
+		model.addAttribute("November",lSales.get(10));
+		model.addAttribute("December",lSales.get(11));
 		
 		//Datos pedidos comprados
 		Collection<Request> requests = requestS.findByBuyerUserAndStatusPaid(user);
