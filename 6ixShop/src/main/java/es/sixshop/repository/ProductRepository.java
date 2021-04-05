@@ -1,9 +1,7 @@
 package es.sixshop.repository;
 
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -32,7 +32,7 @@ public class Product {
 	private boolean image;
 	
 	
-	//Constructor necesario para la carga desde BBDD
+	// Constructor necessary for loading from DB
 	protected Product() {}
 	
 	public Product(String productName, String description, String category, int price, User user) {

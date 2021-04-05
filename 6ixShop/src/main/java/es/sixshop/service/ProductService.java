@@ -1,7 +1,6 @@
 package es.sixshop.service;
 
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -56,7 +55,6 @@ public class ProductService {
 	
 	public Page<Product> findByRating(Pageable pageable){
 		return productR.findByRating(PageRequest.of(pageable.getPageNumber(),SIZE_PAGE));
-		//return null;
 	}
 	
 	public Product findByIdProduct(Long idProduct){

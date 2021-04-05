@@ -19,7 +19,6 @@ import es.sixshop.model.RequestDetail;
 import es.sixshop.model.Product;
 import es.sixshop.model.User;
 import es.sixshop.repository.RequestRepository;
-import es.sixshop.repository.ProductRepository;
 import es.sixshop.repository.RequestDetailRepository;
 import es.sixshop.repository.UserRepository;
 
@@ -42,12 +41,9 @@ public class DatabaseInitializer {
 	private RequestDetailService requestDetailS;
 	
 	@Autowired
-	private ProductRepository productR;
-	
-	@Autowired
 	private ProductService productS;
 	
-	@PostConstruct //Se ejecuta después de haber inyectado las dependencias
+	@PostConstruct // Run after dependencies have been injected
 	public void init() throws IOException {
 		
 		/* Initializer Users */
@@ -99,12 +95,12 @@ public class DatabaseInitializer {
 		Product pr6 = new Product("Mafalda","Description of Mafalda","Comics",35,user4); //Sergio Martin
 		setProductImage(pr6,"/static/img/imagenes/product/mafalda.jpg");
 		
-		productR.save(pr1);
-		productR.save(pr2);
-		productR.save(pr3);
-		productR.save(pr4);
-		productR.save(pr5);
-		productR.save(pr6);
+		productS.save(pr1);
+		productS.save(pr2);
+		productS.save(pr3);
+		productS.save(pr4);
+		productS.save(pr5);
+		productS.save(pr6);
 		
 		for(int i=17; i<50;i+=6) {
 			Product pr7 = new Product("ProductN-"+i,"Description of ProductN-"+i,"TVSeries",50,user1); //Alberto Pacho
@@ -120,12 +116,12 @@ public class DatabaseInitializer {
 			Product pr12 = new Product("ProductN-"+(i+5),"Description of ProductN-"+(i+5),"Comics",35,user4); //Sergio Martin
 			setProductImage(pr12,"/static/img/imagenes/product/mafalda.jpg");
 			
-			productR.save(pr7);
-			productR.save(pr8);
-			productR.save(pr9);
-			productR.save(pr10);
-			productR.save(pr11);
-			productR.save(pr12);
+			productS.save(pr7);
+			productS.save(pr8);
+			productS.save(pr9);
+			productS.save(pr10);
+			productS.save(pr11);
+			productS.save(pr12);
 		}
 		
 		/* Initializer RequestDetails */
@@ -164,8 +160,6 @@ public class DatabaseInitializer {
 		requestR.save(request6);
 		
 		RequestDetail requestDetail4 = new RequestDetail(request6,pr2,pr2.getPrice());
-		//requestDetail4.setRating(3);
-		//recalculateProductRating(pr2.getIdProduct(),3);
 		request6.setRequestDetail(requestDetail4);
 		requestDetail4.setRequest(request6);
 		

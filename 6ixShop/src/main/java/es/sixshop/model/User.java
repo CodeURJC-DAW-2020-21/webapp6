@@ -12,7 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -39,7 +38,7 @@ public class User {
 	private int phonenumber;
 	private String image;
 
-	//Constructor necesario para la carga desde BBDD
+	// Constructor necessary for loading from DB
 	protected User() {}
 	
 	public User(String nickname, String encodedPassword, String mail, int phonenumber, String... roles) {

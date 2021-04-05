@@ -37,13 +37,13 @@ public class RequestService {
 		requestR.deleteById(id);
 	}
 	
-	//Devuelve el pedido del carrito (Solo debe existir uno por usuario)
+	// Returns the cart order (There should only be one per user)
 	public Request findByBuyerUserAndStatus(User user, String status) {
 		Collection<Request> requests = requestR.findByBuyerUserAndStatus(user, status);
 		return requests.iterator().next();
 	}
 	
-	//Devuelve todos los pedidos completados (Comprados)
+	// Returns all completed orders (Purchased)
 	public Collection<Request> findByBuyerUserAndStatusPaid(User user) {
 		Collection<Request> requests = requestR.findByBuyerUserAndStatus(user, "PAID");
 		return requests;

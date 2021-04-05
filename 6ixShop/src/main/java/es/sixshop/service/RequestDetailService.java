@@ -47,9 +47,9 @@ public class RequestDetailService {
 	public Collection<Product> findProductOfRequestDetail(Request request){
 		Collection<Product> products = new ArrayList<Product>();
 		
-		//Devuelve todos los detallesPedido de dicho Pedido para obtener los productos
+		// Returns all the Order details of said Order to obtain the products
 		Collection<RequestDetail> requestDetail = requestDetailR.findByRequest(request);
-		//Almacena los productos de dichos detallesPedido
+		// Stores the products of these details
 		for (RequestDetail objRequestDetail : requestDetail) {
 			products.add(objRequestDetail.getProduct());
 		}

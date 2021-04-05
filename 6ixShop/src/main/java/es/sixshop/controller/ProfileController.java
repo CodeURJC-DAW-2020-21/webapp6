@@ -3,7 +3,6 @@ package es.sixshop.controller;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -27,7 +26,6 @@ import es.sixshop.model.Product;
 import es.sixshop.model.Request;
 import es.sixshop.model.RequestDetail;
 import es.sixshop.model.User;
-import es.sixshop.repository.ProductRepository;
 import es.sixshop.repository.UserRepository;
 
 @Controller
@@ -53,7 +51,7 @@ public class ProfileController {
 		Date month1,month2;
 		int soldProducts = 0;
 		
-		//Datos usuario
+		//User data
 		String nickname = request.getUserPrincipal().getName();
 		User user = userR.findByNickname(nickname).orElseThrow();
 		
@@ -62,15 +60,15 @@ public class ProfileController {
 		model.addAttribute("mail",user.getMail());
 		model.addAttribute("profile",true);
 		
-		//Número de productos vendidos
+		// Number of products sold
 		soldProducts = productS.findBySoldProducts(user.getIdUser());
 		model.addAttribute("soldProducts",soldProducts);
 		
-		//Datos productos subidos
+		// Product data uploaded
 		Collection<Product> products = productS.findByUser(user);
 		model.addAttribute("products",products);
 		
-		//Datos productos vendidos
+		// Data of products sold
 		List<Integer> lSales = new ArrayList<Integer>();
 		for(int x=1;x<=12;x++) {
 			LocalDate initial = LocalDate.of(2021, x, 1);
@@ -91,9 +89,9 @@ public class ProfileController {
 		model.addAttribute("November",lSales.get(10));
 		model.addAttribute("December",lSales.get(11));
 		
-		//Datos pedidos comprados
+		// Purchased order data
 		Collection<Request> requests = requestS.findByBuyerUserAndStatusPaid(user);
-		for (Request objRequest : requests) { //Se obtiene la suma total de cada pedido
+		for (Request objRequest : requests) { // The total sum of each order is obtained
 			totalPrice = 0;
 			for (RequestDetail objRequestDetail : objRequest.getlRequestDetail()) {
 				totalPrice+=objRequestDetail.getProductPrice();
@@ -115,7 +113,6 @@ public class ProfileController {
 			product.setImage(true);
 		}
 
-		//product.setIdUser(user.getIdUser());
 		product.setUser(user);
 		productS.save(product);
 		
@@ -128,7 +125,7 @@ public class ProfileController {
 	
 	@GetMapping("/profile/rate/{idRequestDetail}/{idProduct}/{rating}")
 	public String rateProduct(Model model, HttpServletRequest request, @PathVariable long idRequestDetail, @PathVariable long idProduct, @PathVariable int rating) {
-		//Datos usuario
+		//User data
 		String nickname = request.getUserPrincipal().getName();
 		User user = userR.findByNickname(nickname).orElseThrow();
 		

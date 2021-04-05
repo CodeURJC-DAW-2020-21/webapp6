@@ -2,20 +2,13 @@ package es.sixshop.controller;
 
 import java.security.Principal;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import es.sixshop.model.Product;
 import es.sixshop.model.User;
-import es.sixshop.model.Product;
 import es.sixshop.model.Request;
 import es.sixshop.model.RequestDetail;
 import es.sixshop.repository.UserRepository;
@@ -50,16 +42,16 @@ public class CartController {
 	public String showCart(Model model, HttpSession session, HttpServletRequest request){
 		int totalPrice = 0;
 		
-		//Comprueba si existe una sesión iniciada para cambiar el Header
+		// Check if there is a session started to change the Header
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
             User user = userR.findByNickname(nickname).orElseThrow();
             
-            //Carga el carrito
+            // Load the cart
             Request requestUser = requestS.findByBuyerUserAndStatus(user,"Cart");
             Collection<Product> products = requestDetailS.findProductOfRequestDetail(requestUser);
             
-            //Se calcula el total del precio de los productos
+            // The total price of the products is calculated
             for (Product product : products) {
             	totalPrice+= product.getPrice();
             }
@@ -91,34 +83,6 @@ public class CartController {
 		return "redirect:/cart";
 	}
 	
-	/*
-	@GetMapping("/checkout/{idRequest}")
-	public String showCheckout(Model model, HttpSession session, HttpServletRequest request, @PathVariable Long idRequest){
-		int totalPrice = 0;
-		
-        //Comprueba si existe una sesión iniciada para cambiar el Header
-        if(((Principal)request.getUserPrincipal())!=null) {
-            String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
-            
-            Request requestUser = requestS.findById(idRequest).orElseThrow();
-            Collection<Product> products = requestDetailS.findProductOfRequestDetail(requestUser);
-            //Se calcula el total del precio de los productos
-            for (Product product : products) {
-            	totalPrice+= product.getPrice();
-            }
-            
-            model.addAttribute("user",user);
-            model.addAttribute("nickname",user.getNickname());
-            model.addAttribute("requestUser",requestUser);
-            model.addAttribute("products", products);
-        }
-        
-        model.addAttribute("totalPrice",totalPrice);
-        
-		return "checkout";
-	}*/
-	
 	@GetMapping("/cardPayment/{idRequest}")
 	public String showCardPayment(Model model, HttpSession session, HttpServletRequest request, @PathVariable Long idRequest){
 		model.addAttribute("idRequest", idRequest);
@@ -131,20 +95,14 @@ public class CartController {
 		String nickname = request.getUserPrincipal().getName();
         User user = userR.findByNickname(nickname).orElseThrow();
 		
-        /* Se guarda el PEDIDO como PAGADO y se saca del carrito */
+        /* The ORDER is saved as PAID and removed from the cart */
         Request requestUser = requestS.findById(idRequest).orElseThrow();
         requestUser.setStatus("PAID");
         requestUser.setDate(Date.valueOf(LocalDate.now()));
         
-        /*Collection<RequestDetail> requestDetail = requestDetailS.findByRequest(requestUser);
-        //MODIFICAR EL RATING Y LA DESCRIPCION
-        for (RequestDetail objRequestDetail : requestDetail) {
-        	objRequestDetail.setRating(5);
-        	requestDetailS.save(objRequestDetail);
-        }*/
         requestS.save(requestUser);
         
-        /* Se crea otro PEDIDO como CARRITO vacío */
+        /* Another ORDER is created as an empty CART */
         Request newRequest = new Request(user);
         requestS.save(newRequest);
 	

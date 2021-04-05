@@ -3,25 +3,16 @@ package es.sixshop.security;
 import java.security.SecureRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-	
-	/*@Value("${security.user}")
-	private String user;
-	
-	@Value("${security.encodedPassword}")
-	private String encodedPassword;*/
-
 
 	@Autowired
 	RepositoryUserDetailsService userDetailsService;
@@ -34,12 +25,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-		
-		
-		/*PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
-		auth.inMemoryAuthentication()
-		.withUser(user).password("{bcrypt}"+encodedPassword).roles("ADMIN");*/
 	}
 
 	@Override
@@ -58,18 +43,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/edit-product").hasAnyRole("USER,ADMIN");
 		http.authorizeRequests().antMatchers("/cardPayment").hasAnyRole("USER,ADMIN");
 		http.authorizeRequests().antMatchers("/cart").hasAnyRole("USER,ADMIN");
-		http.authorizeRequests().antMatchers("/cart/*").hasAnyRole("USER,ADMIN");//  mirar el *
+		http.authorizeRequests().antMatchers("/cart/*").hasAnyRole("USER,ADMIN");
 
 		// Login form
-		http.formLogin().loginPage("/login"); //URL formulario Login
-		http.formLogin().usernameParameter("nickname"); //Nombre del campo formulario "nickname"
-		http.formLogin().passwordParameter("encodedPassword"); //Nombre campo formulario "password"
-		http.formLogin().defaultSuccessUrl("/"); //URL para autenticacion correcta
-		http.formLogin().failureUrl("/login"); //URL para error en autenticacion
+		http.formLogin().loginPage("/login"); // URL form Login
+		http.formLogin().usernameParameter("nickname"); // Name of the form field "nickname"
+		http.formLogin().passwordParameter("encodedPassword"); // Name form field "password"
+		http.formLogin().defaultSuccessUrl("/"); // URL for correct authentication
+		http.formLogin().failureUrl("/login"); // URL for authentication error
 
 		// Logout
-		http.logout().logoutUrl("/header"); //URL para hacer logout
-		http.logout().logoutSuccessUrl("/"); //URL a la que navegar cuando se hace logout
+		http.logout().logoutUrl("/header"); // URL to logout
+		http.logout().logoutSuccessUrl("/"); // URL to navigate to when logging out
 
 		// Disable CSRF at the moment
 		http.csrf().disable();

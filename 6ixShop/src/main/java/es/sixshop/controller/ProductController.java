@@ -3,8 +3,6 @@ package es.sixshop.controller;
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +40,7 @@ public class ProductController {
 	
 	@GetMapping("/")
     public String showProduct(Model model, HttpSession session, HttpServletRequest request, Pageable pageable){
-        //Comprueba si existe una sesión iniciada para cambiar el Header
+		// Check if there is a session started to change the Header
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
             User user = userR.findByNickname(nickname).orElseThrow();
@@ -51,17 +49,17 @@ public class ProductController {
             model.addAttribute("nickname",user.getNickname());
         }
 
-        //Carga la primera página de los productos completos
+        // Load the first page of the complete products
         Page<Product> productsAll = productS.findAll(pageable);
 		model.addAttribute("productsAll", productsAll);
-		//Se resta la primera página que se muestra
+		// The first page shown is subtracted
 		model.addAttribute("totalPageAll",(productsAll.getTotalPages()-1));
 		
 		
-		//Carga la primera página de los productos por rating
+		// Load the first page of the products by rating
         Page<Product> productsRating = productS.findByRating(pageable);
 		model.addAttribute("productsRating", productsRating);
-		//Se resta la primera página que se muestra
+		// The first page shown is subtracted
 		model.addAttribute("totalPageRating",(productsRating.getTotalPages()-1));
 
         return "index";
@@ -79,7 +77,7 @@ public class ProductController {
 	@GetMapping("/loadMoreRating")
 	public String showLoadMoreRating(Model model, HttpSession session, Pageable pageable) {
 		Page<Product> productsRating = productS.findByRating(pageable);			
-		//Carga la siguiente página de los productos completos
+		// Load the next page of the complete products
 		model.addAttribute("productsRating", productsRating);
 
 		return "loadMoreRating";
@@ -90,7 +88,7 @@ public class ProductController {
 		Product product = productS.findById(idProduct).orElseThrow();
 		model.addAttribute("product",product);
 		
-        //Comprueba si existe una sesión iniciada para cambiar el Header
+		// Check if there is a session started to change the Header
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
             User user = userR.findByNickname(nickname).orElseThrow();
@@ -108,7 +106,7 @@ public class ProductController {
 	
 	@GetMapping("/edit-product/{idProduct}")
 	public String showEditProduct(Model model, HttpSession session, HttpServletRequest request, @PathVariable long idProduct){
-		//Comprueba si existe una sesión iniciada para cambiar el Header
+		// Check if there is a session started to change the Header
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
             User user = userR.findByNickname(nickname).orElseThrow();

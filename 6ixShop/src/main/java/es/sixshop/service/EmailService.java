@@ -11,7 +11,7 @@ public class EmailService {
 	@Autowired
     private JavaMailSender mailSender;
 
-    //Pasamos por parametro: destinatario, asunto y el mensaje
+	// We pass by parameter: recipient, subject and message
     public void sendEmail(String to, String subject, String content) {
     	
 

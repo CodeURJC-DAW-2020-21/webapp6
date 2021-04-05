@@ -1,8 +1,6 @@
 package es.sixshop.controller;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -29,26 +27,9 @@ public class CategoryController {
 	@Autowired
 	private UserRepository userR;
 	
-	/*
-	@GetMapping("/category")
-	public String seeCategories(Model model, HttpSession session, HttpServletRequest request){
-        //Comprueba si existe una sesión iniciada para cambiar el Header
-        if(((Principal)request.getUserPrincipal())!=null) {
-            String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
-
-            model.addAttribute("user",user);
-            model.addAttribute("nickname",user.getNickname());
-        }
-		Collection<Product> products = productService.findAll();
-		model.addAttribute("categoryName","Categories");
-		model.addAttribute("products",products);
-		return "category";
-	}*/
-	
 	@GetMapping("/category/{category}")
 	public String showCategory(Model model, HttpSession session, HttpServletRequest request, Pageable pageable, @PathVariable String category){
-        //Comprueba si existe una sesión iniciada para cambiar el Header
+		// Check if there is a session started to change the Header
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
             User user = userR.findByNickname(nickname).orElseThrow();
@@ -60,7 +41,7 @@ public class CategoryController {
         Page<Product> productsCategory = productS.findBycategory(category, pageable);
         model.addAttribute("productsCategory", productsCategory);
         model.addAttribute("categoryName",category);
-        //Se resta la primera página que se muestra
+        // The first page shown is subtracted
         model.addAttribute("totalPageAll",(productsCategory.getTotalPages()-1));
 		
 		return "category";
@@ -69,7 +50,7 @@ public class CategoryController {
 	@GetMapping("/category/loadMoreCategories/{category}")
 	public String showLoadMoreCategory(Model model, HttpSession session, Pageable pageable, @PathVariable String category) {
 		Page<Product> productsCategory = productS.findBycategory(category, pageable);			
-		//Carga la siguiente página de los productos completos
+		// Load the next page of the complete products
 		model.addAttribute("productsCategory", productsCategory);
 
 		return "loadMoreCategories";

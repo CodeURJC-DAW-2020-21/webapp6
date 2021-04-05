@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -23,7 +22,7 @@ public class RequestDetail {
 	private int productPrice;
 	private int rating;
 	
-	//Constructor necesario para la carga desde BBDD
+	// Constructor necessary for loading from DB
 	protected RequestDetail() {}
 	
 	public RequestDetail(Request request, Product product, int productPrice){

@@ -6,14 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -35,7 +33,7 @@ public class Request{
 	@JsonIgnore
 	private int totalPrice;
 	
-	//Constructor necesario para la carga desde BBDD
+	// Constructor necessary for loading from DB
 	protected Request() {}
 
 	public Request(User buyerUser) {
