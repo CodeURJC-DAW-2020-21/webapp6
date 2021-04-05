@@ -1,6 +1,7 @@
 package es.sixshop.controller;
 
 import java.security.Principal;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -133,7 +134,7 @@ public class CartController {
         /* Se guarda el PEDIDO como PAGADO y se saca del carrito */
         Request requestUser = requestS.findById(idRequest).orElseThrow();
         requestUser.setStatus("PAID");
-        requestUser.setDate(LocalDate.now());
+        requestUser.setDate(Date.valueOf(LocalDate.now()));
         
         /*Collection<RequestDetail> requestDetail = requestDetailS.findByRequest(requestUser);
         //MODIFICAR EL RATING Y LA DESCRIPCION

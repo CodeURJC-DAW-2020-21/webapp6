@@ -21,11 +21,13 @@
                     <div class="bg-light p-4 d-flex justify-content-end text-center">                        
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item">
-                                <h5 class="font-weight-bold mb-0 d-block">4</h5><small class="text-muted"> <i class="fa fa-picture-o mr-1"></i>Product</small>
+                                <h5 class="font-weight-bold mb-0 d-block">{{soldProducts}}</h5><small class="text-muted"> <i class="fa fa-picture-o mr-1"></i>Sold Products</small>
                             </li>
+                            <!--
                             <li class="list-inline-item">
                                 <h5 class="font-weight-bold mb-0 d-block">2.1</h5><small class="text-muted"> <i class="fa fa-user-circle-o mr-1"></i>Assessment</small>
                             </li>
+                            -->
                         </ul>
                     </div>
 
@@ -36,7 +38,7 @@
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-recent-products" role="tab" aria-controls="nav-home" aria-selected="true" style="color:grey">Your Products</a>
                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-add-products" role="tab" aria-controls="nav-profile" aria-selected="false" style="color:grey">Add Product</a>
                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-your-shopping" role="tab" aria-controls="nav-profile" aria-selected="false" style="color:grey">Your Shopping</a>
-                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-statistics" role="tab" aria-controls="nav-profile" aria-selected="false" style="color:grey">Statistics</a>
+                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-statistics" role="tab" aria-controls="nav-profile" aria-selected="false" style="color:grey">Your Sales</a>
                                 <!--<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-edit-profile" role="tab" aria-controls="nav-profile" aria-selected="false" style="color:grey">Edit Profile</a>-->
                             </div>
                         </nav>
@@ -148,10 +150,24 @@
                                     {{/requests}}
                                 </div>
                             </div>
-                            <!-- Statistics -->
+                            <!-- Your Sales -->
                             <div class="tab-pane fade" id="nav-statistics" role="tabpanel" aria-labelledby="nav-profile-tab">
                                 <div class="row">
-                                    <div class="col-lg-6 pr-lg-1 mb-2"><img src="assets/img/imagenes/perfil/grafico.png" alt="" class="img-fluid rounded shadow-sm"></div>
+                                    <div class="col-lg-6 pr-lg-1 mb-2">
+                                    	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	                               		<div id="plotlyChart"></div>
+	                                	<script>
+	                                    	var data = [
+	                                        {
+	                                          x: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+	                                          y: [{{January}}, {{February}}, {{March}}, {{April}}, {{May}}, {{June}}, {{July}}, {{August}}, {{September}}, {{October}}, {{November}}, {{December}}],
+	                                          type: 'bar'
+	                                        }
+	                                      ];
+
+	                                      Plotly.newPlot('plotlyChart', data);
+	                                </script>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Edit Profile -->

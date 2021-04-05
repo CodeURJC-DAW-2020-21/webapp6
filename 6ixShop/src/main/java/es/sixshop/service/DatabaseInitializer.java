@@ -1,6 +1,7 @@
 package es.sixshop.service;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 
@@ -138,7 +139,7 @@ public class DatabaseInitializer {
 		/* Initializer Request PAID (1) */
 		Request request5 = new Request(user1,"PAID");
 		user1.setRequest(request5);
-		request5.setDate(LocalDate.of(2021, Month.JANUARY, 17));
+		request5.setDate(Date.valueOf(LocalDate.of(2021, Month.JANUARY, 17)));
 		requestR.save(request5);
 		
 		RequestDetail requestDetail2 = new RequestDetail(request5,pr4,pr4.getPrice());
@@ -159,7 +160,7 @@ public class DatabaseInitializer {
 		/* Initializer Request PAID (2) */
 		Request request6 = new Request(user1,"PAID");
 		user1.setRequest(request6);
-		request6.setDate(LocalDate.of(2021, Month.FEBRUARY, 13));
+		request6.setDate(Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 13)));
 		requestR.save(request6);
 		
 		RequestDetail requestDetail4 = new RequestDetail(request6,pr2,pr2.getPrice());
@@ -174,7 +175,7 @@ public class DatabaseInitializer {
 		/* Initializer Request PAID (3) */
 		Request request7 = new Request(user1,"PAID");
 		user1.setRequest(request7);
-		request7.setDate(LocalDate.of(2021, Month.FEBRUARY, 14));
+		request7.setDate(Date.valueOf(LocalDate.of(2021, Month.FEBRUARY, 14)));
 		requestR.save(request7);
 		
 		RequestDetail requestDetail5 = new RequestDetail(request7,pr5,pr5.getPrice());
