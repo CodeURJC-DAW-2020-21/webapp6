@@ -86,6 +86,7 @@
                                         	{{#profile}}
                                             	<form action="/header" method="post">
                                                 	<input class="btn header-btn" style="background-color:red" type="submit" value="Log Out">
+                                                	<input type="hidden" name="_csrf" value="{{token}}"/>
                                                 </form>
                                             {{/profile}}
                                             {{^profile}}

@@ -57,7 +57,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.logout().logoutSuccessUrl("/"); // URL to navigate to when logging out
 
 		// Disable CSRF at the moment
-		http.csrf().disable();
+		//http.csrf().disable();
 
 		// Allow H2 console
 		http.authorizeRequests().antMatchers("/h2-console/**").permitAll();

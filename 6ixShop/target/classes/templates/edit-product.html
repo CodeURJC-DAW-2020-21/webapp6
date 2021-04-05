@@ -65,9 +65,11 @@
                     </div>
                 </div>
             </div>
+            <input type="hidden" name="_csrf" value="{{token}}"/>
           </form>
           <form class = "text-center" action="/delete-product/{{product.idProduct}}" method="post" novalidate="novalidate">
               <button type="submit" value="submit" class="btn_3" style = "background-color: crimson; color:rgb(255, 255, 255);border:lightcoral">Delete Product</button>
+          	  <input type="hidden" name="_csrf" value="{{token}}"/>
           </form>
         </div>
 
