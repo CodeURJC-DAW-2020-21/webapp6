@@ -76,22 +76,19 @@ Updated in Phase 2.
 
    * **Profile**: Registered user profile with their name, picture, products, and a navigation bar to view their statistics, orders,...
    
-   <img width="1440" alt="profile" src="https://user-images.githubusercontent.com/55685000/109400105-08ab1200-7947-11eb-8999-d69afe518e8b.png">
+   <img width="1440" alt="profile" src="https://user-images.githubusercontent.com/55685000/113614654-14c77500-9653-11eb-8b50-2b57d8ede0d1.png">
 
    * **Single Product**: The product with its pictures and description.
    
    <img width="1440" alt="singleproduct" src="https://user-images.githubusercontent.com/55685000/109400111-12cd1080-7947-11eb-8922-ca511fcb690e.png">
 
-   * **Product editor**: The product with its pictures and description, and two buttons for editing and removing.   
-   ![productDetail](https://user-images.githubusercontent.com/55685000/109400198-9ab31a80-7947-11eb-8489-c477c9797e01.png)
+   * **Product editor**: The product with its pictures and description, and two buttons for editing and removing. 
+   <img width="1187" alt="productDetail" src="https://user-images.githubusercontent.com/55685000/113614816-49d3c780-9653-11eb-812b-81c458719740.png">  
+   <img width="1440" alt="editProduct" src="https://user-images.githubusercontent.com/55685000/113614800-404a5f80-9653-11eb-84d8-98f18e89fc26.png">
 
    * **Cart**: Shopping cart with the chosen products and their payment details.
    
    <img width="1440" alt="cart" src="https://user-images.githubusercontent.com/55685000/109400154-5889d900-7947-11eb-8248-e35f47ee1e70.png">
-   
-   * **Checkout**: Login or register options and order payment details.
-   
-   <img width="1440" alt="checkout" src="https://user-images.githubusercontent.com/55685000/109400158-5f185080-7947-11eb-936e-a00251ff289b.png">
 
    * **Sign in**: Register form for new users.
    
@@ -139,26 +136,26 @@ Finally, to open the website in your browser you will have to write this path: h
 
 | Name        | Tasks |  |  |  |  |
 | :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| Sergio Martín Muñoz | Rating | Cart functionality | Delete product | Product rating | Delete products from cart |
+| Sergio Martín Muñoz | Rating | Cart functionality | Delete product | Product rating | Edit product |
 | Alberto Pacho Bernardos | Load more | Rating algorithm | Send email | Check paid orders | Graphic stadistics |
-| Javier Espín Prieto | Graphic stadistics | Spring security | Login and Sign up | Users control | Error page |
+| Javier Espín Prieto | Login and Sign up | Spring security | Graphic stadistics | Users control | Error page |
 | Celia Sanjuán Sánchez | Edit product | Load products in cart | Create order | Diagrams | ReadMe |
 
 
 
 | Name        | Commits |  |  |  |  |
 | :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| Sergio Martín Muñoz | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/e4dd8414bdc9375dc4ab289f8860333bde4aa90e) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/888b145256990e558f6cfe8ccf202e0701550725) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/1fd499da40b9990b9238bd3814b9b3001e8d8dd3) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/a7cdaa78e048b347534da81bc5eaee7822d3fda7) | [Commit5]( |
-| Alberto Pacho Bernardos | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7cd093eb5fb60d2ffeebafcb66599288b640a093) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7cd093eb5fb60d2ffeebafcb66599288b640a093) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/3bc4159059a21160602e3bb3c98bb8e2317d0e81) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/4a1b49ca50aeec00bf1e20aa9a3a529e9d820e02) | [Commit5](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/d30d7424cf144c2c2c55907483986329b6d89ee7) |
-| Javier Espín Prieto | [Commit1]( | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/13f5ed40927199721b8e6bb27f75736e5f088583) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/a8d4f18bbe0da63d0959e8e8a52d7836ae4b0501) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/a8d4f18bbe0da63d0959e8e8a52d7836ae4b0501) | [Commit5]( |
-| Celia Sanjuán Sánchez | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7f992e853d8e084b00f9a9aebd5a7e3860496074) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7f992e853d8e084b00f9a9aebd5a7e3860496074) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7f992e853d8e084b00f9a9aebd5a7e3860496074) | [Commit4]( | [Commit5]( |
+| Sergio Martín Muñoz | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/e4dd8414bdc9375dc4ab289f8860333bde4aa90e) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/888b145256990e558f6cfe8ccf202e0701550725) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/1fd499da40b9990b9238bd3814b9b3001e8d8dd3) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/a7cdaa78e048b347534da81bc5eaee7822d3fda7) | [Commit5](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7f992e853d8e084b00f9a9aebd5a7e3860496074) |
+| Alberto Pacho Bernardos | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7cd093eb5fb60d2ffeebafcb66599288b640a093) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7cd093eb5fb60d2ffeebafcb66599288b640a093) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/3bc4159059a21160602e3bb3c98bb8e2317d0e81) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/4a1b49ca50aeec00bf1e20aa9a3a529e9d820e02) | [Commit5](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/dd6de434f87a15aa9cc6d9e85793fd5f1d2a8dcd) |
+| Javier Espín Prieto | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/a8d4f18bbe0da63d0959e8e8a52d7836ae4b0501) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/13f5ed40927199721b8e6bb27f75736e5f088583) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/dd6de434f87a15aa9cc6d9e85793fd5f1d2a8dcd) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/a8d4f18bbe0da63d0959e8e8a52d7836ae4b0501) | [Commit5](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/a8d4f18bbe0da63d0959e8e8a52d7836ae4b0501) |
+| Celia Sanjuán Sánchez | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7f992e853d8e084b00f9a9aebd5a7e3860496074) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7f992e853d8e084b00f9a9aebd5a7e3860496074) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7f992e853d8e084b00f9a9aebd5a7e3860496074) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/6bd9e048a8ac8e596a731dcef2d12fd23fc41f3f) | [Commit5](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/26f557cbe9611a5d633648d9cd9a7014037c45b9) |
 
 
 
 | Name        | Files |  |  |  |  |
 | :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 | Sergio Martín Muñoz | [ProductController.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/controller/ProductController.java) | [Product.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/model/Product.java) | [CartController.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/controller/CartController.java) | [User.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/model/User.java) | [single-product.html](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/resources/templates/single-product.html) |
-| Alberto Pacho Bernardos | es.sixshop.controller.* | es.sixshop.model.* | es.sixshop.repository.* | es.sixshop.security.* | es.sixshop.service.* |
+| Alberto Pacho Bernardos | [es.sixshop.controller.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/6ixShop/src/main/java/es/sixshop/controller) | [es.sixshop.model.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/6ixShop/src/main/java/es/sixshop/model) | [es.sixshop.repository.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/6ixShop/src/main/java/es/sixshop/repository) | [es.sixshop.security.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/6ixShop/src/main/java/es/sixshop/security) | [es.sixshop.service.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/6ixShop/src/main/java/es/sixshop/service) |
 | Javier Espín Prieto | []( | []( | []( | []( | []( |
 | Celia Sanjuán Sánchez | [ProductController.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/controller/ProductController.java) | [Product.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/model/Product.java) | [Request.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/model/Request.java) | [CartController.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/controller/CartController.java) | [ReadMe](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/dev/README.md) |
 
