@@ -63,8 +63,7 @@
 
 ## PHASE 1:
 ### **Navigation diagram:**
-
-![navigationDiagram](https://user-images.githubusercontent.com/55685000/109399923-0e542800-7946-11eb-9666-52f7a160ebf1.png)
+Updated in Phase 2.
 
 ### **Screenshots:**
    * **Home**: Homepage of the website which shows a navigation menu and products of the shopping site as you slide down.
@@ -126,15 +125,14 @@ Once we have both, enter to the environment and proceed to download:
 Select the proyect with right click and click on *Run as Spring Boot App*.
 Finally, to open the website in your browser you will have to write this path: https://localhost:8443
 
+### **Navigation diagram (updated):**
+![navigationDiagram](https://user-images.githubusercontent.com/55685000/113612324-f8760900-964f-11eb-804b-c3ccd0024235.png)
 
 ### **Database entities diagram:**
-
+![DiagramaBD](https://user-images.githubusercontent.com/55685000/113612452-29563e00-9650-11eb-89a7-dc82e4b5c224.jpeg)
 
 ### **Templates and classes diagram:**
-
-
-
-
+![diagramaClasesTemplates](https://user-images.githubusercontent.com/55685000/113612485-307d4c00-9650-11eb-881e-72ddc6b2434e.png)
 
 ### **Member participation🙌🏻:**
 
