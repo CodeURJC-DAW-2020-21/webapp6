@@ -142,7 +142,7 @@ Finally, to open the website in your browser you will have to write this path: h
 | Name        | Tasks |  |  |  |  |
 | :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 | Sergio Martín Muñoz | Rating | Cart functionality | Delete product | Product rating | Delete products from cart |
-| Alberto Pacho Bernardos | Load more | Rating algorithm | Send email | Check paid orders | Reorder changes |
+| Alberto Pacho Bernardos | Load more | Rating algorithm | Send email | Check paid orders | Graphic stadistics |
 | Javier Espín Prieto | Graphic stadistics | Spring security | Login and Sign up | Users control | Error page |
 | Celia Sanjuán Sánchez | Edit product | Load products in cart | Create order | Diagrams | ReadMe |
 
@@ -160,7 +160,7 @@ Finally, to open the website in your browser you will have to write this path: h
 | Name        | Files |  |  |  |  |
 | :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 | Sergio Martín Muñoz | [ProductController.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/controller/ProductController.java) | [Product.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/model/Product.java) | [CartController.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/controller/CartController.java) | [User.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/model/User.java) | [single-product.html](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/resources/templates/single-product.html) |
-| Alberto Pacho Bernardos | []( | []( | []( | []( | []( |
+| Alberto Pacho Bernardos | [es.sixshop.controller.*] | [es.sixshop.model.*] | [es.sixshop.repository.*] | [es.sixshop.security.*] | [es.sixshop.service.*] |
 | Javier Espín Prieto | []( | []( | []( | []( | []( |
 | Celia Sanjuán Sánchez | [ProductController.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/controller/ProductController.java) | [Product.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/model/Product.java) | [Request.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/model/Request.java) | [CartController.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/orderDatabase/6ixShop/src/main/java/es/sixshop/controller/CartController.java) | [ReadMe](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/dev/README.md) |
 
