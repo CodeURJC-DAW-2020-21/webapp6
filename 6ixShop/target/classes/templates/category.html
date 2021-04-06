@@ -1,0 +1,141 @@
+    {{>header}}
+
+    <main>
+
+        <!-- slider Area Start-->
+        <div class="slider-area ">
+            <!-- Mobile Menu -->
+            <div class="single-slider slider-height2 d-flex align-items-center" data-background="/img/imagenes/category/banner.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap text-center">
+                                <h2 style="color:aliceblue">{{categoryName}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- slider Area End-->
+
+        <!-- Latest Products Start -->
+        <section class="latest-product-area latest-padding">
+            <div class="container">
+                <div class="row product-btn d-flex justify-content-between">
+                        <div class="properties__button">
+                            <!--Nav Button  -->
+                            <nav>                                                                                                
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All products</a>
+                                </div>
+                            </nav>
+                            <!--End Nav Button  -->
+                        </div>
+                </div>
+                <!-- Nav Card -->
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="row" id="moreProductsCategory">
+                        	{{#productsCategory}}
+                            <a href = "/single-product/{{idProduct}}">
+								<div class="col-xl-4 col-lg-4 col-md-6">
+									<div class="single-product mb-60">
+										<div class="product-img">
+											<img src="/{{idProduct}}/image" alt={{productName}}>
+											<div class="new-product">
+												<span>{{category}}</span>
+											</div>
+										</div>
+										<div class="product-caption">
+											<div id ="demoAll{{idProduct}}" class="product-ratting"></div>
+											<script>
+												var x="";
+												var i = 0;
+												while(i<5){
+													if(i<"{{rating}}"){
+														x = x + '<i class="far fa-star"></i>\n';
+													}else{
+														x = x + '<i class="far fa-star low-star"></i>\n';
+													}
+													i = i +1;      
+												}
+												document.getElementById("demoAll{{idProduct}}").innerHTML = x
+											</script>
+											<h4><a href="#">{{productName}}</a></h4>
+											<div class="price">
+												<ul>
+													<li>${{price}}</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</a>
+                            {{/productsCategory}}
+                            {{^productsCategory}}
+                            <h4>No products yet.</h4>
+                            {{/productsCategory}}
+                        </div>
+                        <div id="loadingCategory" class="nav-item nav-link active" style="color:blue"></div>
+                        <button type="button" id="bLoadMoreCategory" class="btn header-btn">Load More</button>
+                        <script type="text/javascript">
+					    	var pageAll=0;
+					    	var totalPageAll={{totalPageAll}}
+					    	
+					    	if(totalPageAll<1){
+					        	document.getElementById('bLoadMoreCategory').style.display='none';
+					        }
+					    	
+					        $('#bLoadMoreCategory').click(function(){
+					        	var waitTime=1000;
+					            pageAll++;
+					            $.ajax({
+					            	url:"loadMoreCategories/{{category}}?page="+pageAll,
+					            	
+					            	beforeSend:function(){
+				                        $('#loadingCategory').text('Loading...');
+				                    },
+					                   
+					                success:function(data){
+					                	setTimeout(function(){
+					                		$('#loadingCategory').text(''),
+					                    	$('#moreProductsCategory').append(data);
+					                    	if(pageAll>=totalPageAll){
+					                    		document.getElementById('bLoadMoreCategory').style.display='none';
+					                    	}
+					                    },waitTime);
+					                }
+					            });
+					       });
+					    </script>
+                    </div>
+                <!-- End Nav Card -->
+            </div>
+        </section>
+        <!-- Latest Products End -->
+
+        <!-- Shop Method Start-->
+        <div class="shop-method-area section-padding20">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="single-method mb-40">
+                            <i class="ti-package"></i>
+                            <h6>Reliable shipping method</h6>
+                            <p>Don't worry about going anywhere. We send the order to your home.</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="single-method mb-40">
+                            <i class="ti-unlock"></i>
+                            <h6>Secure payment system</h6>
+                            <p>Until the product is received and verified, you can claim your money.</p>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <!-- Shop Method End-->
+    </main>
+
+    {{>footer}}
