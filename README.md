@@ -130,7 +130,7 @@ Finally, to open the website in your browser you will have to write this path: h
 ![DiagramaBD](https://user-images.githubusercontent.com/55685000/113612452-29563e00-9650-11eb-89a7-dc82e4b5c224.jpeg)
 
 ### **Templates and classes diagram:**
-![diagramaClasesTemplates](https://user-images.githubusercontent.com/55685000/113612485-307d4c00-9650-11eb-881e-72ddc6b2434e.png)
+![diagramaClasesTemplates](https://user-images.githubusercontent.com/55685000/113672670-55a5a500-96b8-11eb-86a4-4fc27098175e.png)
 
 ### **Member participation🙌🏻:**
 
