@@ -10,25 +10,38 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Product {
+	public interface Basico{}
+	public interface Users{}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Basico.class)
 	private Long idProduct = null;
 	
 	@ManyToOne
+	@JsonView(Users.class)
 	private User user;
 	
+	@JsonView(Basico.class)
 	private String productName;
+	@JsonView(Basico.class)
 	private String description;
+	@JsonView(Basico.class)
 	private String category;
+	@JsonView(Basico.class)
 	private int price;
+	@JsonView(Basico.class)
 	private int rating;
 	
 	@Lob
 	@JsonIgnore
+	@JsonView(Basico.class)
 	private Blob imageFile;
+	@JsonView(Basico.class)
 	private boolean image;
 	
 	

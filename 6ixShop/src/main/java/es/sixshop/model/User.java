@@ -13,29 +13,45 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class User {
+	public interface Basico{}
+	public interface Products{}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Basico.class)
 	private Long idUser = null;
 	
 	@ElementCollection(fetch = FetchType.EAGER)
+	@JsonView(Basico.class)
 	private List<String> roles;
 	
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="user")
+	@JsonView(Products.class)
 	private List<Product> lProducts;
 	
 	@OneToMany
+	@JsonIgnore ////////////
 	private List<Product> lCart;
 	
 	@OneToMany(mappedBy="buyerUser")
+	@JsonIgnore ////////////
 	private List<Request> lRequest;
 	
 	@Column(unique = true)
+	@JsonView(Basico.class)
 	private String nickname;
+	@JsonView(Basico.class)
 	private String encodedPassword;
+	@JsonView(Basico.class)
 	private String mail;
+	@JsonView(Basico.class)
 	private int phonenumber;
+	@JsonView(Basico.class)
 	private String image;
 
 	// Constructor necessary for loading from DB

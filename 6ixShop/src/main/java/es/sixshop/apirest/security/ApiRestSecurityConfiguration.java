@@ -1,4 +1,4 @@
-package es.sixshop.security;
+package es.sixshop.apirest.security;
 
 import java.security.SecureRandom;
 
@@ -12,10 +12,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class ApiRestSecurityConfiguration /*extends WebSecurityConfigurerAdapter */{
 
+	/*
 	@Autowired
-	RepositoryUserDetailsService userDetailsService;
+	ApiRestRepositoryUserDetailsService userDetailsService;
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -63,5 +64,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/h2-console/**").permitAll();
 		http.headers().frameOptions().sameOrigin();
 
-	}
+	}*/
 }
