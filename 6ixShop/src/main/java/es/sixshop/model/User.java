@@ -18,16 +18,16 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class User {
-	public interface Basico{}
+	public interface Basic{}
 	public interface Products{}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@JsonView(Basico.class)
+	@JsonView(Basic.class)
 	private Long idUser = null;
 	
 	@ElementCollection(fetch = FetchType.EAGER)
-	@JsonView(Basico.class)
+	@JsonView(Basic.class)
 	private List<String> roles;
 	
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="user")
@@ -43,15 +43,15 @@ public class User {
 	private List<Request> lRequest;
 	
 	@Column(unique = true)
-	@JsonView(Basico.class)
+	@JsonView(Basic.class)
 	private String nickname;
-	@JsonView(Basico.class)
+	@JsonView(Basic.class)
 	private String encodedPassword;
-	@JsonView(Basico.class)
+	@JsonView(Basic.class)
 	private String mail;
-	@JsonView(Basico.class)
+	@JsonView(Basic.class)
 	private int phonenumber;
-	@JsonView(Basico.class)
+	@JsonView(Basic.class)
 	private String image;
 
 	// Constructor necessary for loading from DB

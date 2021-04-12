@@ -10,14 +10,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import es.sixshop.Application;
 import es.sixshop.model.Product;
 import es.sixshop.model.User;
 import es.sixshop.repository.ProductRepository;
 
 @Service
-public class ProductService {
-	private int SIZE_PAGE = 10;
-	
+public class ProductService {	
 	@Autowired
 	private ProductRepository productR;
 	
@@ -42,7 +41,7 @@ public class ProductService {
 	}
 	
 	public Page<Product> findBycategory(String category, Pageable pageable){
-		return productR.findBycategory(category, PageRequest.of(pageable.getPageNumber(),SIZE_PAGE));
+		return productR.findBycategory(category, PageRequest.of(pageable.getPageNumber(),Application.SIZE_PAGE));
 	}
 	
 	public Collection<Product> findByUser(User user){
@@ -50,11 +49,11 @@ public class ProductService {
 	}
 	
 	public Page<Product> findAll(Pageable pageable) {
-		return productR.findAll(PageRequest.of(pageable.getPageNumber(),SIZE_PAGE));
+		return productR.findAll(PageRequest.of(pageable.getPageNumber(),Application.SIZE_PAGE));
 	} 
 	
 	public Page<Product> findByRating(Pageable pageable){
-		return productR.findByRating(PageRequest.of(pageable.getPageNumber(),SIZE_PAGE));
+		return productR.findByRating(PageRequest.of(pageable.getPageNumber(),Application.SIZE_PAGE));
 	}
 	
 	public Product findByIdProduct(Long idProduct){

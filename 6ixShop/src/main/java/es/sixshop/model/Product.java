@@ -14,34 +14,34 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Product {
-	public interface Basico{}
+	public interface Basic{}
 	public interface Users{}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@JsonView(Basico.class)
+	@JsonView(Basic.class)
 	private Long idProduct = null;
 	
 	@ManyToOne
 	@JsonView(Users.class)
 	private User user;
 	
-	@JsonView(Basico.class)
+	@JsonView(Basic.class)
 	private String productName;
-	@JsonView(Basico.class)
+	@JsonView(Basic.class)
 	private String description;
-	@JsonView(Basico.class)
+	@JsonView(Basic.class)
 	private String category;
-	@JsonView(Basico.class)
+	@JsonView(Basic.class)
 	private int price;
-	@JsonView(Basico.class)
+	@JsonView(Basic.class)
 	private int rating;
 	
 	@Lob
 	@JsonIgnore
-	@JsonView(Basico.class)
+	@JsonView(Basic.class)
 	private Blob imageFile;
-	@JsonView(Basico.class)
+	@JsonView(Basic.class)
 	private boolean image;
 	
 	

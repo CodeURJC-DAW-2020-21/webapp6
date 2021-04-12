@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import es.sixshop.apirest.detail.UserDetail;
+import es.sixshop.apirest.detail.UserAPIDetail;
 import es.sixshop.model.User;
 import es.sixshop.service.UserService;
 
@@ -18,7 +18,7 @@ public class UserRestController {
 	@Autowired
 	private UserService userS;
 	
-	@JsonView(UserDetail.class)
+	@JsonView(UserAPIDetail.class)
 	@GetMapping("/api/users/")
 	public Collection<User> getUsers(){
 		return userS.findAll();

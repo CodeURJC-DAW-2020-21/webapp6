@@ -22,6 +22,7 @@ import es.sixshop.service.EmailService;
 import es.sixshop.service.ProductService;
 import es.sixshop.service.RequestDetailService;
 import es.sixshop.service.RequestService;
+import es.sixshop.service.UserService;
 import es.sixshop.model.Product;
 import es.sixshop.model.Request;
 import es.sixshop.model.RequestDetail;
@@ -31,7 +32,7 @@ import es.sixshop.repository.UserRepository;
 @Controller
 public class ProfileController {	
 	@Autowired
-	private UserRepository userR;
+	private UserService userS;
 	
 	@Autowired
 	private ProductService productS;
@@ -53,7 +54,7 @@ public class ProfileController {
 		
 		//User data
 		String nickname = request.getUserPrincipal().getName();
-		User user = userR.findByNickname(nickname).orElseThrow();
+		User user = userS.findByNickname(nickname).orElseThrow();
 		
 		model.addAttribute("user",user);
 		model.addAttribute("nickname",user.getNickname());
@@ -106,7 +107,7 @@ public class ProfileController {
 	@PostMapping("/profile")
     public String newProduct(HttpServletRequest request, Model model, Product product, MultipartFile imageField) throws IOException {
 		String nickname = request.getUserPrincipal().getName();
-        User user = userR.findByNickname(nickname).orElseThrow();
+        User user = userS.findByNickname(nickname).orElseThrow();
     	
 		if (!imageField.isEmpty()) {
 			product.setImageFile(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
@@ -127,7 +128,7 @@ public class ProfileController {
 	public String rateProduct(Model model, HttpServletRequest request, @PathVariable long idRequestDetail, @PathVariable long idProduct, @PathVariable int rating) {
 		//User data
 		String nickname = request.getUserPrincipal().getName();
-		User user = userR.findByNickname(nickname).orElseThrow();
+		User user = userS.findByNickname(nickname).orElseThrow();
 		
 		model.addAttribute("user",user);
 		model.addAttribute("nickname",user.getNickname());
