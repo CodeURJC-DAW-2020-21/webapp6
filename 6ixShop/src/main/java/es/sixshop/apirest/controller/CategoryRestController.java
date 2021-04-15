@@ -23,9 +23,6 @@ public class CategoryRestController {
 	@Autowired
 	private ProductService productS;
 	
-	@Autowired
-	private UserService userS;
-	
 	@JsonView(ProductAPIDetail.class)
 	@GetMapping("/api/categories/{category}") //GET CATEGORY
 	public Collection<Product> getProductsCategory(@RequestParam(defaultValue=Application.DEFAULT_PAGE) int page, @PathVariable String category){
