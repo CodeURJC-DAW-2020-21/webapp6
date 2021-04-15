@@ -30,4 +30,12 @@ public class CategoryRestController {
 		
 		return productsCategory.getContent();
 	}
+	
+	@JsonView(ProductAPIDetail.class)
+	@GetMapping("/api/categories/") //GET CATEGORY (PARAMETERS)
+	public Collection<Product> getProductsCategoryParameters(@RequestParam(defaultValue=Application.DEFAULT_PAGE) int page, @RequestParam String category){
+		Page<Product> productsCategory = productS.findBycategory(category, PageRequest.of(page, Application.SIZE_PAGE));
+		
+		return productsCategory.getContent();
+	}
 }
