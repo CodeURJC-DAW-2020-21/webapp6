@@ -14,23 +14,34 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Request{
+	public interface Basic{}
+	public interface RequestDetails{}
+	public interface Users{}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Basic.class)
 	private Long idRequest = null;
 	
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	@JsonView(RequestDetails.class)
 	private List<RequestDetail> lRequestDetail;
 	
 	@ManyToOne
+	@JsonView(Users.class)
 	private User buyerUser;
 	
+	@JsonView(Basic.class)
 	private Date date;
+	@JsonView(Basic.class)
 	private String status;
 	
 	@JsonIgnore
+	@JsonView(Basic.class)
 	private int totalPrice;
 	
 	// Constructor necessary for loading from DB

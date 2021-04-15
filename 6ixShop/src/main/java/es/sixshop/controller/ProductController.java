@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import es.sixshop.model.Product;
 import es.sixshop.model.User;
-import es.sixshop.repository.UserRepository;
 import es.sixshop.service.ProductService;
+import es.sixshop.service.UserService;
 
 @Controller
 public class ProductController {
@@ -35,7 +35,7 @@ public class ProductController {
 	private ProductService productS;
 	
 	@Autowired
-	private UserRepository userR;
+	private UserService userS;
 	
 	
 	@GetMapping("/")
@@ -43,7 +43,7 @@ public class ProductController {
 		// Check if there is a session started to change the Header
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
+            User user = userS.findByNickname(nickname).orElseThrow();
 
             model.addAttribute("user",user);
             model.addAttribute("nickname",user.getNickname());
@@ -91,7 +91,7 @@ public class ProductController {
 		// Check if there is a session started to change the Header
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
+            User user = userS.findByNickname(nickname).orElseThrow();
 
             model.addAttribute("user",user);
             model.addAttribute("nickname",user.getNickname());
@@ -109,7 +109,7 @@ public class ProductController {
 		// Check if there is a session started to change the Header
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
+            User user = userS.findByNickname(nickname).orElseThrow();
 
             model.addAttribute("user",user);
             model.addAttribute("nickname",user.getNickname());
@@ -133,7 +133,7 @@ public class ProductController {
 		
 		if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
+            User user = userS.findByNickname(nickname).orElseThrow();
             
             Product original = productS.findById(product.getIdProduct()).orElseThrow();
             long idUsuarioProduct = original.getUser().getIdUser();

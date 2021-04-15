@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import es.sixshop.model.Product;
 import es.sixshop.model.User;
-import es.sixshop.repository.UserRepository;
 import es.sixshop.service.ProductService;
+import es.sixshop.service.UserService;
 
 @Controller
 public class CategoryController {
@@ -25,14 +25,14 @@ public class CategoryController {
 	private ProductService productS;
 	
 	@Autowired
-	private UserRepository userR;
+	private UserService userS;
 	
 	@GetMapping("/category/{category}")
 	public String showCategory(Model model, HttpSession session, HttpServletRequest request, Pageable pageable, @PathVariable String category){
 		// Check if there is a session started to change the Header
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
+            User user = userS.findByNickname(nickname).orElseThrow();
 
             model.addAttribute("user",user);
             model.addAttribute("nickname",user.getNickname());

@@ -35,4 +35,8 @@ public class UserService {
 		userR.findById(updatedUser.getIdUser()).orElseThrow();
 		userR.save(updatedUser);	
 	}
+	
+	public Optional<User> findByNickname(String name){
+		return userR.findByNickname(name);
+	}
 }
