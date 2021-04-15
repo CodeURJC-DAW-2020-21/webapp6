@@ -9,4 +9,5 @@ import es.sixshop.model.User;
 
 public interface RequestRepository extends JpaRepository<Request, Long>{
 	Collection<Request> findByBuyerUserAndStatus(User user, String status);
+	long findByIdRequestAndStatus(User user, String status);
 }

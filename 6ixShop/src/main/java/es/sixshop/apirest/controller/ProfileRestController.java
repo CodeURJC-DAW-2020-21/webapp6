@@ -3,6 +3,7 @@ package es.sixshop.apirest.controller;
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 import java.net.URI;
+import java.security.Principal;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,23 +46,35 @@ public class ProfileRestController {
 	@Autowired
 	private RequestDetailService requestDetailS;
 	
+	@JsonView(ProductAPIDetail.class)
 	@PostMapping("/api/products/") //NEW PRODUCT
-	public ResponseEntity<Product> createProduct(@RequestBody Product product){
-		productS.save(product);
-		
-		URI location = fromCurrentRequest().path("/{idProduct}").buildAndExpand(product.getIdProduct()).toUri();
-		
-		return ResponseEntity.created(location).body(product);
+	public ResponseEntity<Product> createProduct(HttpServletRequest request, @RequestBody Product product){
+		// Check if there is a session started to change the Header
+        if(((Principal)request.getUserPrincipal())!=null) {
+			String nickname = request.getUserPrincipal().getName();
+	        User user = userS.findByNickname(nickname).orElseThrow();
+			
+	        product.setUser(user);
+			productS.save(product);
+			
+			//emailS.sendEmail("sixshop.sixshop@gmail.com", "¡Has subido un producto con éxito!", "Creaste el producto "+product.getProductName()+" por " +product.getPrice()+ " $");
+			
+			URI location = fromCurrentRequest().path("/{idProduct}").buildAndExpand(product.getIdProduct()).toUri();
+			
+			return ResponseEntity.created(location).body(product);
+        } else {
+        	return ResponseEntity.notFound().build();
+        }
 	}
 	
 	//@JsonView(ProductAPIDetail.class)
-	@GetMapping("/api/profile/sales") //ALL SOLD PRODUCTS
+	@GetMapping("/api/profiles/sales") //ALL SOLD PRODUCTS
 	public Collection<Integer> getSoldProducts(){
 		return null;
 	}
 	
 	@JsonView(RequestAPIDetail.class)
-	@GetMapping("/api/profile/shopping") //ALL BOUGHT PRODUCTS
+	@GetMapping("/api/profiles/shopping") //ALL BOUGHT PRODUCTS
 	public Collection<Request> getBoughtroducts(HttpServletRequest request){
 		int totalPrice = 0;
 		

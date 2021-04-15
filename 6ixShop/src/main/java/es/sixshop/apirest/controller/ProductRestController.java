@@ -2,6 +2,8 @@ package es.sixshop.apirest.controller;
 
 import java.util.Collection;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,10 +21,15 @@ import com.fasterxml.jackson.annotation.JsonView;
 import es.sixshop.Application;
 import es.sixshop.apirest.detail.ProductAPIDetail;
 import es.sixshop.model.Product;
+import es.sixshop.model.User;
 import es.sixshop.service.ProductService;
+import es.sixshop.service.UserService;
 
 @RestController
 public class ProductRestController {
+	
+	@Autowired
+	private UserService userS;
 	
 	@Autowired
 	private ProductService productS;
@@ -70,9 +77,12 @@ public class ProductRestController {
 		}
 	}
 	
+	@JsonView(ProductAPIDetail.class)
 	@DeleteMapping("/api/products/{idProduct}") //DELETE PRODUCT
-	public ResponseEntity<Product> deleteProduct(@PathVariable long idProduct){
+	public ResponseEntity<Product> deleteProduct(HttpServletRequest request, @PathVariable long idProduct){
 		// ************** COMPROBAR USUARIO **************
+		String nickname = request.getUserPrincipal().getName();
+        User user = userS.findByNickname(nickname).orElseThrow();
 		
 		Product product = productS.findByIdProduct(idProduct);
 		

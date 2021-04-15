@@ -7,7 +7,7 @@ import es.sixshop.model.Product;
 
 public interface RequestAPIDetail 
 	extends Request.Basic, Request.RequestDetails, Request.Users,
-		RequestDetail.Basic,
+		RequestDetail.Basic, RequestDetail.Products,
 		User.Basic,
 		Product.Basic{
 }
