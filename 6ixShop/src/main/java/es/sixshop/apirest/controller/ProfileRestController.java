@@ -60,7 +60,7 @@ public class ProfileRestController {
 	private EmailService emailS;
 	
 	@JsonView(UserAPIDetail.class)
-	@GetMapping("/api/profiles/sales") //USER DATA AND PRODUCTS PROFILE
+	@GetMapping("/api/profiles/") //USER DATA AND PRODUCTS PROFILE
 	public User getUserData(HttpServletRequest request){
 		String nickname = request.getUserPrincipal().getName();
 		User user = userS.findByNickname(nickname).orElseThrow();
@@ -90,13 +90,13 @@ public class ProfileRestController {
 	}
 	
 	@GetMapping("/api/profiles/sales") //ALL SOLD PRODUCTS (GRAPHIC)
-	public ResponseEntity<Map<String,Object>> getSoldProducts(HttpServletRequest request){
+	public ResponseEntity<Map<String,Integer>> getSoldProducts(HttpServletRequest request){
 		Date month1,month2;
 		
 		String nickname = request.getUserPrincipal().getName();
         User user = userS.findByNickname(nickname).orElseThrow();
 		
-        Map<String,Object> response = new HashMap<>();
+        Map<String,Integer> response = new HashMap<>();
 		List<Integer> lSales = new ArrayList<Integer>();
 		for(int x=1;x<=12;x++) {
 			LocalDate initial = LocalDate.of(2021, x, 1);
