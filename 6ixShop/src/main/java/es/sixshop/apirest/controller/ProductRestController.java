@@ -63,34 +63,38 @@ public class ProductRestController {
 	}
 	
 	@PutMapping("/api/products/{idProduct}") //EDIT PRODUCT
-	public ResponseEntity<Product> replaceProduct(@PathVariable long idProduct, @RequestBody Product newProduct){
-		// ************** COMPROBAR USUARIO **************
-		
-		Product product = productS.findByIdProduct(idProduct);
-		
-		if(product!=null) {
-			newProduct.setIdProduct(idProduct);
-			productS.save(newProduct);
-			return ResponseEntity.ok(product);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+	public ResponseEntity<Product> replaceProduct(HttpServletRequest request, @PathVariable long idProduct, @RequestBody Product newProduct){
+		String nickname = request.getUserPrincipal().getName();
+        User user = userS.findByNickname(nickname).orElseThrow();
+        
+        Product product = productS.findByIdProduct(idProduct);
+        
+        if (product!=null) {
+        	if(user.getIdUser()==product.getUser().getIdUser()) {
+        		newProduct.setIdProduct(idProduct);
+    			productS.save(newProduct);
+    			return ResponseEntity.ok(product);
+            }
+        }
+        
+        return ResponseEntity.notFound().build();
 	}
 	
 	@JsonView(ProductAPIDetail.class)
 	@DeleteMapping("/api/products/{idProduct}") //DELETE PRODUCT
 	public ResponseEntity<Product> deleteProduct(HttpServletRequest request, @PathVariable long idProduct){
-		// ************** COMPROBAR USUARIO **************
 		String nickname = request.getUserPrincipal().getName();
         User user = userS.findByNickname(nickname).orElseThrow();
 		
 		Product product = productS.findByIdProduct(idProduct);
 		
 		if (product!=null) {
-			productS.delete(idProduct);
-			return ResponseEntity.ok(product);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+        	if(user.getIdUser()==product.getUser().getIdUser()) {
+        		productS.delete(idProduct);
+    			return ResponseEntity.ok(product);
+            }
+        }
+		
+		return ResponseEntity.notFound().build();
 	}
 }

@@ -81,16 +81,16 @@ public class CartRestController {
 		String nickname = request.getUserPrincipal().getName();
         User user = userS.findByNickname(nickname).orElseThrow();
         
-        Product prod = productS.findById(idProduct).orElseThrow();
-        if(prod!=null) {
+        Product product = productS.findById(idProduct).orElseThrow();
+        if(product!=null && user.getIdUser()!=product.getUser().getIdUser()) {
 	        Request objRequest = requestS.findByBuyerUserAndStatus(user, "Cart");
-	        RequestDetail requestDetail = new RequestDetail(objRequest,prod,prod.getPrice());
+	        RequestDetail requestDetail = new RequestDetail(objRequest,product,product.getPrice());
 	        objRequest.setRequestDetail(requestDetail);
 	        
 	        requestDetailS.save(requestDetail);
 	        requestS.save(objRequest);
 			
-	        return ResponseEntity.ok(prod);
+	        return ResponseEntity.ok(product);
         } else {
         	return ResponseEntity.notFound().build();
         }
