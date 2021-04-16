@@ -164,5 +164,46 @@ Finally, to open the website in your browser you will have to write this path: h
 
 ## PHASE 3
 
+### **API REST Documentation:**
+   + OpenAPI (apidocs.yaml)
+   + Documentation (api-docs.html)
+
+### **Templates and classes diagram (updated):**
+
+
+### **Instructions for executing the dockerized app:**
+
+
+### **Docker image documentation:**
+
+
+### **Member participation🙌🏻:**
+
+
+| Name        | Tasks |  |  |  |  |
+| :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| Sergio Martín Muñoz | Dockerfile | Docker-compose | Script de bash | Docker instructions | Diagram |
+| Alberto Pacho Bernardos |  |  |  |  |  |
+| Javier Espín Prieto |  |  |  |  |  |
+| Celia Sanjuán Sánchez | Dockerfile | Docker-compose | Script de bash | Diagram & Docker instructions | ReadMe |
+
+
+
+| Name        | Commits |  |  |  |  |
+| :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| Sergio Martín Muñoz | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/08568bdff2aa092a6db9f5f7c2da860939492b58) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/08568bdff2aa092a6db9f5f7c2da860939492b58) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/08568bdff2aa092a6db9f5f7c2da860939492b58) | [Commit4]() | [Commit5]() |
+| Alberto Pacho Bernardos | [Commit1]() | [Commit2]() | [Commit3]() | [Commit4]() | [Commit5]() |
+| Javier Espín Prieto | [Commit1]() | [Commit2]() | [Commit3]() | [Commit4]() | [Commit5]() |
+| Celia Sanjuán Sánchez | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/08568bdff2aa092a6db9f5f7c2da860939492b58) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/08568bdff2aa092a6db9f5f7c2da860939492b58) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/08568bdff2aa092a6db9f5f7c2da860939492b58) | [Commit4]() | [Commit5]() |
+
+
+
+| Name        | Files |  |  |  |  |
+| :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| Sergio Martín Muñoz | [Dockerfile](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/Dockerfile) | [Docker-compose.yml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/docker-compose.yml) | [start.sh](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/start.sh) | [pom.xml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/pom.xml) | [ReadMe]() |
+| Alberto Pacho Bernardos | []() | []() | []() | []() | []() |
+| Javier Espín Prieto | []() | []() | []() | []() | []() |
+| Celia Sanjuán Sánchez | [Dockerfile](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/Dockerfile) | [Docker-compose.yml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/docker-compose.yml) | [start.sh](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/start.sh) | [pom.xml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/pom.xml) | [ReadMe]() |
+
 ## PHASE 4
 
