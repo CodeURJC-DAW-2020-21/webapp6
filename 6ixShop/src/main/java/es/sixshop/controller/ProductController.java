@@ -1,6 +1,8 @@
 package es.sixshop.controller;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Path;
 import java.security.Principal;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import es.sixshop.Application;
 import es.sixshop.model.Product;
 import es.sixshop.model.User;
 import es.sixshop.service.ProductService;
@@ -164,19 +168,24 @@ public class ProductController {
 	}
 	
 	@GetMapping("/{idProduct}/image")
-	public ResponseEntity<Object> downloadImage(@PathVariable long idProduct) throws SQLException {
+	public ResponseEntity<Object> downloadImage(@PathVariable long idProduct) throws SQLException, MalformedURLException {
 
 		Optional<Product> product = productS.findById(idProduct);
-		if (product.isPresent() && product.get().getImageFile() != null) {
+		if (product.isPresent()) {
+			if (product.get().getImageFile() != null) {
+				Resource file = new InputStreamResource(product.get().getImageFile().getBinaryStream());
 
-			Resource file = new InputStreamResource(product.get().getImageFile().getBinaryStream());
-
-			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-					.contentLength(product.get().getImageFile().length()).body(file);
-
-		} else {
-			return ResponseEntity.notFound().build();
+				return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+						.contentLength(product.get().getImageFile().length()).body(file);
+				
+			}/* else if(product.get().getImageURL() != null) {
+				Path imagePath = Application.FILES_FOLDER.resolve(Application.PRODUCTS_FOLDER);
+				Resource image = new UrlResource(imagePath.toUri());
+				return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+						.body(image);
+			} */
 		}
+		return ResponseEntity.notFound().build();
 	}
 }
 
