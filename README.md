@@ -18,9 +18,19 @@
 
 - [PHASE 2](#phase-2)
    + [Instructions](#instructions)
+   + [Navigation diagram (updated)](#navigation-diagram-(updated))
    + [Database entities diagram](#database-entities-diagram)
    + [Templates and classes diagram](#templates-and-classes-diagram)
    + [Member participation](#member-participation)
+
+- [PHASE 3](#phase-3)
+   + [API REST Documentation](#api-rest-documentation)
+   + [Templates and classes diagram (updated)](#templates-and-classes-diagram-(updated))
+   + [Instructions for executing the dockerized app](#instructions-for-executing-the-dockerized-app)
+   + [Docker image documentation](docker-image-documentation)
+   + [Member participation](#member-participation)
+
+- [PHASE 4](#phase-4)
 
 ## PHASE 0
 ### Development team🧑🏻‍💻🧑🏽‍💻🧑🏻‍💻👩🏽‍💻:
@@ -203,7 +213,7 @@ Finally, to open the website in your browser you will have to write this path: h
 | Sergio Martín Muñoz | [Dockerfile](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/Dockerfile) | [Docker-compose.yml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/docker-compose.yml) | [start.sh](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/start.sh) | [pom.xml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/pom.xml) | [ReadMe]() |
 | Alberto Pacho Bernardos | []() | []() | []() | []() | []() |
 | Javier Espín Prieto | []() | []() | []() | []() | []() |
-| Celia Sanjuán Sánchez | [Dockerfile](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/Dockerfile) | [Docker-compose.yml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/docker-compose.yml) | [start.sh](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/start.sh) | [pom.xml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/pom.xml) | [ReadMe]() |
+| Celia Sanjuán Sánchez | [Dockerfile](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/Dockerfile) | [Docker-compose.yml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/docker-compose.yml) | [start.sh](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/start.sh) | [pom.xml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/pom.xml) | [ReadMe](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/dev/README.md) |
 
 ## PHASE 4
 
