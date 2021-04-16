@@ -18,17 +18,17 @@
 
 - [PHASE 2](#phase-2)
    + [Instructions](#instructions)
-   + [Navigation diagram (updated)](#navigation-diagram-(updated))
+   + [Navigation diagram updated](#navigation-diagram-updated)
    + [Database entities diagram](#database-entities-diagram)
    + [Templates and classes diagram](#templates-and-classes-diagram)
-   + [Member participation](#member-participation)
+   + [Member participation Phase 2](#member-participation-phase-2)
 
 - [PHASE 3](#phase-3)
    + [API REST Documentation](#api-rest-documentation)
-   + [Templates and classes diagram (updated)](#templates-and-classes-diagram-(updated))
+   + [Templates and classes diagram updated](#templates-and-classes-diagram-updated)
    + [Instructions for executing the dockerized app](#instructions-for-executing-the-dockerized-app)
-   + [Docker image documentation](docker-image-documentation)
-   + [Member participation](#member-participation)
+   + [Docker image documentation](#docker-image-documentation)
+   + [Member participation Phase 3](#member-participation-phase-3)
 
 - [PHASE 4](#phase-4)
 
@@ -133,7 +133,7 @@ Once we have both, enter to the environment and proceed to download:
 Select the proyect with right click and click on *Run as Spring Boot App*.
 Finally, to open the website in your browser you will have to write this path: https://localhost:8443
 
-### **Navigation diagram (updated):**
+### **Navigation diagram updated:**
 ![navigationDiagram](https://user-images.githubusercontent.com/55685000/113612324-f8760900-964f-11eb-804b-c3ccd0024235.png)
 
 ### **Database entities diagram:**
@@ -142,7 +142,7 @@ Finally, to open the website in your browser you will have to write this path: h
 ### **Templates and classes diagram:**
 ![diagramaClasesTemplates](https://user-images.githubusercontent.com/55685000/113672670-55a5a500-96b8-11eb-86a4-4fc27098175e.png)
 
-### **Member participation🙌🏻:**
+### **Member participation Phase 2🙌🏻:**
 
 
 | Name        | Tasks |  |  |  |  |
@@ -178,7 +178,7 @@ Finally, to open the website in your browser you will have to write this path: h
    + OpenAPI (apidocs.yaml)
    + Documentation (api-docs.html)
 
-### **Templates and classes diagram (updated):**
+### **Templates and classes diagram updated:**
 
 
 ### **Instructions for executing the dockerized app:**
@@ -187,7 +187,7 @@ Finally, to open the website in your browser you will have to write this path: h
 ### **Docker image documentation:**
 
 
-### **Member participation🙌🏻:**
+### **Member participation Phase 3🙌🏻:**
 
 
 | Name        | Tasks |  |  |  |  |
