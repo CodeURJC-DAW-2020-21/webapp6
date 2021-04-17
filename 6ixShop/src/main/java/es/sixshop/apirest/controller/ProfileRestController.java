@@ -18,8 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -82,7 +80,7 @@ public class ProfileRestController {
 	}
 	
 	@JsonView(ProductOwnerAPIDetail.class)
-	@PostMapping("/products/") //NEW PRODUCT
+	@PostMapping("/products") //NEW PRODUCT
 	public ResponseEntity<Product> createProduct(HttpServletRequest request, @RequestBody Product product){
 		String nickname = request.getUserPrincipal().getName();
         User user = userS.findByNickname(nickname).orElseThrow();
@@ -113,26 +111,27 @@ public class ProfileRestController {
 		
 		Product product = productS.findByIdProduct(idProduct);
 
-		if (product!=null && user.getIdUser()==product.getUser().getIdUser()) {
+		if (product!=null) { 
+			if (user.getIdUser()==product.getUser().getIdUser()) {
 
-			URI location = fromCurrentRequest().build().toUri();
-			
-			imgService.saveImage(Application.PRODUCTS_FOLDER, product.getIdProduct(), imageFile);
-			
-			if (!imageFile.isEmpty()) {
-				product.setImageFile(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
-				product.setImage(true);
-			}
-			
-			product.setImageURL(location.toString());
-			productS.save(product);
-
-
-			return ResponseEntity.created(location).body(product);
-
-		} else {
-			return ResponseEntity.notFound().build();
+				URI location = fromCurrentRequest().build().toUri();
+				
+				imgService.saveImage(Application.PRODUCTS_FOLDER, product.getIdProduct(), imageFile);
+				
+				if (!imageFile.isEmpty()) {
+					product.setImageFile(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
+					product.setImage(true);
+				}
+				
+				product.setImageURL(location.toString());
+				productS.save(product);
+	
+	
+				return ResponseEntity.created(location).body(product);
+			} else 
+				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
+		return ResponseEntity.notFound().build();
 	}
 	
 	@DeleteMapping("/{idProduct}/image") //DELETE IMAGE
@@ -143,18 +142,20 @@ public class ProfileRestController {
 
 		Product product = productS.findByIdProduct(idProduct);
 		
-		if (product!=null && user.getIdUser()==product.getUser().getIdUser()) {
+		if (product!=null) {
+			if (user.getIdUser()==product.getUser().getIdUser()) {
 			
-			product.setImageURL(null);
-			productS.save(product);
-			
-			this.imgService.deleteImage(Application.PRODUCTS_FOLDER, idProduct);
-			
-			return ResponseEntity.noContent().build();
-			
-		} else {
-			return ResponseEntity.notFound().build();
-		}		
+				product.setImageURL(null);
+				productS.save(product);
+				
+				this.imgService.deleteImage(Application.PRODUCTS_FOLDER, idProduct);
+				
+				return ResponseEntity.noContent().build();
+			} else
+				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+		
+		return ResponseEntity.notFound().build();	
 	}
 	
 	@GetMapping("/sales") //ALL SOLD PRODUCTS (GRAPHIC)
@@ -229,10 +230,4 @@ public class ProfileRestController {
         
         return ResponseEntity.notFound().build();
 	}	
-	
-	private void setProductImage(Product product, String classpathResource) throws IOException {
-		product.setImage(true);
-		Resource image = new ClassPathResource(classpathResource);
-		product.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
-	}
 }
