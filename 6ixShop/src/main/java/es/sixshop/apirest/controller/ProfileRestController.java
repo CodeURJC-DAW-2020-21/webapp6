@@ -5,7 +5,6 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.security.Principal;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -38,10 +37,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import es.sixshop.service.ImageService;
 import es.sixshop.Application;
-import es.sixshop.apirest.detail.ProductAPIDetail;
 import es.sixshop.apirest.detail.ProductOwnerAPIDetail;
 import es.sixshop.apirest.detail.RequestAPIDetail;
-import es.sixshop.apirest.detail.UserAPIDetail;
 import es.sixshop.apirest.detail.UserOwnerAPIDetail;
 import es.sixshop.model.Product;
 import es.sixshop.model.Request;
@@ -121,9 +118,12 @@ public class ProfileRestController {
 			URI location = fromCurrentRequest().build().toUri();
 			
 			imgService.saveImage(Application.PRODUCTS_FOLDER, product.getIdProduct(), imageFile);
-
-			//setProductImage(product,Application.FILES_FOLDER+Application.PRODUCTS_FOLDER+"image-"+product.getIdProduct()+".jpg");
-			//setProductImage(product,"/../products/imageProducts/image-"+product.getIdProduct()+".jpg");
+			
+			if (!imageFile.isEmpty()) {
+				product.setImageFile(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
+				product.setImage(true);
+			}
+			
 			product.setImageURL(location.toString());
 			productS.save(product);
 

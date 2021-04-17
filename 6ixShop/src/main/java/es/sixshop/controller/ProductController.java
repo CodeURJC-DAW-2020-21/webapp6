@@ -178,12 +178,7 @@ public class ProductController {
 				return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
 						.contentLength(product.get().getImageFile().length()).body(file);
 				
-			}/* else if(product.get().getImageURL() != null) {
-				Path imagePath = Application.FILES_FOLDER.resolve(Application.PRODUCTS_FOLDER);
-				Resource image = new UrlResource(imagePath.toUri());
-				return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-						.body(image);
-			} */
+			}
 		}
 		return ResponseEntity.notFound().build();
 	}
