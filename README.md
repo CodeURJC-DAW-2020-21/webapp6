@@ -179,7 +179,7 @@ Finally, to open the website in your browser you will have to write this path: h
    + Documentation (api-docs.html)
 
 ### **Templates and classes diagram updated:**
-
+![diagramaClasesTemplatesUpdated](https://user-images.githubusercontent.com/55685000/115127076-f149e600-9fd3-11eb-895c-b783b405bdc2.png)
 
 ### **Instructions for executing the dockerized app:**
 
