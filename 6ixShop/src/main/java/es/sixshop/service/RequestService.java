@@ -49,7 +49,7 @@ public class RequestService {
 		return requests;
 	}
 	
-	public long findByIdRequestAndStatus(User user) {
+	public long findByIdRequestAndStatusCart(User user) {
 		return requestR.findByIdRequestAndStatus(user,"Cart");
 	}
 }
