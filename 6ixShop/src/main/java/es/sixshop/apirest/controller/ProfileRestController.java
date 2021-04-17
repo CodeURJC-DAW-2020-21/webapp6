@@ -2,8 +2,9 @@ package es.sixshop.apirest.controller;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URI;
-import java.security.Principal;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,22 +16,30 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import es.sixshop.apirest.detail.ProductAPIDetail;
+import es.sixshop.service.ImageService;
+import es.sixshop.Application;
+import es.sixshop.apirest.detail.ProductOwnerAPIDetail;
 import es.sixshop.apirest.detail.RequestAPIDetail;
-import es.sixshop.apirest.detail.RequestDetailAPIDetail;
-import es.sixshop.apirest.detail.UserAPIDetail;
+import es.sixshop.apirest.detail.UserOwnerAPIDetail;
 import es.sixshop.model.Product;
 import es.sixshop.model.Request;
 import es.sixshop.model.RequestDetail;
@@ -42,7 +51,11 @@ import es.sixshop.service.RequestService;
 import es.sixshop.service.UserService;
 
 @RestController
+@RequestMapping("/api/profiles")
 public class ProfileRestController {
+	
+	@Autowired
+	private ImageService imgService;
 	
 	@Autowired
 	private UserService userS;
@@ -59,8 +72,8 @@ public class ProfileRestController {
 	@Autowired
 	private EmailService emailS;
 	
-	@JsonView(UserAPIDetail.class)
-	@GetMapping("/api/profiles/") //USER DATA AND PRODUCTS PROFILE
+	@JsonView(UserOwnerAPIDetail.class)
+	@GetMapping("/") //USER DATA AND PRODUCTS PROFILE
 	public User getUserData(HttpServletRequest request){
 		String nickname = request.getUserPrincipal().getName();
 		User user = userS.findByNickname(nickname).orElseThrow();
@@ -68,28 +81,83 @@ public class ProfileRestController {
 		return user;
 	}
 	
-	@JsonView(ProductAPIDetail.class)
-	@PostMapping("/api/products/") //NEW PRODUCT
+	@JsonView(ProductOwnerAPIDetail.class)
+	@PostMapping("/products/") //NEW PRODUCT
 	public ResponseEntity<Product> createProduct(HttpServletRequest request, @RequestBody Product product){
-		// Check if there is a session started to change the Header
-        if(((Principal)request.getUserPrincipal())!=null) {
-			String nickname = request.getUserPrincipal().getName();
-	        User user = userS.findByNickname(nickname).orElseThrow();
-			
-	        product.setUser(user);
-			productS.save(product);
-			
-			emailS.sendEmail("sixshop.sixshop@gmail.com", "¡Has subido un producto con éxito!", "Creaste el producto "+product.getProductName()+" por " +product.getPrice()+ " $");
-			
-			URI location = fromCurrentRequest().path("/{idProduct}").buildAndExpand(product.getIdProduct()).toUri();
-			
-			return ResponseEntity.created(location).body(product);
-        } else {
-        	return ResponseEntity.notFound().build();
-        }
+		String nickname = request.getUserPrincipal().getName();
+        User user = userS.findByNickname(nickname).orElseThrow();
+		
+        product.setUser(user);
+		productS.save(product);
+		
+		URI location = fromCurrentRequest().path("/{idProduct}").buildAndExpand(product.getIdProduct()).toUri();
+		
+		emailS.sendEmail("sixshop.sixshop@gmail.com", "¡Has subido un producto con éxito!", "Creaste el producto "+product.getProductName()+" por " +product.getPrice()+ " $");
+		
+		return ResponseEntity.created(location).body(product);
 	}
 	
-	@GetMapping("/api/profiles/sales") //ALL SOLD PRODUCTS (GRAPHIC)
+	@GetMapping("/{idProduct}/image") //DOWNLOAD IMAGE
+	public ResponseEntity<Object> downloadImage(@PathVariable long idProduct) throws MalformedURLException {
+
+		return this.imgService.createResponseFromImage(Application.PRODUCTS_FOLDER, idProduct);
+	}
+	
+	@JsonView(ProductOwnerAPIDetail.class)
+	@PostMapping("/{idProduct}/image") //UPLOAD IMAGE
+	public ResponseEntity<Object> uploadImage(HttpServletRequest request, @PathVariable long idProduct, @RequestParam MultipartFile imageFile)
+			throws IOException {
+		
+		String nickname = request.getUserPrincipal().getName();
+        User user = userS.findByNickname(nickname).orElseThrow();
+		
+		Product product = productS.findByIdProduct(idProduct);
+
+		if (product!=null && user.getIdUser()==product.getUser().getIdUser()) {
+
+			URI location = fromCurrentRequest().build().toUri();
+			
+			imgService.saveImage(Application.PRODUCTS_FOLDER, product.getIdProduct(), imageFile);
+			
+			if (!imageFile.isEmpty()) {
+				product.setImageFile(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
+				product.setImage(true);
+			}
+			
+			product.setImageURL(location.toString());
+			productS.save(product);
+
+
+			return ResponseEntity.created(location).body(product);
+
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	@DeleteMapping("/{idProduct}/image") //DELETE IMAGE
+	public ResponseEntity<Object> deleteImage(HttpServletRequest request, @PathVariable long idProduct) throws IOException {
+		
+		String nickname = request.getUserPrincipal().getName();
+        User user = userS.findByNickname(nickname).orElseThrow();
+
+		Product product = productS.findByIdProduct(idProduct);
+		
+		if (product!=null && user.getIdUser()==product.getUser().getIdUser()) {
+			
+			product.setImageURL(null);
+			productS.save(product);
+			
+			this.imgService.deleteImage(Application.PRODUCTS_FOLDER, idProduct);
+			
+			return ResponseEntity.noContent().build();
+			
+		} else {
+			return ResponseEntity.notFound().build();
+		}		
+	}
+	
+	@GetMapping("/sales") //ALL SOLD PRODUCTS (GRAPHIC)
 	public ResponseEntity<Map<String,Integer>> getSoldProducts(HttpServletRequest request){
 		Date month1,month2;
 		
@@ -122,7 +190,7 @@ public class ProfileRestController {
 	}
 	
 	@JsonView(RequestAPIDetail.class)
-	@GetMapping("/api/profiles/shopping") //ALL BOUGHT PRODUCTS
+	@GetMapping("/shopping") //ALL BOUGHT PRODUCTS
 	public Collection<Request> getBoughtroducts(HttpServletRequest request){
 		int totalPrice = 0;
 		
@@ -141,7 +209,7 @@ public class ProfileRestController {
 		return requests;
 	}
 	
-	@PutMapping("/api/profile/{idRequestDetail}/{idProduct}/{rating}") //RATING PRODUCT
+	@PutMapping("/{idRequestDetail}/{idProduct}/{rating}") //RATING PRODUCT
 	public ResponseEntity<RequestDetail> ratingProduct(HttpServletRequest request,@PathVariable long idRequestDetail, @PathVariable long idProduct, @PathVariable int rating){
 		String nickname = request.getUserPrincipal().getName();
         User user = userS.findByNickname(nickname).orElseThrow();
@@ -160,19 +228,11 @@ public class ProfileRestController {
         }
         
         return ResponseEntity.notFound().build();
-	}
-
-	@JsonView(RequestAPIDetail.class) //ALL REQUEST
-	@GetMapping("/api/requests/")
-	public Collection<Request> getRequest(){
-		return requestS.findAll();
-	}
+	}	
 	
-	@JsonView(RequestDetailAPIDetail.class) //ALL REQUEST DETAIL
-	@GetMapping("/api/requestdetails/")
-	public Collection<RequestDetail> getRequestDetail(){
-		return requestDetailS.findAll();
+	private void setProductImage(Product product, String classpathResource) throws IOException {
+		product.setImage(true);
+		Resource image = new ClassPathResource(classpathResource);
+		product.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
 	}
-	
-	
 }

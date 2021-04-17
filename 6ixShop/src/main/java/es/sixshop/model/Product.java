@@ -43,6 +43,8 @@ public class Product {
 	private Blob imageFile;
 	@JsonView(Basic.class)
 	private boolean image;
+	@JsonView(Basic.class)
+	private String imageURL;
 	
 	
 	// Constructor necessary for loading from DB
@@ -138,4 +140,14 @@ public class Product {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
+
+	public String getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
+	}
+	
+	
 }

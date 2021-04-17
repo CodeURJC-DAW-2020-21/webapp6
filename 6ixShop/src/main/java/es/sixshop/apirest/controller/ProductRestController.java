@@ -1,5 +1,6 @@
 package es.sixshop.apirest.controller;
 
+import java.io.IOException;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import es.sixshop.service.ImageService;
 import es.sixshop.Application;
 import es.sixshop.apirest.detail.ProductAPIDetail;
+import es.sixshop.apirest.detail.ProductOwnerAPIDetail;
 import es.sixshop.model.Product;
 import es.sixshop.model.User;
 import es.sixshop.service.ProductService;
@@ -33,6 +36,9 @@ public class ProductRestController {
 	
 	@Autowired
 	private ProductService productS;
+	
+	@Autowired
+	private ImageService imgService;
 	
 	@JsonView(ProductAPIDetail.class)
 	@GetMapping("/api/products/") //ALL PRODUCTS
@@ -62,6 +68,7 @@ public class ProductRestController {
 		}
 	}
 	
+	@JsonView(ProductOwnerAPIDetail.class)
 	@PutMapping("/api/products/{idProduct}") //EDIT PRODUCT
 	public ResponseEntity<Product> replaceProduct(HttpServletRequest request, @PathVariable long idProduct, @RequestBody Product newProduct){
 		String nickname = request.getUserPrincipal().getName();
@@ -80,9 +87,9 @@ public class ProductRestController {
         return ResponseEntity.notFound().build();
 	}
 	
-	@JsonView(ProductAPIDetail.class)
+	@JsonView(ProductOwnerAPIDetail.class)
 	@DeleteMapping("/api/products/{idProduct}") //DELETE PRODUCT
-	public ResponseEntity<Product> deleteProduct(HttpServletRequest request, @PathVariable long idProduct){
+	public ResponseEntity<Product> deleteProduct(HttpServletRequest request, @PathVariable long idProduct) throws IOException{
 		String nickname = request.getUserPrincipal().getName();
         User user = userS.findByNickname(nickname).orElseThrow();
 		
@@ -91,6 +98,11 @@ public class ProductRestController {
 		if (product!=null) {
         	if(user.getIdUser()==product.getUser().getIdUser()) {
         		productS.delete(idProduct);
+        		
+        		if(product.getImageURL() != null) {
+    				this.imgService.deleteImage(Application.PRODUCTS_FOLDER, idProduct);
+    			}
+        		
     			return ResponseEntity.ok(product);
             }
         }
