@@ -36,7 +36,7 @@ public class Product {
 	private int price;
 	@JsonView(Basic.class)
 	private int rating;
-	@JsonView
+	@JsonView(Basic.class)
 	private boolean visible;
 	
 	@Lob
