@@ -53,6 +53,7 @@ public class ApiRestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		// Private endpoints
 		// Private endpoints
+		http.antMatcher("/api/**");
 		 
 		 http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/profiles/**").hasAnyRole("USER","ADMIN");
 		 http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/carts/**").hasAnyRole("USER","ADMIN");
