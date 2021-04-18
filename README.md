@@ -176,7 +176,7 @@ Finally, to open the website in your browser you will have to write this path: h
 
 ### **API REST Documentation:**
    + [OpenAPI](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/dev/api-docs/api-docs%20.yaml) (apidocs.yaml)
-   + [Documentation](https://rawgit.com/github.com/CodeURJC-DAW-2020-21/webapp6/api-docs/api-docs.html) (api-docs.html)
+   + [Documentation](https://rawgit.com/CodeURJC-DAW-2020-21/webapp6/api-docs/api-docs.html) (api-docs.html)
 
 ### **Templates and classes diagram updated:**
 ![diagramaClasesTemplatesUpdated](https://user-images.githubusercontent.com/55685000/115127076-f149e600-9fd3-11eb-895c-b783b405bdc2.png)
