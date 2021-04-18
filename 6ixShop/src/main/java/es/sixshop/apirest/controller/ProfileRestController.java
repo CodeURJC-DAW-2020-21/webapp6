@@ -120,6 +120,8 @@ public class ProfileRestController {
         User user = userS.findByNickname(nickname).orElseThrow();
 		
         product.setUser(user);
+		product.setRating(-1);
+		product.setVisible(true);
 		productS.save(product);
 		
 		URI location = fromCurrentRequest().path("/{idProduct}").buildAndExpand(product.getIdProduct()).toUri();
@@ -185,7 +187,7 @@ public class ProfileRestController {
 		String nickname = request.getUserPrincipal().getName();
         User user = userS.findByNickname(nickname).orElseThrow();
 		
-		Product product = productS.findByIdProduct(idProduct);
+		Product product = productS.findByIdProductAndVisible(idProduct);
 
 		if (product!=null) { 
 			if (user.getIdUser()==product.getUser().getIdUser()) {
@@ -232,7 +234,7 @@ public class ProfileRestController {
 		String nickname = request.getUserPrincipal().getName();
         User user = userS.findByNickname(nickname).orElseThrow();
 
-		Product product = productS.findByIdProduct(idProduct);
+		Product product = productS.findByIdProductAndVisible(idProduct);
 		
 		if (product!=null) {
 			if (user.getIdUser()==product.getUser().getIdUser()) {

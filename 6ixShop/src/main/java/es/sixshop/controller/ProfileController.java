@@ -66,7 +66,7 @@ public class ProfileController {
 		model.addAttribute("soldProducts",soldProducts);
 		
 		// Product data uploaded
-		Collection<Product> products = productS.findByUser(user);
+		Collection<Product> products = productS.findByUserAndVisible(user);
 		model.addAttribute("products",products);
 		
 		// Data of products sold
@@ -115,6 +115,8 @@ public class ProfileController {
 		}
 
 		product.setUser(user);
+		product.setRating(-1);
+		product.setVisible(true);
 		productS.save(product);
 		
 		model.addAttribute("product", product.getIdProduct());

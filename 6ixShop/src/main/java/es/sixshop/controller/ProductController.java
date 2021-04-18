@@ -54,14 +54,14 @@ public class ProductController {
         }
 
         // Load the first page of the complete products
-        Page<Product> productsAll = productS.findAll(pageable);
+        Page<Product> productsAll = productS.findByVisible(pageable);
 		model.addAttribute("productsAll", productsAll);
 		// The first page shown is subtracted
 		model.addAttribute("totalPageAll",(productsAll.getTotalPages()-1));
 		
 		
 		// Load the first page of the products by rating
-        Page<Product> productsRating = productS.findByRating(pageable);
+        Page<Product> productsRating = productS.findByRatingAndVisible(pageable);
 		model.addAttribute("productsRating", productsRating);
 		// The first page shown is subtracted
 		model.addAttribute("totalPageRating",(productsRating.getTotalPages()-1));
@@ -71,7 +71,7 @@ public class ProductController {
 	
 	@GetMapping("/loadMoreAll")
 	public String showLoadMoreAll(Model model, HttpSession session, Pageable pageable) {
-		Page<Product> productsAll = productS.findAll(pageable);			
+		Page<Product> productsAll = productS.findByVisible(pageable);			
 		//Carga la siguiente página de los productos completos
 		model.addAttribute("productsAll", productsAll);
 
@@ -80,7 +80,7 @@ public class ProductController {
 	
 	@GetMapping("/loadMoreRating")
 	public String showLoadMoreRating(Model model, HttpSession session, Pageable pageable) {
-		Page<Product> productsRating = productS.findByRating(pageable);			
+		Page<Product> productsRating = productS.findByRatingAndVisible(pageable);			
 		// Load the next page of the complete products
 		model.addAttribute("productsRating", productsRating);
 
@@ -159,10 +159,11 @@ public class ProductController {
 	}
 	
 	@PostMapping("/delete-product/{idProduct}")
-	public String deleteProduct(HttpServletRequest request, Model model, Product product)
+	public String deleteProduct(HttpServletRequest request, Model model, Product product, @PathVariable long idProduct)
 			throws IOException {
 		
-		productS.delete(product.getIdProduct());
+		productS.hideProduct(idProduct);
+		//productS.delete(product);
 
 		return "redirect:/";
 	}
