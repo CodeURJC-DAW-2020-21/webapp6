@@ -17,6 +17,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 import es.sixshop.apirest.detail.ProductAPIDetail;
@@ -45,6 +51,17 @@ public class CartRestController {
 	@Autowired
 	private RequestService requestS;
 	
+	
+	@Operation(summary = "Get a all products in cart")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "200", 
+					description = "Found products in cart", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					) 
+	})
 	@JsonView(ProductAPIDetail.class)
 	@GetMapping("/") //ALL PRODUCTS CART
 	public ResponseEntity<Map<String,Object>> getCart(HttpServletRequest request){
@@ -69,6 +86,27 @@ public class CartRestController {
 		return new ResponseEntity<>(response,HttpStatus.OK);
 	}
 	
+	@Operation(summary = "Add Product in Cart")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "201", 
+					description = "Successful add product in cart", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					),
+			@ApiResponse(
+					responseCode = "406", 
+					description = "Not Acceptable product exists", 
+					content = @Content
+					),
+			@ApiResponse(
+					responseCode = "404", 
+					description = "Not Found Product or User", 
+					content = @Content
+					) 
+	})
+	
 	@JsonView(ProductAPIDetail.class)
 	@PostMapping("/{idProduct}") //ADD PRODUCT CART
 	public ResponseEntity<Product> addProductCart(HttpServletRequest request, @PathVariable long idProduct){
@@ -92,6 +130,23 @@ public class CartRestController {
 	
         return ResponseEntity.notFound().build();
 	}
+	
+	
+	@Operation(summary = " Create Paid Cart")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "200", 
+					description = "Successful buys creation", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					),
+			@ApiResponse(
+					responseCode = "406", 
+					description = "Not Acceptable buys", 
+					content = @Content
+					)
+	})
 	
 	@PostMapping("/cardPayment/{idRequest}") //PAID CART
 	public ResponseEntity<Request> requestCompleted(HttpServletRequest request, @PathVariable Long idRequest) {

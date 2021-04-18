@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 import es.sixshop.Application;
@@ -27,6 +32,22 @@ public class CategoryRestController {
 	@Autowired
 	private ProductService productS;
 	
+	
+	@Operation(summary = "Get products by category")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "200", 
+					description = "Found the Product by category", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					),
+			@ApiResponse(
+					responseCode = "404", 
+					description = "Category not found", 
+					content = @Content
+					) 
+	})
 	@JsonView(ProductAPIDetail.class)
 	@GetMapping("/{category}") //GET CATEGORY
 	public ResponseEntity<Map<String,Object>> getProductsCategory(@RequestParam(defaultValue=Application.DEFAULT_PAGE) int page, @PathVariable String category){
@@ -40,6 +61,17 @@ public class CategoryRestController {
 		
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
+	
+	@Operation(summary = "Get a all categories")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "200", 
+					description = "Found category", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					) 
+	})
 	
 	@JsonView(ProductAPIDetail.class)
 	@GetMapping("/") //GET CATEGORY (PARAMETERS)

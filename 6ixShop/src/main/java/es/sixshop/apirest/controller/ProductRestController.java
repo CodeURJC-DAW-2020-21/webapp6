@@ -20,6 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 import es.sixshop.service.ImageService;
@@ -44,6 +50,16 @@ public class ProductRestController {
 	@Autowired
 	private ImageService imgService;
 	
+	@Operation(summary = "Get a all products")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "200", 
+					description = "Found products", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					) 
+	})
 	@JsonView(ProductAPIDetail.class)
 	@GetMapping("/") //ALL PRODUCTS
 	public ResponseEntity<Map<String,Object>> getProducts(@RequestParam(defaultValue=Application.DEFAULT_PAGE) int page){
@@ -58,6 +74,17 @@ public class ProductRestController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 	
+	
+	@Operation(summary = "Get a all Bookmarks by rating")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "200", 
+					description = "Found products by rating", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					) 
+	})
 	@JsonView(ProductAPIDetail.class)
 	@GetMapping("/rating") //ALL PRODUCTS RATING
 	public ResponseEntity<Map<String,Object>> getProductsRating(@RequestParam(defaultValue=Application.DEFAULT_PAGE) int page){
@@ -72,6 +99,22 @@ public class ProductRestController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 	
+	
+	@Operation(summary = "Get product by id")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "200", 
+					description = "Found product", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					),
+			@ApiResponse(
+					responseCode = "404", 
+					description = "Product not found", 
+					content = @Content
+					)  
+	})
 	@JsonView(ProductAPIDetail.class)
 	@GetMapping("/{idProduct}") //SINGLE PRODUCT
 	public ResponseEntity<Product> getProduct(@PathVariable long idProduct) {
@@ -84,6 +127,27 @@ public class ProductRestController {
 		}
 	}
 	
+	
+	@Operation(summary = "Edit a Product")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "201", 
+					description = "Successful Product modification", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					),
+			@ApiResponse(
+					responseCode = "404", 
+					description = "Product not found", 
+					content = @Content
+					),
+			@ApiResponse(
+					responseCode = "406", 
+					description = "Not Acceptable products parameters exists", 
+					content = @Content
+					) 
+	})
 	@JsonView(ProductOwnerAPIDetail.class)
 	@PutMapping("/{idProduct}") //EDIT PRODUCT
 	public ResponseEntity<Product> replaceProduct(HttpServletRequest request, @PathVariable long idProduct, @RequestBody Product newProduct){
@@ -104,6 +168,22 @@ public class ProductRestController {
         return ResponseEntity.notFound().build();
 	}
 	
+	
+	@Operation(summary = "Delete Product")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "200", 
+					description = "Successful product delete", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					),
+			@ApiResponse(
+					responseCode = "404", 
+					description = "Product not found", 
+					content = @Content
+					) 
+	})
 	@JsonView(ProductOwnerAPIDetail.class)
 	@DeleteMapping("/{idProduct}") //DELETE PRODUCT
 	public ResponseEntity<Product> deleteProduct(HttpServletRequest request, @PathVariable long idProduct) throws IOException{

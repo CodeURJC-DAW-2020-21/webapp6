@@ -31,6 +31,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 import es.sixshop.service.ImageService;
@@ -70,6 +76,17 @@ public class ProfileRestController {
 	@Autowired
 	private EmailService emailS;
 	
+	@Operation(summary = "Get a all data profile")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "200", 
+					description = "Found all data profile ", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					) 
+	})
+	
 	@JsonView(UserOwnerAPIDetail.class)
 	@GetMapping("/") //USER DATA AND PRODUCTS PROFILE
 	public User getUserData(HttpServletRequest request){
@@ -78,6 +95,22 @@ public class ProfileRestController {
 		
 		return user;
 	}
+	
+	@Operation(summary = "Create a Products")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "201", 
+					description = "Successful Products creation", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					),
+			@ApiResponse(
+					responseCode = "406", 
+					description = "Not Acceptable products parametrs  exists", 
+					content = @Content
+					) 
+	})
 	
 	@JsonView(ProductOwnerAPIDetail.class)
 	@PostMapping("/products") //NEW PRODUCT
@@ -95,11 +128,53 @@ public class ProfileRestController {
 		return ResponseEntity.created(location).body(product);
 	}
 	
+	@Operation(summary = "Get a ImageProduct by its id")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "200", 
+					description = "Create the Image Product", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					),
+			@ApiResponse(
+					responseCode = "404", 
+					description = "Product not found", 
+					content = @Content
+					),
+			@ApiResponse(
+					responseCode = "204", 
+					description = "Image not found", 
+					content = @Content
+					)
+	})
+	
 	@GetMapping("/{idProduct}/image") //DOWNLOAD IMAGE
 	public ResponseEntity<Object> downloadImage(@PathVariable long idProduct) throws MalformedURLException {
 
 		return this.imgService.createResponseFromImage(Application.PRODUCTS_FOLDER, idProduct);
 	}
+	
+	@Operation(summary = "Create a Image Product by its id")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "201", 
+					description = "Create the Image Product", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					),
+			@ApiResponse(
+					responseCode = "404", 
+					description = "Product not found", 
+					content = @Content
+					),
+			@ApiResponse(
+					responseCode = "204", 
+					description = "Image not found", 
+					content = @Content
+					)
+	})
 	
 	@JsonView(ProductOwnerAPIDetail.class)
 	@PostMapping("/{idProduct}/image") //UPLOAD IMAGE
@@ -134,6 +209,22 @@ public class ProfileRestController {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@Operation(summary = "Deleted image  Product")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "201", 
+					description = "Successful image Product creation", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					),
+			@ApiResponse(
+					responseCode = "404", 
+					description = "Product not found", 
+					content = @Content
+					) 
+	})
+	
 	@DeleteMapping("/{idProduct}/image") //DELETE IMAGE
 	public ResponseEntity<Object> deleteImage(HttpServletRequest request, @PathVariable long idProduct) throws IOException {
 		
@@ -157,6 +248,18 @@ public class ProfileRestController {
 		
 		return ResponseEntity.notFound().build();	
 	}
+	
+	
+	@Operation(summary = "Get a all sold Products")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "200", 
+					description = "Found sold Products", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					) 
+	})
 	
 	@GetMapping("/sales") //ALL SOLD PRODUCTS (GRAPHIC)
 	public ResponseEntity<Map<String,Integer>> getSoldProducts(HttpServletRequest request){
@@ -190,6 +293,17 @@ public class ProfileRestController {
 		return new ResponseEntity<>(response,HttpStatus.OK);
 	}
 	
+	
+	@Operation(summary = "Get a all  bought Products")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "200", 
+					description = "Found all bought Products", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					) 
+	})
 	@JsonView(RequestAPIDetail.class)
 	@GetMapping("/shopping") //ALL BOUGHT PRODUCTS
 	public Collection<Request> getBoughtroducts(HttpServletRequest request){
@@ -210,6 +324,26 @@ public class ProfileRestController {
 		return requests;
 	}
 	
+	@Operation(summary = "add raiting  Product")
+	@ApiResponses(value = { 
+			@ApiResponse(
+					responseCode = "201", 
+					description = "Successful rainting Product modification", 
+					content = {@Content(
+							mediaType = "application/json"
+							)}
+					),
+			@ApiResponse(
+					responseCode = "404", 
+					description = "Product not found", 
+					content = @Content
+					),
+			@ApiResponse(
+					responseCode = "406", 
+					description = "Not Acceptable  products parameters  exists", 
+					content = @Content
+					) 
+	})
 	@PutMapping("/{idRequestDetail}/{idProduct}/{rating}") //RATING PRODUCT
 	public ResponseEntity<RequestDetail> ratingProduct(HttpServletRequest request,@PathVariable long idRequestDetail, @PathVariable long idProduct, @PathVariable int rating){
 		String nickname = request.getUserPrincipal().getName();
