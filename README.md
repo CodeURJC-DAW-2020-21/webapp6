@@ -175,8 +175,8 @@ Finally, to open the website in your browser you will have to write this path: h
 ## PHASE 3
 
 ### **API REST Documentation:**
-   + OpenAPI (apidocs.yaml)
-   + Documentation (api-docs.html)
+   + [OpenAPI](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/dev/api-docs/api-docs%20.yaml) (apidocs.yaml)
+   + [Documentation](https://rawgit.com/github.com/CodeURJC-DAW-2020-21/webapp6/api-docs/api-docs.html) (api-docs.html)
 
 ### **Templates and classes diagram updated:**
 ![diagramaClasesTemplatesUpdated](https://user-images.githubusercontent.com/55685000/115127076-f149e600-9fd3-11eb-895c-b783b405bdc2.png)
@@ -184,13 +184,13 @@ Finally, to open the website in your browser you will have to write this path: h
 ### **Instructions for executing the dockerized app:**
    1. First, it's needed the Docker installation and a docker account.
    2. Once it's installed, proceed to open the *shell*.
-   3. Position yourself in the Docker folder from the proyect.
+   3. Position yourself in the *Docker folder* from the proyect.
    4. If you're using Mac or Windows you have to write: *docker-compose up --build -d*
    5. Then write in your explorer: *https://localhost:8443/* and you'll see the website.
 
 ### **Docker image documentation:**
    1. First, it's needed the Docker installation and a docker account.
-   2. Once it's installed, proceed to open the shell.
+   2. Once it's installed, proceed to open the *shell*.
    3. Clone the repository from GitHub using this command: *git clone https://github.com/CodeURJC-DAW-2020-21/webapp6*
    4. Position yourself in the *Docker folder* from the proyect.
    5. For creating the image, you have to write in the shell: *bash start.sh*
@@ -211,7 +211,7 @@ Finally, to open the website in your browser you will have to write this path: h
 
 | Name        | Commits |  |  |  |  |
 | :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| Sergio Martín Muñoz | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/08568bdff2aa092a6db9f5f7c2da860939492b58) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/08568bdff2aa092a6db9f5f7c2da860939492b58) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/08568bdff2aa092a6db9f5f7c2da860939492b58) | [Commit4]() | [Commit5](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/95840f844617adafee5f99d7a90b377d8b352e84) |
+| Sergio Martín Muñoz | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/08568bdff2aa092a6db9f5f7c2da860939492b58) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/08568bdff2aa092a6db9f5f7c2da860939492b58) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/08568bdff2aa092a6db9f5f7c2da860939492b58) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/ee6386a8bf68a13a8ea924a17c1a1313779da971) | [Commit5](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/95840f844617adafee5f99d7a90b377d8b352e84) |
 | Alberto Pacho Bernardos | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/2f2ca9eb5e03d2a98184222c6584ddb6a9da417a) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/e6c343b42308ea6bf5b347f917cf49300400c98e) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/1c87a6d70129835392c4ff1e4629194b7a840556) |  [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/c25bc7097294438e07e8baf6ad783218b58c29b0) | [Commit5](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/88f1477bf6d5594369093c3be92835c121eabd1a) |
 | Javier Espín Prieto | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/478eb67c59304f4822be8a692b31864266e4ca60) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/478eb67c59304f4822be8a692b31864266e4ca60) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/478eb67c59304f4822be8a692b31864266e4ca60) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/380e2df41f4248b963c2d3fb32976b21fdfe885d) | [Commit5](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/9a8fccd8db507ca5bc1d97b0c6062014054f6b27) |
 | Celia Sanjuán Sánchez | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/08568bdff2aa092a6db9f5f7c2da860939492b58) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/08568bdff2aa092a6db9f5f7c2da860939492b58) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/08568bdff2aa092a6db9f5f7c2da860939492b58) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/95840f844617adafee5f99d7a90b377d8b352e84) | [Commit5](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/5d09435e031c8cd4065e1337e223e57532c91791) |
