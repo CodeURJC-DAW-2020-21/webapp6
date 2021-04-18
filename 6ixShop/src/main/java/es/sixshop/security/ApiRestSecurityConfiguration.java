@@ -52,12 +52,32 @@ public class ApiRestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		// Private endpoints
-		 http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/profile/shopping").hasAnyRole("USER","ADMIN");
-		 http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/profile/**").hasAnyRole("USER","ADMIN");
-		 http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/carts/").hasAnyRole("USER","ADMIN");
+		// Private endpoints
+		 
+		 http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/profiles/**").hasAnyRole("USER","ADMIN");
+		 http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/carts/**").hasAnyRole("USER","ADMIN");
+
+	/*	 http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/carts/").hasAnyRole("USER","ADMIN");
+		 http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/profiles/").hasAnyRole("USER","ADMIN");
+		 http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/profiles/{idProduct}/image").hasAnyRole("USER","ADMIN");
+		 http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/profiles/sales").hasAnyRole("USER","ADMIN");
+		 http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/profiles/shopping").hasAnyRole("USER","ADMIN");  */
+		 
+		 
+		 http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/carts/**").hasAnyRole("USER","ADMIN");
+		 http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/profiles/**").hasAnyRole("USER","ADMIN");
+		 
+	/*	 http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/carts/{idProduct}").hasAnyRole("USER","ADMIN");
+		 http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/carts/cardPayment/{idRequest}").hasAnyRole("USER","ADMIN");
+		 http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/profiles/products/").hasAnyRole("USER","ADMIN");
+		 http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/profiles/{idProduct}/image").hasAnyRole("USER","ADMIN");  */
+		 
+		 http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/products/{idProduct}").hasAnyRole("USER","ADMIN");
+		 http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/profiles/{idRequestDetail}/{idProduct}/{rating}").hasAnyRole("USER","ADMIN");
+		 
 		 http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/products/{idProduct}").hasAnyRole("USER","ADMIN");
-		    
-		 http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/carts/{idProduct}").hasAnyRole("USER","ADMIN");
+		 http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/profiles/{idProduct}/image").hasAnyRole("USER","ADMIN");
+		 
 		 
 		 
 		 // Other endpoints are public
