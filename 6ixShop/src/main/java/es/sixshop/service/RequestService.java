@@ -50,6 +50,6 @@ public class RequestService {
 	}
 	
 	public long findByIdRequestAndStatusCart(User user) {
-		return requestR.findByIdRequestAndStatus(user,"Cart");
+		return requestR.findByIdRequestAndStatusCart(user);
 	}
 }

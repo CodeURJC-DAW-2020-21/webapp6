@@ -26,6 +26,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import es.sixshop.apirest.detail.ProductAPIDetail;
+import es.sixshop.apirest.detail.RequestAPIDetail;
 import es.sixshop.model.Product;
 import es.sixshop.model.Request;
 import es.sixshop.model.RequestDetail;
@@ -80,8 +81,9 @@ public class CartRestController {
         }
         
         Map<String,Object> response = new HashMap<>();
-        response.put("totalPrice", totalPrice);
-        response.put("products", products);
+        response.put("ID REQUEST", requestUser.getIdRequest());
+        response.put("TOTAL PRICE", totalPrice);
+        response.put("PRODUCTS", products);
 		
 		return new ResponseEntity<>(response,HttpStatus.OK);
 	}
@@ -148,8 +150,9 @@ public class CartRestController {
 					)
 	})
 	
+	@JsonView(RequestAPIDetail.class)
 	@PostMapping("/cardPayment/{idRequest}") //PAID CART
-	public ResponseEntity<Request> requestCompleted(HttpServletRequest request, @PathVariable Long idRequest) {
+	public ResponseEntity<Request> requestCompleted(HttpServletRequest request, @PathVariable long idRequest) {
 		String nickname = request.getUserPrincipal().getName();
         User user = userS.findByNickname(nickname).orElseThrow();
         

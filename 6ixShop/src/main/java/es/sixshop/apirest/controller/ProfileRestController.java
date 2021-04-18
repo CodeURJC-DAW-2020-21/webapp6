@@ -43,6 +43,7 @@ import es.sixshop.service.ImageService;
 import es.sixshop.Application;
 import es.sixshop.apirest.detail.ProductOwnerAPIDetail;
 import es.sixshop.apirest.detail.RequestAPIDetail;
+import es.sixshop.apirest.detail.RequestDetailAPIDetail;
 import es.sixshop.apirest.detail.UserOwnerAPIDetail;
 import es.sixshop.model.Product;
 import es.sixshop.model.Request;
@@ -344,6 +345,8 @@ public class ProfileRestController {
 					content = @Content
 					) 
 	})
+	
+	@JsonView(RequestDetailAPIDetail.class)
 	@PutMapping("/{idRequestDetail}/{idProduct}/{rating}") //RATING PRODUCT
 	public ResponseEntity<RequestDetail> ratingProduct(HttpServletRequest request,@PathVariable long idRequestDetail, @PathVariable long idProduct, @PathVariable int rating){
 		String nickname = request.getUserPrincipal().getName();

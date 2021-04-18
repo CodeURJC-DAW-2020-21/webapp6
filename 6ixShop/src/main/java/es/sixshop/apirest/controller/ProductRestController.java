@@ -159,6 +159,7 @@ public class ProductRestController {
         if (product!=null) {
         	if(user.getIdUser()==product.getUser().getIdUser()) {
         		newProduct.setIdProduct(idProduct);
+        		newProduct.setUser(user);
     			productS.save(newProduct);
     			return ResponseEntity.ok(product);
             } else 
