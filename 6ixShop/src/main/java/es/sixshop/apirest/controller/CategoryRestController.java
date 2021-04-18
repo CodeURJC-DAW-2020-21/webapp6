@@ -51,7 +51,7 @@ public class CategoryRestController {
 	@JsonView(ProductAPIDetail.class)
 	@GetMapping("/{category}") //GET CATEGORY
 	public ResponseEntity<Map<String,Object>> getProductsCategory(@RequestParam(defaultValue=Application.DEFAULT_PAGE) int page, @PathVariable String category){
-		Page<Product> productsCategory = productS.findBycategory(category, PageRequest.of(page, Application.SIZE_PAGE));
+		Page<Product> productsCategory = productS.findByCategoryAndVisible(category, PageRequest.of(page, Application.SIZE_PAGE));
 		
 		Map<String,Object> response = new HashMap<>();
 		response.put("TOTAL ITEMS", productsCategory.getTotalElements());
@@ -76,7 +76,7 @@ public class CategoryRestController {
 	@JsonView(ProductAPIDetail.class)
 	@GetMapping("/") //GET CATEGORY (PARAMETERS)
 	public ResponseEntity<Map<String,Object>> getProductsCategoryParameters(@RequestParam(defaultValue=Application.DEFAULT_PAGE) int page, @RequestParam String category){
-		Page<Product> productsCategory = productS.findBycategory(category, PageRequest.of(page, Application.SIZE_PAGE));
+		Page<Product> productsCategory = productS.findByCategoryAndVisible(category, PageRequest.of(page, Application.SIZE_PAGE));
 		
 		Map<String,Object> response = new HashMap<>();
 		response.put("TOTAL ITEMS", productsCategory.getTotalElements());

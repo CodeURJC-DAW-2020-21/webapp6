@@ -63,7 +63,7 @@ public class ProductRestController {
 	@JsonView(ProductAPIDetail.class)
 	@GetMapping("/") //ALL PRODUCTS
 	public ResponseEntity<Map<String,Object>> getProducts(@RequestParam(defaultValue=Application.DEFAULT_PAGE) int page){
-		Page<Product> productsPage = productS.findAll(PageRequest.of(page, Application.SIZE_PAGE));
+		Page<Product> productsPage = productS.findByVisible(PageRequest.of(page, Application.SIZE_PAGE));
 		
 		Map<String,Object> response = new HashMap<>();
 		response.put("TOTAL ITEMS", productsPage.getTotalElements());
@@ -88,7 +88,7 @@ public class ProductRestController {
 	@JsonView(ProductAPIDetail.class)
 	@GetMapping("/rating") //ALL PRODUCTS RATING
 	public ResponseEntity<Map<String,Object>> getProductsRating(@RequestParam(defaultValue=Application.DEFAULT_PAGE) int page){
-		Page<Product> productsPage = productS.findByRating(PageRequest.of(page, Application.SIZE_PAGE));
+		Page<Product> productsPage = productS.findByRatingAndVisible(PageRequest.of(page, Application.SIZE_PAGE));
 		
 		Map<String,Object> response = new HashMap<>();
 		response.put("TOTAL ITEMS", productsPage.getTotalElements());
@@ -118,7 +118,7 @@ public class ProductRestController {
 	@JsonView(ProductAPIDetail.class)
 	@GetMapping("/{idProduct}") //SINGLE PRODUCT
 	public ResponseEntity<Product> getProduct(@PathVariable long idProduct) {
-		Product product = productS.findByIdProduct(idProduct);
+		Product product = productS.findByIdProductAndVisible(idProduct);
 		
 		if(product!=null) {
 			return ResponseEntity.ok(product);
@@ -154,7 +154,7 @@ public class ProductRestController {
 		String nickname = request.getUserPrincipal().getName();
         User user = userS.findByNickname(nickname).orElseThrow();
         
-        Product product = productS.findByIdProduct(idProduct);
+        Product product = productS.findByIdProductAndVisible(idProduct);
         
         if (product!=null) {
         	if(user.getIdUser()==product.getUser().getIdUser()) {
@@ -191,11 +191,12 @@ public class ProductRestController {
 		String nickname = request.getUserPrincipal().getName();
         User user = userS.findByNickname(nickname).orElseThrow();
 		
-		Product product = productS.findByIdProduct(idProduct);
+		Product product = productS.findByIdProductAndVisible(idProduct);
 		
 		if (product!=null) {
         	if(user.getIdUser()==product.getUser().getIdUser()) {
-        		productS.delete(idProduct);
+        		productS.hideProduct(idProduct);
+        		//productS.delete(product);
         		
         		if(product.getImageURL() != null) {
     				this.imgService.deleteImage(Application.PRODUCTS_FOLDER, idProduct);

@@ -38,7 +38,7 @@ public class CategoryController {
             model.addAttribute("nickname",user.getNickname());
         }
         
-        Page<Product> productsCategory = productS.findBycategory(category, pageable);
+        Page<Product> productsCategory = productS.findByCategoryAndVisible(category, pageable);
         model.addAttribute("productsCategory", productsCategory);
         model.addAttribute("categoryName",category);
         // The first page shown is subtracted
@@ -49,7 +49,7 @@ public class CategoryController {
 	
 	@GetMapping("/category/loadMoreCategories/{category}")
 	public String showLoadMoreCategory(Model model, HttpSession session, Pageable pageable, @PathVariable String category) {
-		Page<Product> productsCategory = productS.findBycategory(category, pageable);			
+		Page<Product> productsCategory = productS.findByCategoryAndVisible(category, pageable);			
 		// Load the next page of the complete products
 		model.addAttribute("productsCategory", productsCategory);
 

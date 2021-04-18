@@ -36,6 +36,8 @@ public class Product {
 	private int price;
 	@JsonView(Basic.class)
 	private int rating;
+	@JsonView(Basic.class)
+	private boolean visible;
 	
 	@Lob
 	@JsonIgnore
@@ -58,6 +60,7 @@ public class Product {
 		this.price = price;
 		this.user = user;
 		this.rating = -1;
+		this.visible = true;
 	}
 	
 	public Product(String productName, String description, String category, int price) {
@@ -67,6 +70,7 @@ public class Product {
 		this.category = category;
 		this.price = price;
 		this.rating = -1;
+		this.visible = true;
 	}
 
 	public Long getIdProduct() {
@@ -147,6 +151,14 @@ public class Product {
 
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
+	}
+
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
 	}
 	
 	
