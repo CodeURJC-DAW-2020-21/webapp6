@@ -62,7 +62,7 @@ public class RequestDetailService {
 	}
 	
 	public void recalculateProductRating(long idProduct,int rating) {
-		Product objProduct = productS.findByIdProduct(idProduct);
+		Product objProduct = productS.findByIdProductAndVisible(idProduct);
 		float average = objProduct.getRating();
 		if (average<0) {
 			objProduct.setRating(rating);

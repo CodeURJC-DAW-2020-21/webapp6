@@ -13,30 +13,45 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class User {
+	public interface Basic{}
+	public interface Products{}
+	public interface Owner{}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Owner.class)
 	private Long idUser = null;
 	
 	@ElementCollection(fetch = FetchType.EAGER)
+	@JsonView(Basic.class)
 	private List<String> roles;
 	
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="user")
+	@JsonView(Products.class)
 	private List<Product> lProducts;
 	
 	@OneToMany
+	@JsonIgnore 
 	private List<Product> lCart;
 	
 	@OneToMany(mappedBy="buyerUser")
+	@JsonIgnore 
 	private List<Request> lRequest;
 	
 	@Column(unique = true)
+	@JsonView(Basic.class)
 	private String nickname;
+	@JsonView(Owner.class)
 	private String encodedPassword;
+	@JsonView(Basic.class)
 	private String mail;
+	@JsonView(Owner.class)
 	private int phonenumber;
-	private String image;
 
 	// Constructor necessary for loading from DB
 	protected User() {}
@@ -127,14 +142,6 @@ public class User {
 
 	public void setPhonenumber(int phonenumber) {
 		this.phonenumber = phonenumber;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
 	}
 	
 	/////////////////////////////////////////////////////////////////////

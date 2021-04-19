@@ -7,19 +7,30 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class RequestDetail {
+	public interface Basic{}
+	public interface Requests{}
+	public interface Products{}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Basic.class)
 	private Long idRequestDetail = null;
 	
 	@ManyToOne
+	@JsonView(Requests.class)
 	private Request request;
 	
 	@OneToOne
+	@JsonView(Products.class)
 	private Product product;
 	
+	@JsonView(Basic.class)
 	private int productPrice;
+	@JsonView(Basic.class)
 	private int rating;
 	
 	// Constructor necessary for loading from DB

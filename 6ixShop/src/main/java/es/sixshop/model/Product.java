@@ -10,26 +10,43 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Product {
+	public interface Basic{}
+	public interface Users{}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Basic.class)
 	private Long idProduct = null;
 	
 	@ManyToOne
+	@JsonView(Users.class)
 	private User user;
 	
+	@JsonView(Basic.class)
 	private String productName;
+	@JsonView(Basic.class)
 	private String description;
+	@JsonView(Basic.class)
 	private String category;
+	@JsonView(Basic.class)
 	private int price;
+	@JsonView(Basic.class)
 	private int rating;
+	@JsonView(Basic.class)
+	private boolean visible;
 	
 	@Lob
 	@JsonIgnore
+	@JsonView(Basic.class)
 	private Blob imageFile;
+	@JsonView(Basic.class)
 	private boolean image;
+	@JsonView(Basic.class)
+	private String imageURL;
 	
 	
 	// Constructor necessary for loading from DB
@@ -43,6 +60,7 @@ public class Product {
 		this.price = price;
 		this.user = user;
 		this.rating = -1;
+		this.visible = true;
 	}
 	
 	public Product(String productName, String description, String category, int price) {
@@ -52,6 +70,7 @@ public class Product {
 		this.category = category;
 		this.price = price;
 		this.rating = -1;
+		this.visible = true;
 	}
 
 	public Long getIdProduct() {
@@ -125,4 +144,22 @@ public class Product {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
+
+	public String getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
+	}
+
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+	
+	
 }

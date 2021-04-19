@@ -1,6 +1,8 @@
 package es.sixshop.controller;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Path;
 import java.security.Principal;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -21,10 +24,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import es.sixshop.Application;
 import es.sixshop.model.Product;
 import es.sixshop.model.User;
-import es.sixshop.repository.UserRepository;
 import es.sixshop.service.ProductService;
+import es.sixshop.service.UserService;
 
 @Controller
 public class ProductController {
@@ -35,7 +39,7 @@ public class ProductController {
 	private ProductService productS;
 	
 	@Autowired
-	private UserRepository userR;
+	private UserService userS;
 	
 	
 	@GetMapping("/")
@@ -43,21 +47,21 @@ public class ProductController {
 		// Check if there is a session started to change the Header
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
+            User user = userS.findByNickname(nickname).orElseThrow();
 
             model.addAttribute("user",user);
             model.addAttribute("nickname",user.getNickname());
         }
 
         // Load the first page of the complete products
-        Page<Product> productsAll = productS.findAll(pageable);
+        Page<Product> productsAll = productS.findByVisible(pageable);
 		model.addAttribute("productsAll", productsAll);
 		// The first page shown is subtracted
 		model.addAttribute("totalPageAll",(productsAll.getTotalPages()-1));
 		
 		
 		// Load the first page of the products by rating
-        Page<Product> productsRating = productS.findByRating(pageable);
+        Page<Product> productsRating = productS.findByRatingAndVisible(pageable);
 		model.addAttribute("productsRating", productsRating);
 		// The first page shown is subtracted
 		model.addAttribute("totalPageRating",(productsRating.getTotalPages()-1));
@@ -67,7 +71,7 @@ public class ProductController {
 	
 	@GetMapping("/loadMoreAll")
 	public String showLoadMoreAll(Model model, HttpSession session, Pageable pageable) {
-		Page<Product> productsAll = productS.findAll(pageable);			
+		Page<Product> productsAll = productS.findByVisible(pageable);			
 		//Carga la siguiente página de los productos completos
 		model.addAttribute("productsAll", productsAll);
 
@@ -76,7 +80,7 @@ public class ProductController {
 	
 	@GetMapping("/loadMoreRating")
 	public String showLoadMoreRating(Model model, HttpSession session, Pageable pageable) {
-		Page<Product> productsRating = productS.findByRating(pageable);			
+		Page<Product> productsRating = productS.findByRatingAndVisible(pageable);			
 		// Load the next page of the complete products
 		model.addAttribute("productsRating", productsRating);
 
@@ -91,7 +95,7 @@ public class ProductController {
 		// Check if there is a session started to change the Header
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
+            User user = userS.findByNickname(nickname).orElseThrow();
 
             model.addAttribute("user",user);
             model.addAttribute("nickname",user.getNickname());
@@ -109,7 +113,7 @@ public class ProductController {
 		// Check if there is a session started to change the Header
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
+            User user = userS.findByNickname(nickname).orElseThrow();
 
             model.addAttribute("user",user);
             model.addAttribute("nickname",user.getNickname());
@@ -133,7 +137,7 @@ public class ProductController {
 		
 		if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
+            User user = userS.findByNickname(nickname).orElseThrow();
             
             Product original = productS.findById(product.getIdProduct()).orElseThrow();
             long idUsuarioProduct = original.getUser().getIdUser();
@@ -155,28 +159,29 @@ public class ProductController {
 	}
 	
 	@PostMapping("/delete-product/{idProduct}")
-	public String deleteProduct(HttpServletRequest request, Model model, Product product)
+	public String deleteProduct(HttpServletRequest request, Model model, Product product, @PathVariable long idProduct)
 			throws IOException {
 		
-		productS.delete(product.getIdProduct());
+		productS.hideProduct(idProduct);
+		//productS.delete(product);
 
 		return "redirect:/";
 	}
 	
 	@GetMapping("/{idProduct}/image")
-	public ResponseEntity<Object> downloadImage(@PathVariable long idProduct) throws SQLException {
+	public ResponseEntity<Object> downloadImage(@PathVariable long idProduct) throws SQLException, MalformedURLException {
 
 		Optional<Product> product = productS.findById(idProduct);
-		if (product.isPresent() && product.get().getImageFile() != null) {
+		if (product.isPresent()) {
+			if (product.get().getImageFile() != null) {
+				Resource file = new InputStreamResource(product.get().getImageFile().getBinaryStream());
 
-			Resource file = new InputStreamResource(product.get().getImageFile().getBinaryStream());
-
-			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-					.contentLength(product.get().getImageFile().length()).body(file);
-
-		} else {
-			return ResponseEntity.notFound().build();
+				return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+						.contentLength(product.get().getImageFile().length()).body(file);
+				
+			}
 		}
+		return ResponseEntity.notFound().build();
 	}
 }
 

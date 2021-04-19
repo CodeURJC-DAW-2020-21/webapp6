@@ -22,6 +22,7 @@ import es.sixshop.repository.UserRepository;
 import es.sixshop.service.ProductService;
 import es.sixshop.service.RequestDetailService;
 import es.sixshop.service.RequestService;
+import es.sixshop.service.UserService;
 
 @Controller
 public class CartController {
@@ -36,7 +37,7 @@ public class CartController {
 	private RequestDetailService requestDetailS;
 	
 	@Autowired
-	private UserRepository userR;
+	private UserService userS;
 	
 	@GetMapping("/cart")
 	public String showCart(Model model, HttpSession session, HttpServletRequest request){
@@ -45,7 +46,7 @@ public class CartController {
 		// Check if there is a session started to change the Header
         if(((Principal)request.getUserPrincipal())!=null) {
             String nickname = request.getUserPrincipal().getName();
-            User user = userR.findByNickname(nickname).orElseThrow();
+            User user = userS.findByNickname(nickname).orElseThrow();
             
             // Load the cart
             Request requestUser = requestS.findByBuyerUserAndStatus(user,"Cart");
@@ -71,7 +72,7 @@ public class CartController {
 	@GetMapping("/cart/{idProduct}")
 	public String addCartProduct(Model model, HttpSession session, HttpServletRequest request, @PathVariable long idProduct){
 		String nickname = request.getUserPrincipal().getName();
-        User user = userR.findByNickname(nickname).orElseThrow();
+        User user = userS.findByNickname(nickname).orElseThrow();
         Product prod = productS.findById(idProduct).orElseThrow();
         Request objRequest = requestS.findByBuyerUserAndStatus(user, "Cart");
         RequestDetail requestDetail = new RequestDetail(objRequest,prod,prod.getPrice());
@@ -93,7 +94,7 @@ public class CartController {
 	@GetMapping("/cardPayment/requestCompleted/{idRequest}")
 	public String requestCompleted(Model model, HttpSession session, HttpServletRequest request, @PathVariable Long idRequest){
 		String nickname = request.getUserPrincipal().getName();
-        User user = userR.findByNickname(nickname).orElseThrow();
+        User user = userS.findByNickname(nickname).orElseThrow();
 		
         /* The ORDER is saved as PAID and removed from the cart */
         Request requestUser = requestS.findById(idRequest).orElseThrow();

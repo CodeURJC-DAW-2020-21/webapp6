@@ -48,4 +48,12 @@ public class RequestService {
 		Collection<Request> requests = requestR.findByBuyerUserAndStatus(user, "PAID");
 		return requests;
 	}
+	
+	public Collection<Request> findByStatusCart(){
+		return requestR.findByStatusCart();
+	}
+	
+	public long findByIdRequestAndStatusCart(User user) {
+		return requestR.findByIdRequestAndStatusCart(user);
+	}
 }
