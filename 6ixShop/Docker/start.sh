@@ -16,6 +16,8 @@ cd 'Docker'
 
 docker build -t sixshop/sixshop .
 
+docker-compose up --build -d
+
 docker login --username=sixshop
 
 docker push sixshop/sixshop
