@@ -56,53 +56,55 @@
       <div class="tab-content" id="nav-tabContent">
         <!-- card one -->
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-          <!--
-          <div class="row" id="moreProductsAll">
-            {{#productsAll}}
-            <a href="/single-product/{{idProduct}}">
+          <div class="row">
+            <item *ngFor = "let product of products" [product] = "product">   
+              <h1>{{product.productName}}</h1>         
+              <a href="/single-product/{{product.idProduct}}">
               <div class="col-xl-4 col-lg-4 col-md-6">
                 <div class="single-product mb-60">
                   <div class="product-img">
-                    <img src="/{{idProduct}}/image" alt={{productName}}>
+                    <img src="/{{product.idProduct}}/image" alt={{product.productName}}>
                     <div class="new-product">
-                      <span>{{category}}</span>
+                      <span>{{product.category}}</span>
                     </div>
                   </div>
                   <div class="product-caption">
-                    <div id="demoAll{{idProduct}}" class="product-ratting"></div>
+                    <div id="demoAll{{product.idProduct}}" class="product-ratting"></div>
                     <script>
                       var x = "";
                       var i = 0;
                       while (i < 5) {
-                        if (i < "{{rating}}") {
+                        if (i < "{{product.rating}}") {
                           x = x + '<i class="far fa-star"></i>\n';
                         } else {
                           x = x + '<i class="far fa-star low-star"></i>\n';
                         }
                         i = i + 1;
                       }
-                      document.getElementById("demoAll{{idProduct}}").innerHTML = x
+                      document.getElementById("demoAll{{product.idProduct}}").innerHTML = x
                     </script>
-                    <h4><a href="#">{{productName}}</a></h4>
+                    <h4><a href="#">{{product.productName}}</a></h4>
                     <div class="price">
                       <ul>
-                        <li>${{price}}</li>
+                        <li>${{product.price}}</li>
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
             </a>
-            {{/productsAll}}
+            <!--{{/productsAll}}
             {{^productsAll}}
+            
             <h4>No products yet.</h4>
-            {{/productsAll}}
+            -->
+            </item>
           </div>
           <div id="loadingAll" class="nav-item nav-link active" style="color:blue"></div>
           <button type="button" id="bLoadMoreAll" class="btn header-btn">Load More</button>
           <script type="text/javascript">
             var pageAll = 0;
-            var totalPageAll = {{ totalPageAll }}
+            /*var totalPageAll = {{ totalPageAll }}*/
 
             if (totalPageAll < 1) {
               document.getElementById('bLoadMoreAll').style.display = 'none';
@@ -130,7 +132,6 @@
               });
             });
           </script>
-        -->
         </div> 
         <!-- Card two -->
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">

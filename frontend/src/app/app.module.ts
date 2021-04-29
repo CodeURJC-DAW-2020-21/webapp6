@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 // **** PRODUCTS ****
 import { PrincipalComponent } from './components/products/principal.component';
@@ -32,7 +32,7 @@ import { routing } from './app.routing';
     CartComponent, CardPaymentComponent
   ],
   imports: [
-    BrowserModule, routing
+    BrowserModule, routing, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
