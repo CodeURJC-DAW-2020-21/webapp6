@@ -24,6 +24,8 @@ import { routing } from './app.routing';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent, PrincipalComponent, HeaderComponent, FooterComponent, ErrorComponent,
@@ -34,7 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
     CartComponent, CardPaymentComponent
   ],
   imports: [
-    BrowserModule, routing, HttpClientModule
+    BrowserModule, routing, HttpClientModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
