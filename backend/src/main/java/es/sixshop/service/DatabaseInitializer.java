@@ -103,17 +103,17 @@ public class DatabaseInitializer {
 		productS.save(pr6);
 		
 		for(int i=17; i<50;i+=6) {
-			Product pr7 = new Product("ProductN-"+i,"Description of ProductN-"+i,"TVSeries",50,user1); //Alberto Pacho
+			Product pr7 = new Product("Shameless","Description of ProductN-"+i,"TVSeries",50,user1); //Alberto Pacho
 			setProductImage(pr7,"/static/img/imagenes/product/shameless.jpg");
-			Product pr8 = new Product("ProductN-"+(i+1),"Description of ProductN-"+(i+1),"Custom",30,user4); //Sergio Martin
+			Product pr8 = new Product("Pablo Simeone","Description of ProductN-"+(i+1),"Custom",30,user4); //Sergio Martin
 			setProductImage(pr8,"/static/img/imagenes/product/simeone.jpg");
-			Product pr9 = new Product("ProductN-"+(i+2),"Description of ProductN-"+(i+2),"TVSeries",40,user2); //Javier Espin
+			Product pr9 = new Product("True Detective","Description of ProductN-"+(i+2),"TVSeries",40,user2); //Javier Espin
 			setProductImage(pr9,"/static/img/imagenes/product/trueDetective.jpg");
-			Product pr10 = new Product("ProductN-"+(i+3),"Description of ProductN-"+(i+3),"Movies",40,user3); //Celia Sanjuan
+			Product pr10 = new Product("Gran Torino","Description of ProductN-"+(i+3),"Movies",40,user3); //Celia Sanjuan
 			setProductImage(pr10,"/static/img/imagenes/product/granTorino.jpg");
-			Product pr11 = new Product("ProductN-"+(i+4),"Description of ProductN-"+(i+4),"Custom",20,user4); //Sergio Martin
+			Product pr11 = new Product("Steve Jobs","Description of ProductN-"+(i+4),"Custom",20,user4); //Sergio Martin
 			setProductImage(pr11,"/static/img/imagenes/product/steveJobs.jpg");
-			Product pr12 = new Product("ProductN-"+(i+5),"Description of ProductN-"+(i+5),"Comics",35,user4); //Sergio Martin
+			Product pr12 = new Product("Mafalda","Description of ProductN-"+(i+5),"Comics",35,user4); //Sergio Martin
 			setProductImage(pr12,"/static/img/imagenes/product/mafalda.jpg");
 			
 			productS.save(pr7);

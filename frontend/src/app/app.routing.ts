@@ -24,6 +24,7 @@ const appRoutes = [
     { path: 'new/error', component: ErrorComponent },
     // **** CATEGORY ****
     { path: 'new/category', component: CategoryComponent},
+    { path: 'new/category/:category', component: CategoryComponent},
     // **** USER ****
     { path: 'new/login', component: LoginComponent},
     { path: 'new/signIn', component: SignInComponent},
