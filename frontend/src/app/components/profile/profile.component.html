@@ -1,0 +1,182 @@
+<main>
+  <div class="row py-5 px-4">
+      <div class="col-xl-8 col-md-10 col-sm-14 mx-auto"> <!-- Tamaño contendedor -->
+          <!-- Profile widget -->
+          <div class="bg-white shadow rounded overflow-hidden">
+            <!--
+            {{#user}}
+              <div class="px-4 pt-0 pb-4 bg-dark">
+                  <div class="media align-items-end profile-header">
+                      <div class="profile mr-3" style="margin-left:7%">
+                          <img src="/img/imagenes/profile/imageProfile.png" alt="imageProfile" width="130" class="rounded mb-2 img-thumbnail" style="margin-top:30px"/>
+                      </div>
+                      <div class="media-body mb-5 text-white" style="text-align: end">
+                          <h4 class="mt-0 mb-0" style="color:white; font-weight: 600">{{nickname}}</h4>
+                          <p class="small mb-4" > <i class="fa fa-map-marker mr-2" ></i>{{mail}}</p>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="bg-light p-4 d-flex justify-content-end text-center">                        
+                  <ul class="list-inline mb-0">
+                      <li class="list-inline-item">
+                          <h5 class="font-weight-bold mb-0 d-block">{{soldProducts}}</h5><small class="text-muted"> <i class="fa fa-picture-o mr-1"></i>Sold Products</small>
+                      </li>
+                      <!--
+                      <li class="list-inline-item">
+                          <h5 class="font-weight-bold mb-0 d-block">2.1</h5><small class="text-muted"> <i class="fa fa-user-circle-o mr-1"></i>Assessment</small>
+                      </li>
+                      
+                  </ul>
+              </div>
+
+              <div class="py-4 px-4">
+                  <!--Nav Button  
+                  <nav style="margin-bottom:2%">                                   
+                      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-recent-products" role="tab" aria-controls="nav-home" aria-selected="true" style="color:grey">Your Products</a>
+                          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-add-products" role="tab" aria-controls="nav-profile" aria-selected="false" style="color:grey">Add Product</a>
+                          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-your-shopping" role="tab" aria-controls="nav-profile" aria-selected="false" style="color:grey">Your Shopping</a>
+                          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-statistics" role="tab" aria-controls="nav-profile" aria-selected="false" style="color:grey">Your Sales</a>
+                      </div>
+                  </nav>
+                  <!--End Nav Button  
+                  <div class="tab-content" id="nav-tabContent">
+                      <!-- Your Products 
+                      <div class="tab-pane fade show active" id="nav-recent-products" role="tabpanel" aria-labelledby="nav-home-tab">
+                          <div class="row">
+                            {{#products}}
+                              <div class="col-lg-6 mb-2 pr-lg-1"><a href="/single-product/{{idProduct}}"><img src="/{{idProduct}}/image" alt={{productName}} class="img-fluid rounded shadow-sm"></a></div>
+                              {{/products}}
+                              {{^products}}
+                          <h4>No products yet.</h4>
+                          {{/products}}
+                          </div>
+                      </div>
+                      <!-- Add Products 
+                      <div class="tab-pane fade" id="nav-add-products" role="tabpanel" aria-labelledby="nav-profile-tab">
+                          <div class="row">
+                              <h3>Add your new product!</h3>
+                              <form class="row contact_form" action="/profile" method="post" enctype="multipart/form-data">
+                                  <div class="col-md-12 form-group p_star">
+                                      <input type="text" class="form-control" id="productName" name="productName" value="" placeholder="Product name"/>
+                                  </div>
+                                  <div class="col-md-2 form-group p_star">
+                                    <select name="category" id="category">
+                                      <option>Movies</option>
+                                      <option>TVSeries</option>
+                                      <option>Music</option>
+                                      <option>Photography</option>
+                                      <option>Comics</option>
+                                      <option>Custom</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-md-2 form-group p_star">
+                                      <input type="number" class="form-control" id="price" name="price" value="" placeholder="Product price"/>
+                                  </div>
+                                  <div class="col-md-12 form-group p_star">
+                                      <textarea id="description" name="description" rows="4" cols="40" class="form-control" placeholder="Product Description"></textarea>
+                                  </div>
+                                  <div class="col-md-12 form-group p_star">
+                                      <input type="file" class="form-control" id="imageField" name="imageField" accept=".jpg, .jpeg"/>
+                                  </div>
+                                  <div class="col-md-12 form-group">
+                                      <button type="submit" value="submit" class="btn_3">Add Product</button>
+                                  </div>
+                                  <input type="hidden" name="_csrf" value="{{token}}"/>
+                              </form>
+                          </div>
+                      </div>
+                      <!-- Your Shopping 
+                      <div class="tab-pane fade" id="nav-your-shopping" role="tabpanel" aria-labelledby="nav-profile-tab">
+                          <div class="row">
+                              <table class="table table-striped table-bordered">
+                                  <thead class="table-dark">
+                                      <tr>
+                                        <td>ORDER</td>
+                                          <td>Date</td>
+                                          <td>Status</td>
+                                          <td>Product</td>
+                                          <td>Category</td>
+                                          <td>Rating</td>
+                                          <td>Price</td>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                  {{#requests}}
+                                      {{#lRequestDetail}}
+                                        <tr>
+                                          <td>{{idRequest}}</td>
+                                            <td>{{date}}</td>
+                                            <td style="color:red">PAID</td>
+                                            <td>{{product.productName}}</td>
+                                            <td>{{product.category}}</td>
+                                            <td>
+                                                  <div class="product-ratting" id = "{{idRequestDetail}}{{product.idProduct}}">
+                                                      <script>
+                                                          if("{{rating}}" == -1){
+                                                              $("#{{idRequestDetail}}{{product.idProduct}}").html('<i onclick ="window.location = \'/profile/rate/{{idRequestDetail}}/{{product.idProduct}}/1\' " class="far fa-star"></i> <i onclick ="window.location = \'/profile/rate/{{idRequestDetail}}/{{product.idProduct}}/2\' " class="far fa-star"></i> <i onclick ="window.location = \'/profile/rate/{{idRequestDetail}}/{{product.idProduct}}/3\' " class="far fa-star"></i> <i onclick ="window.location = \'/profile/rate/{{idRequestDetail}}/{{product.idProduct}}/4\' " class="far fa-star"></i> <i onclick ="window.location = \'/profile/rate/{{idRequestDetail}}/{{product.idProduct}}/5\' " class="far fa-star"></i>' );
+                                                          }else{
+                                                              let stars = "";
+                                                              for(let i = 1;i<= "{{rating}}";i++){
+                                                                  stars += '<i class="far fa-star" style="color:rgb(255,208,0)"></i>';
+                                                              }
+                                                              $("#{{idRequestDetail}}{{product.idProduct}}").html(stars);
+                                                          }
+                                                      </script>
+                                                  </div>
+                                              </td>
+                                            <td>{{productPrice}}</td>
+                                        </tr>
+                                        {{/lRequestDetail}}
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td style="font-weight:bold">TOTAL PRICE</td>
+                                            <td style="color:red">{{totalPrice}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="7"></td>
+                                        </tr>
+                                  {{/requests}}
+                                  </tbody>
+                              </table>
+                              {{^requests}}
+                              <p>Have not bought yet</p>
+                              {{/requests}}
+                          </div>
+                      </div>
+                      <!-- Your Sales 
+                      <div class="tab-pane fade" id="nav-statistics" role="tabpanel" aria-labelledby="nav-profile-tab">
+                          <div class="row">
+                              <div class="col-lg-6 pr-lg-1 mb-2">
+                                <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+                               <div id="plotlyChart"></div>
+                              <script>
+                                  var data = [
+                                    {
+                                      x: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                                      y: [{{January}}, {{February}}, {{March}}, {{April}}, {{May}}, {{June}}, {{July}}, {{August}}, {{September}}, {{October}}, {{November}}, {{December}}],
+                                      type: 'bar'
+                                    }
+                                  ];
+
+                                  Plotly.newPlot('plotlyChart', data);
+                            </script>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              {{/user}}
+              {{^user}}
+              <h2>User not found</h2>
+              {{/user}} -->
+          </div>
+          <!-- End profile widget -->
+      </div>
+  </div>
+</main>

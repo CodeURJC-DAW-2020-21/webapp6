@@ -1,0 +1,84 @@
+<!-- ******************************** HEADER ******************************** -->      
+    <!-- Preloader Start 
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="/assets/img/imagenes/index/logo.jpeg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- Preloader Start -->
+<header>
+    <!-- Header Start -->
+    <div class="header-area">
+        <div class="main-header ">
+            <div class="header-bottom  header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
+                            <div class="logo">
+                                <a [routerLink]="['/new']"><img src="/assets/img/imagenes/index/mini-logo.jpeg" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-5 col-md-4 col-sm-2">
+                            <!-- Main-menu -->
+                            <div class="main-menu f-right d-none d-lg-block">
+                                <nav>                                               
+                                    <ul id="navigation">           
+                                        <li><a [routerLink]="['/new']">Home</a></li>
+                                        <li><a [routerLink]="['/new/category']">Category</a>
+                                            <ul class="submenu">
+                                                <li><a [routerLink]="['/new/category/Movies']">Movies</a></li>
+                                                <li><a [routerLink]="['/new/category/TVSeries']">TVSeries</a></li>
+                                                <li><a [routerLink]="['/new/category/Music']">Music</a></li>
+                                                <li><a [routerLink]="['/new/category/Photography']">Photography</a></li>
+                                                <li><a [routerLink]="['/new/category/Comics']">Comics</a></li>
+                                                <li><a [routerLink]="['/new/category/Custom']">Custom</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div> 
+                        <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6 fix-card">
+                            <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
+                                <li>
+                                    <div class="shopping-card">
+                                        <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
+                                    </div>
+                                </li>
+                                <li class="d-none d-lg-block">
+                                    <!--
+                                    {{#user}}
+                                        {{#profile}}
+                                            <form action="/header" method="post">
+                                                <input class="btn header-btn" style="background-color:red" type="submit" value="Log Out">
+                                                <input type="hidden" name="_csrf" value="{{token}}"/>
+                                            </form>
+                                        {{/profile}}
+                                        {{^profile}}
+                                            <a href="/profile" class="btn header-btn">{{nickname}}</a>
+                                        {{/profile}}
+                                    {{/user}}
+                                    {{^user}} 
+                                        <a href="/login" class="btn header-btn">Login</a>
+                                    {{/user}}
+                                            -->
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ******************************** HEADER END ******************************** -->
