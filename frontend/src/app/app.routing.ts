@@ -19,7 +19,7 @@ import { CardPaymentComponent } from './components/cart/cardPayment/cardPayment.
 const appRoutes = [
     // **** PRODUCTS ****
     { path: 'new', component: PrincipalComponent },
-    { path: 'new/single-product', component: SingleProductComponent },
+    { path: 'new/single-product/:idProduct', component: SingleProductComponent },
     { path: 'new/edit-product', component: EditProductComponent },
     { path: 'new/error', component: ErrorComponent },
     // **** CATEGORY ****
@@ -36,4 +36,8 @@ const appRoutes = [
     { path: '', redirectTo: 'new', pathMatch: 'full' }
   ]
 
-export const routing = RouterModule.forRoot(appRoutes);
+export const routing = RouterModule.forRoot(appRoutes,{
+  onSameUrlNavigation: "ignore",
+  anchorScrolling:'enabled',
+  scrollPositionRestoration: 'enabled'
+});

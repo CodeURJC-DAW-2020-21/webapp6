@@ -10,10 +10,11 @@ import { Product } from '../../models/product.model';
 })
 export class CategoryComponent implements OnInit {
 
+  category:String;
+
   products: Product[] = [];
   imagesProducts: String[] = [];
   ratingProducts: number[] = [];
-  category:String;
 
   totalPage:number=0;
   nPage:number=0;
@@ -26,6 +27,20 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit() {
     this.getProductsCategoryPage();
+  }
+
+  getProductsCategoryPage(){
+    this.productService.getProductsCategoryPage(this.category,this.nPage).subscribe(
+      products => {
+        this.totalPage = products["TOTAL PAGE"];
+        this.nPage++;
+        if(this.nPage>=this.totalPage){this.loadMoreVisible=false}
+        this.products = this.products.concat(products["products"])
+        this.getImagesProducts();
+        this.getRatingProducts();
+      },
+      error => console.log(error)
+    );
   }
 
   private getImagesProducts() {
@@ -42,19 +57,5 @@ export class CategoryComponent implements OnInit {
     for (let x=0;x<this.products.length;x++){
       this.ratingProducts[x]=this.products[x].rating;
     }
-  }
-
-  getProductsCategoryPage(){
-    this.productService.getProductsCategoryPage(this.category,this.nPage).subscribe(
-      products => {
-        this.totalPage = products["TOTAL PAGE"];
-        this.nPage++;
-        if(this.nPage>=this.totalPage){this.loadMoreVisible=false}
-        this.products = this.products.concat(products["products"])
-        this.getImagesProducts();
-        this.getRatingProducts();
-      },
-      error => console.log(error)
-    );
   }
 }

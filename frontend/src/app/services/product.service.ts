@@ -14,14 +14,26 @@ export class ProductService {
     
     constructor(private httpClient:HttpClient) { }
 
-    getProducts():Observable<Product[]>{
+    /*getProducts():Observable<Product[]>{
       return this.httpClient.get(API_URL+"/").pipe(
+        catchError(error=>this.handleError(error))
+      ) as Observable<Product[]>;
+    }*/
+
+    getProductsPage(nPage:number):Observable<Product[]>{
+      return this.httpClient.get("/api/products/?page="+nPage).pipe(
         catchError(error=>this.handleError(error))
       ) as Observable<Product[]>;
     }
 
-    getProductsPage(nPage:number):Observable<Product[]>{
-      return this.httpClient.get("/api/products/?page="+nPage).pipe(
+    getSingleProduct(idProduct:number):Observable<Product>{
+      return this.httpClient.get("/api/products/"+idProduct).pipe(
+        catchError(error=>this.handleError(error))
+      ) as Observable<Product>;
+    }
+
+    getProductsRatingPage(nPage:number):Observable<Product[]>{
+      return this.httpClient.get("/api/products/rating?page="+nPage).pipe(
         catchError(error=>this.handleError(error))
       ) as Observable<Product[]>;
     }

@@ -22,40 +22,32 @@
       <div class="col-lg-8">
         <div class="product_img_slide owl-carousel">
           <div class="single_product_img">
-            <!--<img src="/{{idProduct}}/image" alt={{product.productName}} class="img-fluid">-->
+            <!--<img [src]="imageProduct" alt={{product.productName}} class="img-fluid">-->
           </div>
         </div>
       </div>
       <div class="col-lg-8">
+        <img [src]="imageProduct" alt={{product.productName}} class="img-fluid">
         <div class="product-caption">
           <div class="product-ratting text-center">
-            <!--
-            <div id="demo{{product.idProduct}}" class="product-ratting">
-            <script>
-                var x="";
-                var i = 0;
-                while(i<5){
-                    if(i<"{{product.rating}}"){
-                        x = x + '<i style="color:rgb(255,208,0)" class="far fa-star"></i>\n';
-                    }else{
-                        x = x + '<i class="far fa-star low-star"></i>\n';
-                    }
-                    i = i +1;      
-                }
-                document.getElementById("demo{{product.idProduct}}").innerHTML = x
-            </script>
-            </div>
-          -->
+
+            <ng-template ngFor let-number [ngForOf]="[1,2,3,4,5]">
+              <i *ngIf="product.rating>=number" class="far fa-star"></i>
+              <i *ngIf="product.rating<number" class="far fa-star low-star"></i>
+            </ng-template>
+
+
           </div>
 
           <div class="single_product_text text-center">
-            <!--<h3>{{product.productName}}</h3>-->
-            <!--<p>{{product.description}}</p>-->
+            <h3>{{product.productName}}</h3>
+            <p>{{product.description}}</p>
             <div class="card_area">
               <div class="product_count_area">
-                <!--<p style="font-size:38px;">${{product.price}}</p>-->
+                <p style="font-size:38px;">${{product.price}}</p>
               </div>
               <div class="add_to_cart">
+                <a href="/cart/{{product.idProduct}}" class="btn_3">Add to cart</a>
                 <!--
             {{^edit}}
             <a href="/cart/{{idProduct}}" class="btn_3">Add to cart</a>
@@ -63,7 +55,7 @@
             {{#edit}}
             <a href="/edit-product/{{idProduct}}" class="btn_3">Edit Product</a>
             {{/edit}}
-          -->
+            -->
               </div>
             </div>
           </div>
