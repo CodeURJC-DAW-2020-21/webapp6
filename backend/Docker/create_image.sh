@@ -1,6 +1,12 @@
 #!/bin/bash
 
-cd ..
+# cd to frontend
+cd ../../frontend
+sudo npm install
+ng build --prod --base-href="/new/"
+
+# cd to backend
+cd ../backend
 sudo apt-get update
 sudo apt-get install docker.io docker-compose -y
 
@@ -10,8 +16,6 @@ cp /target/*.jar ../Docker
 cd 'Docker'
 
 docker build -t sixshop/sixshop .
-
-docker-compose up --build -d
 
 docker login --username=sixshop
 
