@@ -31,6 +31,8 @@ export class PrincipalComponent implements OnInit {
     this.getProductsRatingPage();
   }
 
+  ng
+
   getProductsPage(){
     this.productService.getProductsPage(this.nPage).subscribe(
       products => {

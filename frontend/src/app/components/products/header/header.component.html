@@ -52,22 +52,13 @@
                                     </div>
                                 </li>
                                 <li class="d-none d-lg-block">
-                                    <!--
-                                    {{#user}}
-                                        {{#profile}}
-                                            <form action="/header" method="post">
-                                                <input class="btn header-btn" style="background-color:red" type="submit" value="Log Out">
-                                                <input type="hidden" name="_csrf" value="{{token}}"/>
-                                            </form>
-                                        {{/profile}}
-                                        {{^profile}}
-                                            <a href="/profile" class="btn header-btn">{{nickname}}</a>
-                                        {{/profile}}
-                                    {{/user}}
-                                    {{^user}} 
-                                        <a href="/login" class="btn header-btn">Login</a>
-                                    {{/user}}
-                                            -->
+                                    <a *ngIf="loginService.isLogged() && !profileWindow" [routerLink]="['/new/profile']" class="btn header-btn">{{user.nickname}}</a>
+                                    <a *ngIf="!loginService.isLogged()" [routerLink]="['/new/login']" class="btn header-btn">Login</a>
+                                    <a *ngIf="loginService.isLogged() && profileWindow" (click)="logOut()" class="btn header-btn" style="background-color:red">Log Out</a>
+                                    <!--<form action="/header" method="post">
+                                        <input class="btn header-btn" style="background-color:red" type="submit" value="Log Out">
+                                        <input type="hidden" name="_csrf" value="{{token}}"/>
+                                    </form>-->
                                 </li>
                             </ul>
                         </div>

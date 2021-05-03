@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 // **** PRODUCTS ****
@@ -16,7 +17,8 @@ import { CategoryComponent } from './components/category/category.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { SignInComponent } from './components/user/sign-in/sign-in.component';
 // **** PROFILE ****
-import { ProfileComponent } from './components/profile/profile.component';
+//import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileModule } from './components/profile/profile.module';
 // **** CART ****
 import { CartComponent } from './components/cart/cart.component';
 import { CardPaymentComponent } from './components/cart/cardPayment/cardPayment.component';
@@ -29,11 +31,11 @@ import { routing } from './app.routing';
     SingleProductComponent, EditProductComponent,
     CategoryComponent,
     LoginComponent, SignInComponent,
-    ProfileComponent,
+    //ProfileComponent,
     CartComponent, CardPaymentComponent
   ],
   imports: [
-    BrowserModule, routing, HttpClientModule
+    BrowserModule, routing, HttpClientModule, FormsModule, ProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]
