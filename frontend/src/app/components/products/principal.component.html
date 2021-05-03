@@ -42,9 +42,9 @@
             <!--Nav Button  -->
             <nav>
               <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" [routerLink]="['/new']" role="tab"
                   aria-controls="nav-home" aria-selected="true">All</a>
-                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" [routerLink]="['/new']" fragment="nav-profile" role="tab"
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" [routerLink]="['/new/products-rating']" role="tab"
                   aria-controls="nav-profile" aria-selected="false">Best Rating!</a>
               </div>
             </nav>
@@ -54,73 +54,7 @@
       </div>
       <!-- Nav Card -->
       <div class="tab-content" id="nav-tabContent">
-        <!-- card one -->
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-          <div class="row" id="moreProductsCategory">
-            <!--<div *ngIf="products" class="row" id="moreProductsCategory">-->
-            <!--<a *ngFor="let product of products; index as i" href="">-->
-            <ng-container *ngIf="products">
-              <a *ngFor="let product of products; index as i" [routerLink]="['/new/single-product/',product.idProduct]">
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                  <div class="single-product mb-60">
-                    <div class="product-img">
-                      <img [src]="imagesProducts[i]" alt={{product.productName}}>
-                      <div class="new-product">
-                        <span>{{product.category}}</span>
-                      </div>
-                    </div>
-                    <div class="product-caption">
-                      <div class="product-ratting">
-                        <ng-template ngFor let-number [ngForOf]="[1,2,3,4,5]">
-                          <i *ngIf="ratingProducts[i]>=number" class="far fa-star"></i>
-                          <i *ngIf="ratingProducts[i]<number" class="far fa-star low-star"></i>
-                        </ng-template>
-                      </div>
-                      <h4><a href="#">{{product.productName}}</a></h4>
-                      <p>${{product.price}}</p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </ng-container>
-            <h4 *ngIf="!products">No products yet.</h4>
-          </div>
-          <button type="button" id="bLoadMoreCategory" class="btn header-btn" *ngIf="loadMoreProductsVisible" (click)="getProductsPage()">Load More</button>
-        </div>
-        <!-- Card two -->
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-          <div class="row" id="moreProductsCategory">
-            <!--<div *ngIf="products" class="row" id="moreProductsCategory">-->
-            <!--<a *ngFor="let product of products; index as i" href="">-->
-            <ng-container *ngIf="products">
-              <a *ngFor="let product of products; index as i" [routerLink]="['/new/single-product/',product.idProduct]">
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                  <div class="single-product mb-60">
-                    <div class="product-img">
-                      <img [src]="imagesProducts[i]" alt={{product.productName}}>
-                      <div class="new-product">
-                        <span>{{product.category}}</span>
-                      </div>
-                    </div>
-                    <div class="product-caption">
-                      <div class="product-ratting">
-                        <ng-template ngFor let-number [ngForOf]="[1,2,3,4,5]">
-                          <i *ngIf="ratingProducts[i]>=number" class="far fa-star"></i>
-                          <i *ngIf="ratingProducts[i]<number" class="far fa-star low-star"></i>
-                        </ng-template>
-                      </div>
-                      <h4><a href="#">{{product.productName}}</a></h4>
-                      <p>${{product.price}}</p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </ng-container>
-            <h4 *ngIf="!products">No products yet.</h4>
-          </div>
-          <div id="loadingCategory" class="nav-item nav-link active" style="color:blue"></div>
-          <button type="button" id="bLoadMoreCategory" class="btn header-btn" *ngIf="loadMoreRatingVisible" (click)="getProductsRatingPage()">Load More</button>
-        </div>
+        <router-outlet></router-outlet>
       </div>
       <!-- End Nav Card -->
     </div>

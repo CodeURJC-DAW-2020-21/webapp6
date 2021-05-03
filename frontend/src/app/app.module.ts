@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 // **** PRODUCTS ****
-import { PrincipalComponent } from './components/products/principal.component';
+//import { PrincipalComponent } from './components/products/principal.component';
+import { PrincipalModule } from './components/products/principal.module';
 import { HeaderComponent } from './components/products/header/header.component';
 import { FooterComponent } from './components/products/footer/footer.component';
 import { ErrorComponent } from './components/products/error.component';
@@ -27,7 +28,7 @@ import { routing } from './app.routing';
 
 @NgModule({
   declarations: [
-    AppComponent, PrincipalComponent, HeaderComponent, FooterComponent, ErrorComponent,
+    AppComponent, HeaderComponent, FooterComponent, ErrorComponent,// PrincipalComponent,
     SingleProductComponent, EditProductComponent,
     CategoryComponent,
     LoginComponent, SignInComponent,
@@ -35,7 +36,7 @@ import { routing } from './app.routing';
     CartComponent, CardPaymentComponent
   ],
   imports: [
-    BrowserModule, routing, HttpClientModule, FormsModule, ProfileModule
+    BrowserModule, routing, HttpClientModule, FormsModule, ProfileModule, PrincipalModule
   ],
   providers: [],
   bootstrap: [AppComponent]
