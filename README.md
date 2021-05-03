@@ -31,6 +31,9 @@
    + [Member participation Phase 3](#member-participation-phase-3)
 
 - [PHASE 4](#phase-4)
+   + [Installation process and instructions](#installation-process-and-instructions)
+   + [Templates and classes diagram final version](#templates-and-classes-diagram-final-version)
+   + [Member participation Phase 4](#member-participation-phase-4)
 
 ## PHASE 0
 ### Development team🧑🏻‍💻🧑🏽‍💻🧑🏻‍💻👩🏽‍💻:
@@ -226,3 +229,34 @@ Finally, to open the website in your browser you will have to write this path: h
 
 ## PHASE 4
 
+### **Installation process and instructions:**
+
+### **Templates and classes diagram final version:**
+
+### **Member participation Phase 3🙌🏻:**
+
+
+| Name        | Tasks |  |  |  |  |
+| :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| Sergio Martín Muñoz | Single-product | Script de bash | Cart | Diagram | ReadMe |
+| Alberto Pacho Bernardos | Routing | Index | Category |  |  |
+| Javier Espín Prieto | Login | Signin |  |  |  |
+| Celia Sanjuán Sánchez | Single-product | Script de bash | Cart | Diagram | ReadMe |
+
+
+
+| Name        | Commits |  |  |  |  |
+| :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| Sergio Martín Muñoz | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/5ef3b277e9b2494650de662894ae2100ac24e959) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/5ef3b277e9b2494650de662894ae2100ac24e959) | [Commit3]() | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7caf2a11090f1f72fcc3763ca4c3a6efba5ad705) | [Commit5]() |
+| Alberto Pacho Bernardos | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/2064324c8a3c0815a96800bea1c704e973ecf6c8) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/008c3e43fd201e95c11684f91b6641362707f42a) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/a38777701719673a54f6229e0c9e5f8ac9f10e14) | [Commit4]() | [Commit5]() |
+| Javier Espín Prieto | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/2034819d1f0759b960e08a00abb0299c973ed661) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/ed62c80143edb53f0a223ef9b30401b0c0691d8c) | [Commit3]() | [Commit4]() | [Commit5]() |
+| Celia Sanjuán Sánchez | [Commit1]() | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7caf2a11090f1f72fcc3763ca4c3a6efba5ad705) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/5ef3b277e9b2494650de662894ae2100ac24e959) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/5ef3b277e9b2494650de662894ae2100ac24e959) | [Commit5]() |
+
+
+
+| Name        | Files |  |  |  |  |
+| :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| Sergio Martín Muñoz | []() | []() | []() | []() | []() |
+| Alberto Pacho Bernardos | []() | []() | []() | []() | []() |
+| Javier Espín Prieto | []() | []() | []() | []() | []() |
+| Celia Sanjuán Sánchez | []() | []() | []() | []() | []() |
