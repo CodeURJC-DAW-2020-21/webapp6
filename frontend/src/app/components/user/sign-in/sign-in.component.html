@@ -34,19 +34,19 @@
                           Please Sing in now</h3>
                       <form class="row contact_form" action="/sign_in" method="post" novalidate="novalidate">
                           <div class="col-md-12 form-group p_star">
-                              <input type="text" class="form-control" id="nickname" name="nickname" value=""
+                              <input type="text" class="form-control" id="nickname"  [(ngModel)]="user.nickname" name="nickname" value=""
                                   placeholder="Username">
                           </div>
                           <div class="col-md-12 form-group p_star">
-                              <input type="number" class="form-control" id="phonenumber" name="phonenumber" value=""
+                              <input type="number" class="form-control" id="phonenumber" [(ngModel)]="user.phonenumber" name="phonenumber" value=""
                                   placeholder="Phone number">
                           </div>
                           <div class="col-md-12 form-group p_star">
-                              <input type="mail" class="form-control" id="mail" name="mail" value=""
+                              <input type="mail" class="form-control" id="mail" [(ngModel)]="user.mail" name="mail" value=""
                                   placeholder="Mail">
                           </div>
                           <div class="col-md-12 form-group p_star">
-                              <input type="password" class="form-control" id="encodedPassword" name="encodedPassword" value=""
+                              <input type="password" class="form-control" id="encodedPassword"   [(ngModel)]="user.password" name="encodedPassword" value=""
                                   placeholder="Password">
                           </div>
 
@@ -55,12 +55,11 @@
                                   <input type="checkbox" id="f-option" name="selector">
                                   <label for="f-option">Remember me</label>
                               </div>
-                              <button type="submit" value="submit" class="btn_3">
+                              <button type="submit" value="submit" class="btn_3"  (click)="createUser()">
                                   Sign in
                               </button>
                               <a class="lost_pass" href="#">forget password?</a>
                           </div>
-                          <!--<input type="hidden" name="_csrf" value="{{token}}"/>-->
                       </form>
                   </div>
               </div>

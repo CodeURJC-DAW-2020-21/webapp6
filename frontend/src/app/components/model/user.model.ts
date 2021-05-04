@@ -6,7 +6,7 @@ export interface User{
     nickname:String;
     password:string;
     mail:string;
-    phonenumber:number;
+    phonenumber:string;
     
 
 }

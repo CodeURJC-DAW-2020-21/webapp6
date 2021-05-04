@@ -5,14 +5,17 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 
-const BASE_URL = '/api/profile/';
+
+//const BASE_URL = '/api/profile/';
+const BASE_URL = '/api/auth/sign_in';
 
 @Injectable({
     providedIn: 'root'
   })
 export class UserService {
-
-    constructor(private http: HttpClient) { }
+  httpClient: any;
+ 
+    constructor(private http: HttpClient) {  }
 
     addUser( user: User ) {
         return this.http.post(BASE_URL, user).pipe(
@@ -20,6 +23,12 @@ export class UserService {
         );
       }
 
+
+      createNewUser(user: User) {
+        return this.httpClient.post(BASE_URL,user).pipe(
+          catchError(error => this.handleError(error))
+        ) as Observable<User>;
+      }
 
       public getUser(id: number | string): Observable<User> {
         const url = BASE_URL + id;

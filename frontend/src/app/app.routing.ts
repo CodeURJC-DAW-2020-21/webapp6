@@ -26,7 +26,7 @@ const appRoutes = [
     { path: 'new/category', component: CategoryComponent},
     // **** USER ****
     { path: 'new/login', component: LoginComponent},
-    { path: 'new/signIn', component: SignInComponent},
+    { path: 'new/sign_in', component: SignInComponent},
     // **** PROFILE ****
     { path: 'new/profile', component: ProfileComponent},
     // **** CART ****

@@ -14,6 +14,7 @@ import { CategoryComponent } from './components/category/category.component';
 // **** USER ****
 import { LoginComponent } from './components/user/login/login.component';
 import { SignInComponent } from './components/user/sign-in/sign-in.component';
+
 // **** PROFILE ****
 import { ProfileComponent } from './components/profile/profile.component';
 // **** CART ****
