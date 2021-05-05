@@ -13,7 +13,6 @@ export class CategoryComponent implements OnInit {
   category:String;
 
   products: Product[] = [];
-  imagesProducts: String[] = [];
   ratingProducts: number[] = [];
 
   totalPage:number=0;
@@ -36,21 +35,10 @@ export class CategoryComponent implements OnInit {
         this.nPage++;
         if(this.nPage>=this.totalPage){this.loadMoreVisible=false}
         this.products = this.products.concat(products["products"])
-        this.getImagesProducts();
         this.getRatingProducts();
       },
       error => console.log(error)
     );
-  }
-
-  private getImagesProducts() {
-    for (let x = 0; x < this.products.length; x++) {
-      if (this.products[x].imageURL == null) {
-        this.imagesProducts[x] = "../../../assets/img/imagenes/product/" + this.products[x].productName + ".jpg";
-      } else {
-        this.imagesProducts[x] = this.products[x].imageURL;
-      }
-    }
   }
 
   private getRatingProducts(){

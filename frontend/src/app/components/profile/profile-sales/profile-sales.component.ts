@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProfileService } from '../../../services/profile.service';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-profile-sales',
@@ -8,9 +10,20 @@ import { Router } from '@angular/router';
 })
 export class ProfileSalesComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  sales:String[];
+
+  constructor(private router:Router,private profileService:ProfileService) { }
 
   ngOnInit() {
+    this.getSales()
   }
 
+  getSales(){
+    this.profileService.getSales().subscribe(
+      sales => {
+        this.sales = sales;
+      },
+      error => console.log(error)
+    );
+  }
 }
