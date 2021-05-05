@@ -1,3 +1,36 @@
-<p>
-  profile-newproduct works!
-</p>
+<div class="row">
+  <h3>Add your new product!</h3>
+  <!--<form class="row contact_form" action="/profile" method="post" enctype="multipart/form-data">-->
+  <div class="row contact-form">
+    <div class="col-md-12 form-group p_star">
+      <input type="text" [(ngModel)]="product.productName" class="form-control" placeholder="Product name" />
+    </div>
+    <div class="col-md-2 form-group p_star">
+      <select name="category" id="category" [(ngModel)]="product.category">
+        <option value="Movies">Movies</option>
+        <option value="TVSeries">TVSeries</option>
+        <option value="Music">Music</option>
+        <option value="Photography">Photography</option>
+        <option value="Comics">Comics</option>
+        <option value="Custom">Custom</option>
+      </select>
+    </div>
+    <div class="col-md-2 form-group p_star">
+      <input type="number" [(ngModel)]="product.price" class="form-control" id="price" name="price" value=""
+        placeholder="Product price" />
+    </div>
+    <div class="col-md-12 form-group p_star">
+      <textarea id="description" [(ngModel)]="product.description" name="description" rows="4" cols="40"
+        class="form-control" placeholder="Product Description"></textarea>
+    </div>
+    <div class="col-md-12 form-group p_star">
+      <input #file type="file" class="form-control" id="imageFile" name="imageFile"
+        accept=".jpg, .jpeg" />
+    </div>
+    <div class="col-md-12 form-group">
+      <button class="btn_3" (click)="addNewProduct()">Add Product</button>
+    </div>
+    <!--<input type="hidden" name="_csrf" value="{{token}}"/>-->
+  </div>
+  <!--</form>-->
+</div>

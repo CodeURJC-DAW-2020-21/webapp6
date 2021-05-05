@@ -27,7 +27,8 @@
         </div>
       </div>
       <div class="col-lg-8">
-        <img [src]="imageProduct" alt={{product.productName}} class="img-fluid">
+        <!--<img [src]="imageProduct" alt={{product.productName}} class="img-fluid">-->
+        <img [src]="productService.getImageProduct(product)" alt={{product.productName}} class="img-fluid">
         <div class="product-caption">
           <div class="product-ratting text-center">
 

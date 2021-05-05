@@ -1,3 +1,8 @@
-<p>
-  profile-products works!
-</p>
+<div class="row">
+  <div class="col-lg-6 mb-2 pr-lg-1" *ngFor="let product of products; index as i">
+    <a [routerLink]="['/new/single-product/',product.idProduct]">
+      <img [src]="productService.getImageProduct(product)" alt={{product.productName}} class="img-fluid rounded shadow-sm">
+    </a>
+  </div>
+</div>
+<h4 *ngIf="!products">No products yet.</h4>

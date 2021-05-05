@@ -42,10 +42,11 @@
             <!--Nav Button  -->
             <nav>
               <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" [routerLink]="['/new']" role="tab"
-                  aria-controls="nav-home" aria-selected="true">All</a>
-                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" [routerLink]="['/new/products-rating']" role="tab"
-                  aria-controls="nav-profile" aria-selected="false">Best Rating!</a>
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" [routerLink]="['/new']"
+                  role="tab" aria-controls="nav-home" aria-selected="true">All</a>
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+                  [routerLink]="['/new/products-rating']" role="tab" aria-controls="nav-profile"
+                  aria-selected="false">Best Rating!</a>
               </div>
             </nav>
             <!--End Nav Button  -->
@@ -54,7 +55,9 @@
       </div>
       <!-- Nav Card -->
       <div class="tab-content" id="nav-tabContent">
-        <router-outlet></router-outlet>
+        <div class="row">
+          <router-outlet></router-outlet>
+        </div>
       </div>
       <!-- End Nav Card -->
     </div>
