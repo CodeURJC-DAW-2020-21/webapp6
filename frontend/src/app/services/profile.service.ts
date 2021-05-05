@@ -51,10 +51,10 @@ export class ProfileService {
     )
   }
 
-  getSales():Observable<String[]>{
+  getSales():Observable<Object[]>{
     return this.httpClient.get(API_URL+"sales/").pipe(
       catchError(error=>this.handleError(error))
-    ) as Observable<String[]>
+    ) as Observable<Object[]>
   }
 
   private handleError(error: any) {
