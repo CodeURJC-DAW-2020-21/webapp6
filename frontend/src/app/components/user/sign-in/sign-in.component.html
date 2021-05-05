@@ -1,94 +1,93 @@
 <!-- slider Area Start-->
 <div class="slider-area ">
-  <!-- Mobile Menu -->
-  <div class="single-slider slider-height2 d-flex align-items-center" data-background="/img/hero/gallery_hero.jpg">
-      <div class="container">
-          <div class="row">
-              <div class="col-xl-12">
-                  <div class="hero-cap text-center">
-                      <h2>Sign in</h2>
-                  </div>
-              </div>
-          </div>
-      </div>
+    <!-- Mobile Menu -->
+    <div class="single-slider slider-height2 d-flex align-items-center" data-background="/img/hero/gallery_hero.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>Sign in</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
-</div>
-<!-- slider Area End-->
-
-<!--================login_part Area =================-->
-<section class="login_part section_padding ">
-  <div class="container">
-      <div class="row align-items-center">
-          <div class="col-lg-6 col-md-6">
-              <div class="login_part_text text-center">
-                  <div class="login_part_text_iner">
-                      <h2>New to our Shop?</h2>
-                      <p>Sing in right now and enjoy Shopping in 6ixShop  your favorite products</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-6 col-md-6">
-              <div class="login_part_form">
-                  <div class="login_part_form_iner">
-                      <h3>Welcome Back ! <br>
-                          Please Sing in now</h3>
-                      <form class="row contact_form" action="/sign_in" method="post" novalidate="novalidate">
-                          <div class="col-md-12 form-group p_star">
-                              <input type="text" class="form-control" id="nickname" name="nickname" value=""
-                                  placeholder="Username">
-                          </div>
-                          <div class="col-md-12 form-group p_star">
-                              <input type="number" class="form-control" id="phonenumber" name="phonenumber" value=""
-                                  placeholder="Phone number">
-                          </div>
-                          <div class="col-md-12 form-group p_star">
-                              <input type="mail" class="form-control" id="mail" name="mail" value=""
-                                  placeholder="Mail">
-                          </div>
-                          <div class="col-md-12 form-group p_star">
-                              <input type="password" class="form-control" id="encodedPassword" name="encodedPassword" value=""
-                                  placeholder="Password">
-                          </div>
-
-                          <div class="col-md-12 form-group">
-                              <div class="creat_account d-flex align-items-center">
-                                  <input type="checkbox" id="f-option" name="selector">
-                                  <label for="f-option">Remember me</label>
-                              </div>
-                              <button type="submit" value="submit" class="btn_3">
-                                  Sign in
-                              </button>
-                              <a class="lost_pass" href="#">forget password?</a>
-                          </div>
-                          <!--<input type="hidden" name="_csrf" value="{{token}}"/>-->
-                      </form>
-                  </div>
-              </div>
-          </div>
-      </div>
+  <!-- slider Area End-->
+  
+  <!--================login_part Area =================-->
+  <section class="login_part section_padding ">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6">
+                <div class="login_part_text text-center">
+                    <div class="login_part_text_iner">
+                        <h2>New to our Shop?</h2>
+                        <p>Sing in right now and enjoy Shopping in 6ixShop  your favorite products</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="login_part_form">
+                    <div class="login_part_form_iner">
+                        <h3>Welcome Back ! <br>
+                            Please Sing in now</h3>
+                        <form class="row contact_form" action="/sign_in" method="post" novalidate="novalidate">
+                            <div class="col-md-12 form-group p_star">
+                                <input type="text" class="form-control" id="nickname"  [(ngModel)]="user.nickname" name="nickname" value=""
+                                    placeholder="Username">
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <input type="number" class="form-control" id="phonenumber" [(ngModel)]="user.phonenumber" name="phonenumber" value=""
+                                    placeholder="Phone number">
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <input type="mail" class="form-control" id="mail" [(ngModel)]="user.mail" name="mail" value=""
+                                    placeholder="Mail">
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <input type="password" class="form-control" id="encodedPassword"   [(ngModel)]="user.password" name="encodedPassword" value=""
+                                    placeholder="Password">
+                            </div>
+  
+                            <div class="col-md-12 form-group">
+                                <div class="creat_account d-flex align-items-center">
+                                    <input type="checkbox" id="f-option" name="selector">
+                                    <label for="f-option">Remember me</label>
+                                </div>
+                                <button type="submit" value="submit" class="btn_3"  (click)="createUser()">
+                                    Sign in
+                                </button>
+                                <a class="lost_pass" href="#">forget password?</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+  <!--================login_part end =================-->
+  
+  <!-- *Shop Method Start*-->
+  <div class="shop-method-area section-padding20">
+    <div class="container">
+        <div class="row d-flex justify-content-between">
+            <div class="col-xl-4 col-lg-4 col-md-6">
+                <div class="single-method mb-40">
+                    <i class="ti-package"></i>
+                    <h6>Reliable shipping method</h6>
+                    <p>Don't worry about going anywhere. We send the order to your home.</p>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6">
+                <div class="single-method mb-40">
+                    <i class="ti-unlock"></i>
+                    <h6>Secure payment system</h6>
+                    <p>Until the product is received and verified, you can claim your money.</p>
+                </div>
+            </div> 
+        </div>
+    </div>
   </div>
-</section>
-<!--================login_part end =================-->
-
-<!-- *Shop Method Start*-->
-<div class="shop-method-area section-padding20">
-  <div class="container">
-      <div class="row d-flex justify-content-between">
-          <div class="col-xl-4 col-lg-4 col-md-6">
-              <div class="single-method mb-40">
-                  <i class="ti-package"></i>
-                  <h6>Reliable shipping method</h6>
-                  <p>Don't worry about going anywhere. We send the order to your home.</p>
-              </div>
-          </div>
-          <div class="col-xl-4 col-lg-4 col-md-6">
-              <div class="single-method mb-40">
-                  <i class="ti-unlock"></i>
-                  <h6>Secure payment system</h6>
-                  <p>Until the product is received and verified, you can claim your money.</p>
-              </div>
-          </div> 
-      </div>
-  </div>
-</div>
-<!-- *Shop Method End*-->
+  <!-- *Shop Method End*-->
