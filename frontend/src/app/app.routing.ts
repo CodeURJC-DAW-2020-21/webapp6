@@ -33,7 +33,7 @@ const appRoutes = [
     { path: 'new/profile', component: ProfileComponent},
     // **** CART ****
     { path: 'new/cart', component: CartComponent},
-    { path: 'new/cart/cardPayment', component: CardPaymentComponent},
+    { path: 'new/cart/cardPayment/:idRequest', component: CardPaymentComponent},
     { path: '', redirectTo: 'new', pathMatch: 'full' }
   ]
 

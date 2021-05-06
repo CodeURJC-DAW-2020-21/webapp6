@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../../models/product.model';
+import { ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  products:Product[] = []
+  idRequest:number=0;
+  totalPrice:number = 0;
+
+  constructor(private cartService:CartService, public productService:ProductService) { }
 
   ngOnInit() {
+    this.getCart()
   }
+
+  getCart(){
+    this.cartService.getCart().subscribe(
+      products => {
+        this.products = products["PRODUCTS"]
+        this.totalPrice = products["TOTAL PRICE"]
+        this.idRequest = products["ID REQUEST"]
+        console.log(this.idRequest)
+        /*for(let i=0;i<this.products.length;i++){
+          this.totalPrice+=this.products[i].price;
+        }*/
+      },
+      error => console.log(error)
+    );
+  }
+
 
 }
