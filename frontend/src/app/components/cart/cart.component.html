@@ -2,15 +2,15 @@
 <div class="slider-area ">
   <!-- Mobile Menu -->
   <div class="single-slider slider-height2 d-flex align-items-center" data-background="/img/hero/about_hero.jpg">
-      <div class="container">
-          <div class="row">
-              <div class="col-xl-12">
-                  <div class="hero-cap text-center">
-                      <h2 style="color:rgb(231, 231, 231)">Cart List</h2>
-                  </div>
-              </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="hero-cap text-center">
+            <h2 style="color:rgb(231, 231, 231)">Cart List</h2>
           </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
 <!-- slider Area End-->
@@ -20,7 +20,7 @@
   <div class="container">
     <div class="cart_inner">
       <div class="table-responsive">
-        <table class="table">
+        <table class="table" *ngIf="products">
           <thead>
             <tr>
               <th scope="col">Product</th>
@@ -30,33 +30,26 @@
             </tr>
           </thead>
           <tbody>
-            <!--{{#requestUser}}
-                {{#products}}
-                <tr>
-                  <td>
-                    <div class="media">
-                      <div class="d-flex">
-                        <img src="/{{idProduct}}/image" alt="{{productName}}">
-                      </div>
-                      <div class="media-body">
-                        <p>{{productName}}</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <h5>{{description}}</h5>
-                  </td>
-                  <td>
-                  </td>
-                  <td>
-                    <h5>${{price}}</h5>
-                  </td>
-                </tr>
-              {{/products}}
-              {{^products}}
-                  <h4>No products yet.</h4>
-              {{/products}}  
-            {{/requestUser}}
+            <tr *ngFor="let product of products">
+              <td>
+                <div class="media">
+                  <div class="d-flex">
+                    <img [src]="productService.getImageProduct(product)" alt="{{product.productName}}" />
+                  </div>
+                  <div class="media-body">
+                    <p>{{product.productName}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <h5>{{product.description}}</h5>
+              </td>
+              <td>
+              </td>
+              <td>
+                <h5>${{product.price}}</h5>
+              </td>
+            </tr>
             <tr>
               <td></td>
               <td></td>
@@ -66,12 +59,13 @@
               <td>
                 <h5>${{totalPrice}}</h5>
               </td>
-            </tr> -->
+            </tr>
           </tbody>
         </table>
+        <h4 *ngIf="!products">No products yet.</h4>
         <div class="checkout_btn_inner float-right">
           <a class="btn_1" [routerLink]="['/new']">Continue Shopping</a>
-          <!--<a class="btn_1 checkout_btn_1" href="/cardPayment/{{idRequest}}">Proceed to pay</a>-->
+          <a class="btn_1 checkout_btn_1" [routerLink]="['/new/cart/cardPayment/',idRequest]">Proceed to pay</a>
         </div>
       </div>
     </div>
