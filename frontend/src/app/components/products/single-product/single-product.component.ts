@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../models/product.model';
 import { Router, ActivatedRoute} from '@angular/router';
+import {LoginService} from '../../../services/login.service';
 
 @Component({
   selector: 'app-single-product',
@@ -15,7 +16,7 @@ export class SingleProductComponent implements OnInit {
   imageProduct: String;
   ratingProduct: number;
 
-  constructor(private router: Router, private activatedRoute : ActivatedRoute, private productService:ProductService) { 
+  constructor(private router: Router, private activatedRoute : ActivatedRoute, private productService:ProductService,public loginService: LoginService) { 
     this.idProduct = activatedRoute.snapshot.params['idProduct'];
   }
 

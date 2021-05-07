@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,6 +27,7 @@ import es.sixshop.security.jwt.AuthResponse.Status;
 import es.sixshop.security.jwt.LoginRequest;
 import es.sixshop.security.jwt.UserLoginService;
 import es.sixshop.service.UserService;
+
 
 @RestController
 @RequestMapping("/api/auth")
@@ -48,11 +50,13 @@ public class UserRestController {
 	@PostMapping("/sign_in") //NEW user
 	public ResponseEntity<User> createUser(HttpServletRequest request, @RequestBody User user){
 		
-		///PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		String encodedPassword = encoder.encode("pass");
 		
-		PasswordEncoder strongEncoder = new BCryptPasswordEncoder(12);
 		
-		String encodedPassword = strongEncoder.encode("123");
+		//PasswordEncoder strongEncoder = new BCryptPasswordEncoder(12);
+		///String encodedPassword = strongEncoder.encode("123");
+		
 		
 		 
 		 String pass = encodedPassword.substring(8,encodedPassword.length());

@@ -40,14 +40,13 @@
 
           </div>
         </div>
-<!--
-        <form action="/edit-product/{{product.idProduct}}" method="post" novalidate="novalidate">
+-       <form action="/edit-product/{{product.idProduct}}" method="post" novalidate="novalidate">
           <div class="single_product_text text-center" style="margin-bottom: 10px;">
             <h3>
-              <input type="text" id="productName" name="productName" value="{{product.productName}}" size="20">
+              <input type="text" id="productName" name="productName"  [(ngModel)]="product.productName" value="{{product.productName}}" size="20">
             </h3>
 
-            <input type="text" id="description" name="description" value="{{product.description}}" size="50">
+            <input type="text" id="description" name="description" [(ngModel)]="product.description" value="{{product.description}}" size="50">
 
             <div class="card_area">
               <div class="product_count_area">
@@ -57,18 +56,18 @@
                 </h3>
               </div>
               <div class="add_to_cart">
-                <button type="submit" value="submit" class="btn_3">Save Changes</button>
+                <button  *ngIf="loginService.isLogged() && loginService.isAdmin()" (click)="editProduct()" type="submit" value="submit" class="btn_3">Save Changes</button>
               </div>
             </div>
           </div>
-          <input type="hidden" name="_csrf" value="{{token}}" />
+        
         </form>
         <form class="text-center" action="/delete-product/{{product.idProduct}}" method="post" novalidate="novalidate">
-          <button type="submit" value="submit" class="btn_3"
+          <button *ngIf="loginService.isLogged() && loginService.isAdmin()" (click)="removeProduct()" type="submit" value="submit" class="btn_3" 
             style="background-color: crimson; color:rgb(255, 255, 255);border:lightcoral">Delete Product</button>
-          <input type="hidden" name="_csrf" value="{{token}}" />
+          
         </form>
-      -->
+      
       </div>
 
     </div>

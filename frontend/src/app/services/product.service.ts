@@ -50,6 +50,19 @@ export class ProductService {
       ) as Observable<Blob>;
     }
 
+
+    removeProduct(product: Product) {  //cambiar dirc api
+      return this.httpClient.delete(API_URL + product.idProduct).pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
+  
+    updateProduct(product: Product) {
+      return this.httpClient.put(API_URL + product.idProduct, product).pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
+
     private handleError(error: any) {
       console.log("ERROR:");
       console.error(error);
