@@ -188,7 +188,7 @@ Finally, to open the website in your browser you will have to write this path: h
    2. Once it's installed, proceed to open the *shell*.
    3. Position yourself in the *Docker folder* from the proyect.
    4. If you're using Mac or Windows you have to write: *docker-compose up --build -d*
-   5. Then write in your explorer: *https://localhost:8443/* and you'll see the website.
+   5. Then, write in your explorer: *https://localhost:8443/* and you'll see the website.
 
 ### **Docker image documentation:**
    1. First, it's needed the Docker installation and a docker account.
@@ -222,41 +222,46 @@ Finally, to open the website in your browser you will have to write this path: h
 
 | Name        | Files |  |  |  |  |
 | :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| Sergio Martín Muñoz | [Dockerfile](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/Dockerfile) | [Docker-compose.yml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/docker-compose.yml) | [start.sh](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/start.sh) | [pom.xml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/pom.xml) | [ReadMe](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/dev/README.md) |
+| Sergio Martín Muñoz | [Dockerfile](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/Dockerfile) | [Docker-compose.yml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/docker-compose.yml) | [create_image.sh](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/start.sh) | [pom.xml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/pom.xml) | [ReadMe](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/dev/README.md) |
 | Alberto Pacho Bernardos | [es.sixshop.apirest.controller.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/apiRest/6ixShop/src/main/java/es/sixshop/apirest/controller) | [es.sixshop.apirest.detail.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/apiRest/6ixShop/src/main/java/es/sixshop/apirest/detail) | [es.sixshop.security.jwt.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/apiRestSecurity/6ixShop/src/main/java/es/sixshop/security/jwt) | [es.sixshop.model.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/apiRestSecurity/6ixShop/src/main/java/es/sixshop/model) | [es.sixshop.service.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/6ixShop/src/main/java/es/sixshop/model) |
 | Javier Espín Prieto | [ApiRestSecurityConfiguration.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/APIsecurity/6ixShop/src/main/java/es/sixshop/apirest/security/ApiRestSecurityConfiguration.java) | [CartRestController.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/APIsecurity/6ixShop/src/main/java/es/sixshop/apirest/controller/CartRestController.java) | [ProductRestController.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/APIsecurity/6ixShop/src/main/java/es/sixshop/apirest/controller/ProductRestController.java) | [ProfileRestController.java](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/APIsecurity/6ixShop/src/main/java/es/sixshop/apirest/controller/ProfileRestController.java) | [es.sixshop.security.jwt.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/APIsecurity/6ixShop/src/main/java/es/sixshop/security/jwt) |
-| Celia Sanjuán Sánchez | [Dockerfile](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/Dockerfile) | [Docker-compose.yml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/docker-compose.yml) | [start.sh](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/start.sh) | [pom.xml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/pom.xml) | [ReadMe](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/dev/README.md) |
+| Celia Sanjuán Sánchez | [Dockerfile](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/Dockerfile) | [Docker-compose.yml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/docker-compose.yml) | [create_image.sh](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/Docker/start.sh) | [pom.xml](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/Docker/6ixShop/pom.xml) | [ReadMe](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/dev/README.md) |
 
 ## PHASE 4
 
 ### **Installation process and instructions:**
+   1. First of all, you need to install [Nodejs](https://nodejs.org/es/) and Angular with: *npm install -g @angular/cli* in the *shell*.
+   2. Once it's installed, clone the repository from GitHub using this command: *git clone https://github.com/CodeURJC-DAW-2020-21/webapp6*
+   3. Then, position yourself in the *frontend folder* from the proyect.
+   4. Write: *npm install*
+   5. And, to laucnch the app, write: *ng serve*
+   6. Finally, write in your explorer: *https://localhost:4200/* and you'll see the website.
 
 ### **Templates and classes diagram final version:**
 
 ### **Member participation Phase 3🙌🏻:**
 
-
 | Name        | Tasks |  |  |  |  |
 | :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| Sergio Martín Muñoz | Single-product | Script de bash | Cart | Diagram | ReadMe |
-| Alberto Pacho Bernardos | Routing | Index | Category |  |  |
-| Javier Espín Prieto | Login | Signin |  |  |  |
-| Celia Sanjuán Sánchez | Single-product | Script de bash | Cart | Diagram | ReadMe |
+| Sergio Martín Muñoz | Single-product | Script de bash | Cart | Diagram&Instructions | ReadMe |
+| Alberto Pacho Bernardos | Routing | Index | Category | Profile | Cart&Pay |
+| Javier Espín Prieto | Login | Signin | Edit Product | Remove Product | Security |
+| Celia Sanjuán Sánchez | Single-product | Script de bash | Cart | Diagram&Instructions | ReadMe |
 
 
 
 | Name        | Commits |  |  |  |  |
 | :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| Sergio Martín Muñoz | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/5ef3b277e9b2494650de662894ae2100ac24e959) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/5ef3b277e9b2494650de662894ae2100ac24e959) | [Commit3]() | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7caf2a11090f1f72fcc3763ca4c3a6efba5ad705) | [Commit5]() |
-| Alberto Pacho Bernardos | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/2064324c8a3c0815a96800bea1c704e973ecf6c8) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/008c3e43fd201e95c11684f91b6641362707f42a) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/a38777701719673a54f6229e0c9e5f8ac9f10e14) | [Commit4]() | [Commit5]() |
-| Javier Espín Prieto | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/2034819d1f0759b960e08a00abb0299c973ed661) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/ed62c80143edb53f0a223ef9b30401b0c0691d8c) | [Commit3]() | [Commit4]() | [Commit5]() |
-| Celia Sanjuán Sánchez | [Commit1]() | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7caf2a11090f1f72fcc3763ca4c3a6efba5ad705) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/5ef3b277e9b2494650de662894ae2100ac24e959) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/5ef3b277e9b2494650de662894ae2100ac24e959) | [Commit5]() |
+| Sergio Martín Muñoz | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/5ef3b277e9b2494650de662894ae2100ac24e959) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/5ef3b277e9b2494650de662894ae2100ac24e959) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/63c6393c0843159c20088cbf81b957da32efaf5f) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7caf2a11090f1f72fcc3763ca4c3a6efba5ad705) | [Commit5]() |
+| Alberto Pacho Bernardos | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/2064324c8a3c0815a96800bea1c704e973ecf6c8) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/008c3e43fd201e95c11684f91b6641362707f42a) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/a38777701719673a54f6229e0c9e5f8ac9f10e14) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/cc394f82dfc5f2d17239ad79ce065a6ae8cc60c1) | [Commit5](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/2d6b11d610dc612e9c99b7bc372f32e3e2a7e6e8) |
+| Javier Espín Prieto | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/2034819d1f0759b960e08a00abb0299c973ed661) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/ed62c80143edb53f0a223ef9b30401b0c0691d8c) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/ecc781c31db4a03a1124444d7179f155822c43a9) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/61dc6aaeb1720d5df39c701f71472b6fea6908dd) | [Commit5](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/893502edd54c2f50155242cf10d4ea9b84fb5e21) |
+| Celia Sanjuán Sánchez | [Commit1](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/63c6393c0843159c20088cbf81b957da32efaf5f) | [Commit2](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/7caf2a11090f1f72fcc3763ca4c3a6efba5ad705) | [Commit3](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/5ef3b277e9b2494650de662894ae2100ac24e959) | [Commit4](https://github.com/CodeURJC-DAW-2020-21/webapp6/commit/5ef3b277e9b2494650de662894ae2100ac24e959) | [Commit5]() |
 
 
 
 | Name        | Files |  |  |  |  |
 | :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| Sergio Martín Muñoz | []() | []() | []() | []() | []() |
-| Alberto Pacho Bernardos | []() | []() | []() | []() | []() |
-| Javier Espín Prieto | []() | []() | []() | []() | []() |
-| Celia Sanjuán Sánchez | []() | []() | []() | []() | []() |
+| Sergio Martín Muñoz | [Dockerfile](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/dev/backend/Docker/Dockerfile) | [create_image.sh](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/dev/backend/Docker/create_image.sh) | [frontend/.../single-product.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/frontend/src/app/components/products/single-product) | [ReadMe](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/dev/README.md) | [frontend/.../products-all.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/frontend/src/app/components/products/products-all) |
+| Alberto Pacho Bernardos | [frontend/.../components.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/frontend/src/app/components) | [frontend/.../models.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/frontend/src/app/models) | [frontend/.../services.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/frontend/src/app/services) | [frontend/.../environments.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/frontend/src/environments) | |
+| Javier Espín Prieto | [frontend/.../sign-in.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/frontend/src/app/components/user/sign-in) | [frontend/.../login.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/frontend/src/app/components/user/login) | [frontend/.../edit-product.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/frontend/src/app/components/products/edit-product) | [frontend/.../single-product.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/frontend/src/app/components/products/single-product) | |
+| Celia Sanjuán Sánchez | [Dockerfile](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/dev/backend/Docker/Dockerfile) | [create_image.sh](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/dev/backend/Docker/create_image.sh) | [frontend/.../single-product.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/frontend/src/app/components/products/single-product) | [ReadMe](https://github.com/CodeURJC-DAW-2020-21/webapp6/blob/dev/README.md) | [frontend/.../products-all.*](https://github.com/CodeURJC-DAW-2020-21/webapp6/tree/dev/frontend/src/app/components/products/products-all) |
