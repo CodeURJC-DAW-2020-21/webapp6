@@ -49,14 +49,8 @@
               </div>
               <div class="add_to_cart">
                 <a href="/cart/{{product.idProduct}}" class="btn_3">Add to cart</a>
-                <!--
-            {{^edit}}
-            <a href="/cart/{{idProduct}}" class="btn_3">Add to cart</a>
-            {{/edit}}
-            {{#edit}}
-            <a href="/edit-product/{{idProduct}}" class="btn_3">Edit Product</a>
-            {{/edit}}
-            -->
+             
+            <button [rooterLink]="['/new/edit-product/',idProduct]"  *ngIf="loginService.isLogged()  || loginService.isAdmin()" class="btn_3">Edit Product</button>
               </div>
             </div>
           </div>
