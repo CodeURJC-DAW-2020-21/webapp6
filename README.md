@@ -241,7 +241,7 @@ Finally, to open the website in your browser you will have to write this path: h
 ![lasses-templatesDiagram](https://user-images.githubusercontent.com/55685000/117555056-2c33bc80-b05c-11eb-9020-d79990536e1e.png)
 
 
-### **Member participation Phase 3🙌🏻:**
+### **Member participation Phase 4🙌🏻:**
 
 | Name        | Tasks |  |  |  |  |
 | :-------------: |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
