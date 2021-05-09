@@ -1,0 +1,62 @@
+<header>
+    <!-- Header Start -->
+    <div class="header-area">
+        <div class="main-header ">
+            <div class="header-bottom  header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
+                            <div class="logo">
+                                <a [routerLink]="['/new']"><img src="/new/assets/img/imagenes/index/mini-logo.jpeg" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-5 col-md-4 col-sm-2">
+                            <!-- Main-menu -->
+                            <div class="main-menu f-right d-none d-lg-block">
+                                <nav>                                               
+                                    <ul id="navigation">           
+                                        <li><a [routerLink]="['/new']">Home</a></li>
+                                        <li><a [routerLink]="['/new/category']">Category</a>
+                                            <ul class="submenu">
+                                                <li><a [routerLink]="['/new/category/Movies']">Movies</a></li>
+                                                <li><a [routerLink]="['/new/category/TVSeries']">TVSeries</a></li>
+                                                <li><a [routerLink]="['/new/category/Music']">Music</a></li>
+                                                <li><a [routerLink]="['/new/category/Photography']">Photography</a></li>
+                                                <li><a [routerLink]="['/new/category/Comics']">Comics</a></li>
+                                                <li><a [routerLink]="['/new/category/Custom']">Custom</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div> 
+                        <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6 fix-card">
+                            <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
+                                <li>
+                                    <div class="shopping-card">
+                                        <a [routerLink]="['/new/cart']"><i class="fas fa-shopping-cart"></i></a>
+                                    </div>
+                                </li>
+                                <li class="d-none d-lg-block">
+                                    <a *ngIf="loginService.isLogged() && !profileWindow" [routerLink]="['/new/profile']" class="btn header-btn">{{user.nickname}}</a>
+                                    <a *ngIf="!loginService.isLogged()" [routerLink]="['/new/login']" class="btn header-btn">Login</a>
+                                    <a *ngIf="loginService.isLogged() && profileWindow" (click)="logOut()" class="btn header-btn" style="background-color:red">Log Out</a>
+                                    <!--<form action="/header" method="post">
+                                        <input class="btn header-btn" style="background-color:red" type="submit" value="Log Out">
+                                        <input type="hidden" name="_csrf" value="{{token}}"/>
+                                    </form>-->
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ******************************** HEADER END ******************************** -->

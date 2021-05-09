@@ -319,6 +319,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "CREATE USER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"nickname\": \"Juan Perez\", \"encodedPassword\":\"123\" , \"mail\":\"juan@mail.com\",\"phonenumber\": \"123138716\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/auth/sign_in",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"auth",
+								"sign_in"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -353,7 +383,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"productName\": \"Breaking Bad\", \"description\": \"Description of Breaking Bad\", \"category\": \"TVSeries\", \"price\": \"80\"}",
+							"raw": "{ \"productName\": \"Breaking Bad\", \"description\": \"Description of Breaking Bad\", \"category\": \"TVSeries\", \"price\": \"80\", \"image\":false}",
 							"options": {
 								"raw": {
 									"language": "json"

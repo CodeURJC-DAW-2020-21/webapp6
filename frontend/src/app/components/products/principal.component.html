@@ -1,0 +1,96 @@
+<main>
+  <!-- *slider Area Start* -->
+  <div class="slider-area ">
+    <!-- Mobile Menu -->
+    <div class="slider-active">
+      <div class="single-slider slider-height" data-background="/new/assets/img/hero/h1_hero.jpg">
+        <div class="container">
+          <div class="row d-flex align-items-center justify-content-between">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-none d-md-block">
+              <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
+                <img src="/new/assets/img/imagenes/index/homer.png" alt="">
+              </div>
+            </div>
+            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-8">
+              <div class="hero__caption">
+                <span data-animation="fadeInRight" data-delay=".4s">Buy and sell safely</span>
+                <h1 data-animation="fadeInRight" data-delay=".6s">6iX <br> Shop</h1>
+                <p data-animation="fadeInRight" data-delay=".8s">The best designs!</p>
+                <!-- Hero-btn -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- slider Area End-->
+  <!-- Category Area Start-->
+  <!-- Category Area End-->
+  <!-- *Latest Products Start* -->
+  <section class="latest-product-area padding-bottom section-padding30">
+    <div class="container">
+      <div class="row product-btn d-flex justify-content-end align-items-end">
+        <!-- Section Tittle -->
+        <div class="col-xl-4 col-lg-5 col-md-5">
+          <div class="section-tittle mb-30">
+            <h2>ALL PRODUCTS!</h2>
+          </div>
+        </div>
+        <div class="col-xl-8 col-lg-7 col-md-7">
+          <div class="properties__button f-right">
+            <!--Nav Button  -->
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" [routerLink]="['/new']"
+                  role="tab" aria-controls="nav-home" aria-selected="true">All</a>
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+                  [routerLink]="['/new/products-rating']" role="tab" aria-controls="nav-profile"
+                  aria-selected="false">Best Rating!</a>
+              </div>
+            </nav>
+            <!--End Nav Button  -->
+          </div>
+        </div>
+      </div>
+      <!-- Nav Card -->
+      <div class="tab-content" id="nav-tabContent">
+        <div class="row">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+      <!-- End Nav Card -->
+    </div>
+  </section>
+  <!-- Latest Products End -->
+  <!-- Best Product Start -->
+  <!-- Best Product End-->
+  <!-- Best Collection Start -->
+  <!-- Best Collection End -->
+  <!-- Latest Offers Start -->
+  <!-- Latest Offers End -->
+  <!-- *Shop Method Start*-->
+  <div class="shop-method-area section-padding20">
+    <div class="container">
+      <div class="row d-flex justify-content-between">
+        <div class="col-xl-4 col-lg-4 col-md-6">
+          <div class="single-method mb-40">
+            <i class="ti-package"></i>
+            <h6>Reliable shipping method</h6>
+            <p>Don't worry about going anywhere. We send the order to your home.</p>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6">
+          <div class="single-method mb-40">
+            <i class="ti-unlock"></i>
+            <h6>Secure payment system</h6>
+            <p>Until the product is received and verified, you can claim your money.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- *Shop Method End*-->
+  <!-- Gallery Start-->
+  <!-- Gallery End-->
+</main>

@@ -1,0 +1,55 @@
+<main>
+  <div class="row py-5 px-4">
+    <div class="col-xl-8 col-md-10 col-sm-14 mx-auto">
+      <!-- Tamaño contendedor -->
+      <!-- Profile widget -->
+      <div class="bg-white shadow rounded overflow-hidden">
+        <div class="px-4 pt-0 pb-4 bg-dark">
+          <div class="media align-items-end profile-header">
+            <div class="profile mr-3" style="margin-left:7%">
+              <img src="/new/assets/img/imagenes/profile/imageProfile.png" alt="imageProfile" width="130"
+                class="rounded mb-2 img-thumbnail" style="margin-top:30px" />
+            </div>
+            <div class="media-body mb-5 text-white" style="text-align: end">
+              <h4 class="mt-0 mb-0" style="color:white; font-weight: 600">{{user.nickname}}</h4>
+              <p class="small mb-4"> <i class="fa fa-map-marker mr-2"></i>{{user.mail}}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-light p-4 d-flex justify-content-end text-center">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <h5 class="font-weight-bold mb-0 d-block">{{nProducts}}</h5><small class="text-muted"> <i
+                  class="fa fa-picture-o mr-1"></i>Sold Products</small>
+            </li>
+          </ul>
+        </div>
+
+        <div class="py-4 px-4">
+          <!--Nav Button  -->
+          <nav style="margin-bottom:2%">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" [routerLink]="['/new/profile']"
+                role="tab" aria-controls="nav-home" aria-selected="true" style="color:grey">Your Products</a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+                [routerLink]="['/new/profile/profile-newproduct']" role="tab" aria-controls="nav-profile"
+                aria-selected="false" style="color:grey">Add Product</a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+                [routerLink]="['/new/profile/profile-shopping']" role="tab" aria-controls="nav-profile"
+                aria-selected="false" style="color:grey">Your Shopping</a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+                [routerLink]="['/new/profile/profile-sales']" role="tab" aria-controls="nav-profile"
+                aria-selected="false" style="color:grey">Your Sales</a>
+            </div>
+          </nav>
+          <!--End Nav Button  -->
+          <div class="tab-content" id="nav-tabContent">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+      <!-- End profile widget -->
+    </div>
+  </div>
+</main>

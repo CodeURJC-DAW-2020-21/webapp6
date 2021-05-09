@@ -1,0 +1,56 @@
+<div class="row">
+  <table *ngIf="requests" class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <td>ORDER</td>
+        <td>Date</td>
+        <td>Status</td>
+        <td>Product</td>
+        <td>Category</td>
+        <td>Rating</td>
+        <td>Price</td>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-template ngFor let-request [ngForOf]="requests" let-i="index">
+        <tr *ngFor="let requestDetail of request.lRequestDetail; index as i">
+          <td>{{request.idRequest}}</td>
+          <td>{{request.date}}</td>
+          <td style="color:red">PAID</td>
+          <td>{{requestDetail.product.productName}}</td>
+          <td>{{requestDetail.product.category}}</td>
+          <td>
+            <div *ngIf="requestDetail.rating>-1" class="product-ratting"
+              id="{{requestDetail.idRequestDetail}}{{requestDetail.product.idProduct}}">
+              <ng-template ngFor let-number [ngForOf]="[1,2,3,4,5]">
+                <i *ngIf="requestDetail.rating>=number" class="far fa-star" style="color:rgb(255,208,0)"></i>
+                <i *ngIf="requestDetail.rating<number" class="far fa-star low-star"></i>
+              </ng-template>
+            </div>
+            <div *ngIf="requestDetail.rating===-1" class="product-ratting"
+              id="{{requestDetail.idRequestDetail}}{{requestDetail.product.idProduct}}">
+              <i *ngFor="let number of [1,2,3,4,5]"
+                (click)="ratingProduct(requestDetail.idRequestDetail,requestDetail.product.idProduct,number)"
+                class="far fa-star low-star"></i>
+            </div>
+          </td>
+          <td>{{requestDetail.productPrice}}</td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td style="font-weight:bold">TOTAL PRICE</td>
+          <td style="color:red">{{totalPrice[i]}}</td>
+        </tr>
+        <tr>
+          <td colspan="7"></td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>
+  <p *ngIf="!requests">Have not bought yet</p>
+</div>
