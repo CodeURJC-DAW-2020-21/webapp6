@@ -41,5 +41,6 @@ C:\Users\Alberto\Documents\GitHub\webapp6\backend\src\main\java\es\sixshop\servi
 C:\Users\Alberto\Documents\GitHub\webapp6\backend\src\main\java\es\sixshop\apirest\detail\ProductAPIDetail.java
 C:\Users\Alberto\Documents\GitHub\webapp6\backend\src\main\java\es\sixshop\model\RequestDetail.java
 C:\Users\Alberto\Documents\GitHub\webapp6\backend\src\main\java\es\sixshop\security\jwt\AuthResponse.java
+C:\Users\Alberto\Documents\GitHub\webapp6\backend\src\main\java\es\sixshop\controller\SPAController.java
 C:\Users\Alberto\Documents\GitHub\webapp6\backend\src\main\java\es\sixshop\apirest\detail\UserOwnerAPIDetail.java
 C:\Users\Alberto\Documents\GitHub\webapp6\backend\src\main\java\es\sixshop\service\RequestService.java

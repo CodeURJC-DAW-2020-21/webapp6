@@ -15,7 +15,7 @@ export class ProductsAllComponent implements OnInit {
   nPage:number=0;
   loadMoreProductsVisible:boolean=true;
 
-  constructor(private productService: ProductService) { }
+  constructor(public productService: ProductService) { }
 
   ngOnInit() {
     this.getProductsPage();

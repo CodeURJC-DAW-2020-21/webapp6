@@ -15,7 +15,7 @@ export class ProductsRatingComponent implements OnInit {
   nPageRating:number=0;
   loadMoreRatingVisible:boolean=true;
 
-  constructor(private productService: ProductService) { }
+  constructor(public productService: ProductService) { }
 
   ngOnInit() {
     this.getProductsRatingPage();

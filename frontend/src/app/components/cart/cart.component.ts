@@ -26,10 +26,6 @@ export class CartComponent implements OnInit {
         this.products = products["PRODUCTS"]
         this.totalPrice = products["TOTAL PRICE"]
         this.idRequest = products["ID REQUEST"]
-        console.log(this.idRequest)
-        /*for(let i=0;i<this.products.length;i++){
-          this.totalPrice+=this.products[i].price;
-        }*/
       },
       error => console.log(error)
     );

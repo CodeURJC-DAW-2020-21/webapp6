@@ -15,7 +15,7 @@ export class ProfileProductsComponent implements OnInit {
   products: Product[] = [];
   imagesProducts: String[] = [];
 
-  constructor(private router:Router, private profileService: ProfileService, private productService:ProductService) { }
+  constructor(private router:Router, private profileService: ProfileService, public productService:ProductService) { }
 
   ngOnInit() {
     this.getProductsProfile();
