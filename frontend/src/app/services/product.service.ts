@@ -40,7 +40,7 @@ export class ProductService {
 
     getImageProduct(product:Product){
       if (!product.imageURL) {
-        return "../../../assets/img/imagenes/product/" + product.productName + ".jpg";
+        return "../../../new/assets/img/imagenes/product/" + product.productName + ".jpg";
       } else {
         return "/api/profiles/"+product.idProduct+"/image"
       }

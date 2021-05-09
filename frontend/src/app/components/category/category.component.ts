@@ -19,7 +19,7 @@ export class CategoryComponent implements OnInit {
   nPage:number=0;
   loadMoreVisible:boolean=true;
 
-  constructor(private router: Router, activatedRoute:ActivatedRoute, private productService: ProductService) { 
+  constructor(private router: Router, activatedRoute:ActivatedRoute, public productService: ProductService) { 
     this.category = activatedRoute.snapshot.params['category'];
     if(this.category==null) this.category="TVSeries";
   }
