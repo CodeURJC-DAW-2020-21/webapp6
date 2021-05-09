@@ -21,7 +21,7 @@ const appRoutes = [
     // **** PRODUCTS ****
     { path: 'new', component: PrincipalComponent },
     { path: 'new/single-product/:idProduct', component: SingleProductComponent },
-    { path: 'new/edit-product', component: EditProductComponent },
+    { path: 'new/edit-product/:idProduct', component: EditProductComponent },
     { path: 'new/error', component: ErrorComponent },
     // **** CATEGORY ****
     { path: 'new/category', component: CategoryComponent},

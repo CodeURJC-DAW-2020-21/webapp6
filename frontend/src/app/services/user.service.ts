@@ -15,7 +15,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   addUser(user: User) {
-    return this.http.post(BASE_URL, user).pipe(
+    return this.http.post('/api/auth/sign_in', user).pipe(
       catchError(error => this.handleError(error))
     );
   }

@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-xl-12">
           <div class="hero-cap text-center">
-            <h2 style="color:rgb(231, 231, 231)">product Details</h2>
+            <h2 style="color:black">product Details</h2>
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@
       </div>
       <div class="col-lg-8">
         <!--<img [src]="imageProduct" alt={{product.productName}} class="img-fluid">-->
-        <img [src]="productService.getImageProduct(product)" alt={{product.productName}} class="img-fluid">
+        <img [src]="productService.getImageProduct(product)" [alt]="product.productName" class="img-fluid">
         <div class="product-caption">
           <div class="product-ratting text-center">
 
@@ -48,15 +48,8 @@
                 <p style="font-size:38px;">${{product.price}}</p>
               </div>
               <div class="add_to_cart">
-                <a href="/cart/{{product.idProduct}}" class="btn_3">Add to cart</a>
-                <!--
-            {{^edit}}
-            <a href="/cart/{{idProduct}}" class="btn_3">Add to cart</a>
-            {{/edit}}
-            {{#edit}}
-            <a href="/edit-product/{{idProduct}}" class="btn_3">Edit Product</a>
-            {{/edit}}
-            -->
+                <button (click)="addCartProduct(product.idProduct)" *ngIf="bAddCartVisible" class="btn_3">Add to cart</button>
+                <button [routerLink]="['/new/edit-product/',idProduct]" *ngIf="bEditVisible" class="btn_3">Edit Product</button>
               </div>
             </div>
           </div>

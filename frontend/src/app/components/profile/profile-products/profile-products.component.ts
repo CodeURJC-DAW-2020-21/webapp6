@@ -24,7 +24,13 @@ export class ProfileProductsComponent implements OnInit {
   getProductsProfile(){
     this.profileService.getProductsProfile().subscribe(
       products => {
-        this.products = products["lProducts"];
+        //this.products = products["lProducts"];
+        for(let x=0;x<products["lProducts"].length;x++){
+          if (products["lProducts"][x].visible===true){
+            this.products.push(products["lProducts"][x]);
+          }
+        }
+        //this.products = this.products;
         //this.getImagesProducts();
       },
       error => console.log(error)

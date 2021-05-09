@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    image: sixshop/sixshop:latest
+    ports:
+      - "8443:8443"
+    container_name: sixshop
+    restart: always
+    links:
+      - "db"
+    environment: 
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/db_sixshop?serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: admin
+
+  db:
+    image: mysql
+    container_name: mysql-db
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=db_sixshop
