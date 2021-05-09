@@ -12,8 +12,11 @@ import { UserService } from '../../services/user.service';
 export class ProfileComponent implements OnInit {
 
   user:User;
+  nProducts:number;
 
-  constructor(private router:Router,public loginService:LoginService) { }
+  constructor(private router:Router,public loginService:LoginService) { 
+    
+  }
 
   ngOnInit() {
     this.currentUser();
@@ -25,5 +28,6 @@ export class ProfileComponent implements OnInit {
 
   private currentUser(){
     this.user = this.loginService.currentUser();
+    this.nProducts = this.user["lProducts"].length
   }
 }

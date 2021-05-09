@@ -39,11 +39,23 @@ export class ProductService {
     }
 
     getImageProduct(product:Product){
-      if (product.imageURL === null) {
+      if (!product.imageURL) {
         return "../../../assets/img/imagenes/product/" + product.productName + ".jpg";
       } else {
         return "/api/profiles/"+product.idProduct+"/image"
       }
+    }
+
+    removeProduct(product: Product) {  
+      return this.httpClient.delete(API_URL + "/" + product.idProduct).pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
+
+    updateProduct(product: Product) {
+      return this.httpClient.put(API_URL + "/" + product.idProduct, product).pipe(
+        catchError(error => this.handleError(error))
+      );
     }
 
     private handleError(error: any) {

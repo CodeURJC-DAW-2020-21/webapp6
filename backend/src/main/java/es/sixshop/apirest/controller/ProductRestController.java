@@ -199,7 +199,7 @@ public class ProductRestController {
         		//productS.delete(product);
         		
         		if(product.getImageURL() != null) {
-    				this.imgService.deleteImage(Application.PRODUCTS_FOLDER, idProduct);
+    				//this.imgService.deleteImage(Application.PRODUCTS_FOLDER, idProduct);
     			}
         		
     			return ResponseEntity.ok(product);
