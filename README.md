@@ -1,5 +1,5 @@
 # 👽 6iX Shop
-
+https://youtu.be/YAWl3bCfkZA
 ## Index 🛸
 - [PHASE 0](#phase-0)
    + [Development team](#development-team)
